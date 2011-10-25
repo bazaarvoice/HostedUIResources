@@ -1,0 +1,13 @@
+The files contained in this directory are aimed at assisting in a Bazaarvoice implementation.
+
+UserAuthentication
+    Contains code in C++, ASP.NET (C#), ASP, and Java that may be used for user authentication
+    string encoding that is used for authenticated Bazaarvoice submissions.
+    
+SmartSEO
+    Contains example code for including Ratings & Reviews Smart SEO files on product pages, but may
+    be easily modified for Ask & Answer and Stories. Example code is written in C#, PHP, and JSP.
+    
+If you have questions and/or find bugs with any of the code contained here, please contact your
+Bazaarvoice implementation or support engineer.
+

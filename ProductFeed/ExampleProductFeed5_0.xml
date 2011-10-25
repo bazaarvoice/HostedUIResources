@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/ProductFeed/5.0" name="ExampleClient" incremental="false" extractDate="2011-10-18T12:00:00.000000">
+
+    <!-- Brands -->
+    <Brands>
+        <Brand>
+            <ExternalId>AAA</ExternalId>
+            <Name>First Brand</Name>
+        </Brand>
+        <Brand>
+            <ExternalId>BBB</ExternalId>
+            <Name>Second Brand</Name>
+        </Brand>
+    </Brands>
+
+    <!-- Categories -->
+    <Categories>
+        <Category>
+            <ExternalId>1010</ExternalId>
+            <Name>First Category</Name>
+            <CategoryPageUrl>http://www.example.com/category.htm?cat=1010</CategoryPageUrl>
+        </Category>
+        <Category>
+            <ExternalId>1020</ExternalId>
+            <Name>Second Category</Name>
+            <CategoryPageUrl>http://www.example.com/category.htm?cat=1020</CategoryPageUrl>
+        </Category>
+        <Category>
+            <ExternalId>1021</ExternalId>
+            <ParentExternalId>1020</ParentExternalId>
+            <Name>Sub Category</Name>
+            <CategoryPageUrl>http://www.example.com/category.htm?cat=1021</CategoryPageUrl>
+        </Category>
+    </Categories>
+
+    <!-- Products -->
+    <Products>
+        <Product>
+            <ExternalId>11111111111abc</ExternalId>
+            <Name>First Product Round with Green</Name>
+            <Description>First Product Description Text</Description>
+            <BrandExternalId>AAA</BrandExternalId>
+            <CategoryExternalId>1010</CategoryExternalId>
+            <ProductPageUrl>http://www.example.com/product.htm?prod=2000001</ProductPageUrl>
+            <ImageUrl>http://images.example.com/prodimages/2000001.gif</ImageUrl>
+            <!-- Product details needed for BrandVoice / syndication -->
+            <ManufacturerPartNumbers>
+                <ManufacturerPartNumber>26-12345-8Z</ManufacturerPartNumber>
+            </ManufacturerPartNumbers>
+            <EANs>
+                <EAN>0213354752286</EAN>
+                <EAN>0188173724031</EAN>
+                <EAN>1833474920123</EAN>
+            </EANs>
+            <UPCs>
+                <UPC>382157229380</UPC>
+                <UPC>283929327281</UPC>
+                <UPC>058227392728</UPC>
+            </UPCs>
+            <!-- Custom product attributes -->
+            <Attributes>
+                <!-- Families the product is a member of -->
+                <Attribute id="BV_FE_FAMILY">
+                    <Value>Green</Value>
+                </Attribute>
+                <Attribute id="BV_FE_FAMILY">
+                    <Value>Round</Value>
+                </Attribute>
+                <!-- Product management group ID -->
+                <Attribute id="ProductManagementGroupId">
+                    <Value>Group56789</Value>
+                </Attribute>
+            </Attributes>
+        </Product>
+        <Product>
+            <ExternalId>22</ExternalId>
+            <Name>Second Product Round and Green</Name>
+            <Description>Second Product Description Text</Description>
+            <BrandExternalId>BBB</BrandExternalId>
+            <CategoryExternalId>1021</CategoryExternalId>
+            <ProductPageUrl>http://www.example.com/product.htm?prod=2000002</ProductPageUrl>
+            <ImageUrl>http://images.example.com/prodimages/2000002.gif</ImageUrl>
+            <ModelNumbers>
+                <ModelNumber>1235832</ModelNumber>
+                <ModelNumber>1235839</ModelNumber>
+            </ModelNumbers>
+            <ManufacturerPartNumbers>
+                <ManufacturerPartNumber>26-12345-8W</ManufacturerPartNumber>
+            </ManufacturerPartNumbers>
+            <EANs>
+                <EAN>0213354752287</EAN>
+            </EANs>
+            <UPCs>
+                <UPC>138313830283</UPC>
+            </UPCs>
+            <!-- Custom product attributes -->
+            <Attributes>
+                <!-- Families the product is a member of -->
+                <Attribute id="BV_FE_FAMILY">
+                    <Value>Round</Value>
+                </Attribute>
+                <Attribute id="BV_FE_FAMILY">
+                    <Value>Green</Value>
+                </Attribute>
+                <!-- Show all content from other products in the Round Family -->
+                <Attribute id="BV_FE_EXPAND">
+                    <Value>BV_FE_FAMILY:Round</Value>
+                </Attribute>
+                <!-- Product management group ID -->
+                <Attribute id="ProductManagementGroupId">
+                    <Value>Group56789</Value>
+                </Attribute>
+            </Attributes>
+        </Product>
+        <!-- Example product with multiple languages -->
+        <Product>
+            <ExternalId>333</ExternalId>
+            <!-- Default product name -->
+            <Name>Third Product Square and Red</Name>
+            <!-- Localized product names -->
+            <Names> 
+                <Name locale="en_US">Third Product US</Name>
+                <Name locale="en_CA">Third Product CA</Name>
+                <Name locale="fr_CA">Troisième produit CA</Name>
+            </Names>
+            <!-- Default product description -->
+            <Description>Third Product Description Text</Description>
+            <!-- Localized product descriptions -->
+            <Descriptions>
+                <Description locale="en_US">Third Product Description Text US</Description>
+                <Description locale="en_CA">Third Product Description Text CA</Description>
+                <Description locale="fr_CA">Troisième texte Description du produit</Description>
+            </Descriptions>
+            <BrandExternalId>BBB</BrandExternalId>
+            <CategoryExternalId>1021</CategoryExternalId>
+            <!-- Default product page URL -->
+            <ProductPageUrl>http://www.example.com/product.htm?prod=2000003</ProductPageUrl>
+            <!-- Localized product page URLs -->
+            <ProductPageUrls>
+                <ProductPageUrl locale="en_US">http://www.example.com/en_us/product.htm?prod=2000003</ProductPageUrl>
+                <ProductPageUrl locale="en_CA">http://www.example.ca/en_ca/product.htm?prod=2000003</ProductPageUrl>
+                <ProductPageUrl locale="fr_CA">http://www.example.ca/fr_ca/product.htm?prod=2000003</ProductPageUrl>
+            </ProductPageUrls>
+            <!-- Default product image URL -->
+            <ImageUrl>http://images.example.com/prodimages/2000003.gif</ImageUrl>
+            <!-- Localized product image URLs -->
+            <ImageUrls>
+                <ImageUrl locale="en_US">http://images.example.com/en_us/prodimages/2000003.gif</ImageUrl>
+                <ImageUrl locale="en_CA">http://images.example.ca/en_ca/prodimages/2000003.gif</ImageUrl>
+                <ImageUrl locale="fr_CA">http://images.example.ca/fr_ca/prodimages/2000003.gif</ImageUrl>
+            </ImageUrls>
+            <ModelNumbers>
+                <ModelNumber>123523832</ModelNumber>
+                <ModelNumber>123325839</ModelNumber>
+            </ModelNumbers>
+            <ManufacturerPartNumbers>
+                <ManufacturerPartNumber>26-93812-8W</ManufacturerPartNumber>
+            </ManufacturerPartNumbers>
+            <EANs>
+                <EAN>0813354723287</EAN>
+            </EANs>
+            <UPCs>
+                <UPC>138313830999</UPC>
+            </UPCs>
+            <!-- Custom product attributes -->
+            <Attributes>
+                <!-- Families this product is a member of -->
+                <Attribute id="BV_FE_FAMILY">
+                    <Value>Red</Value>
+                </Attribute>
+                <Attribute id="BV_FE_FAMILY">
+                    <Value>Square</Value>
+                </Attribute>
+                <!-- Show all content from other products in the Red Family -->
+                <Attribute id="BV_FE_EXPAND">
+                    <Value>BV_FE_FAMILY:Red</Value>
+                </Attribute>
+                <!-- Show all content from other products in the Square Family -->
+                <Attribute id="BV_FE_EXPAND">
+                    <Value>BV_FE_FAMILY:Square</Value>
+                </Attribute>
+                <!-- Price of this product in USA -->
+                <Attribute id="PriceUs">
+                    <Value>65.30</Value>
+                </Attribute>
+                <!-- Price of this product in Canada -->
+                <Attribute id="PriceCa">
+                    <Value>67.25</Value>
+                </Attribute>
+                <!-- Product management group ID -->
+                <Attribute id="ProductManagementGroupId">
+                    <Value>Group12345</Value>
+                </Attribute>
+            </Attributes>
+        </Product>
+        <Product>
+            <ExternalId>4444</ExternalId>
+            <Name>Fourth Product Round and Black</Name>
+            <Description>Fourth Product Description Text</Description>
+            <BrandExternalId>BBB</BrandExternalId>
+            <CategoryExternalId>1021</CategoryExternalId>
+            <ProductPageUrl>http://www.example.com/product.htm?prod=2000002</ProductPageUrl>
+            <ImageUrl>http://images.example.com/prodimages/2000002.gif</ImageUrl>
+            <ModelNumbers>
+                <ModelNumber>1235832</ModelNumber>
+                <ModelNumber>1235839</ModelNumber>
+            </ModelNumbers>
+            <ManufacturerPartNumbers>
+                <ManufacturerPartNumber>26-12345-8W</ManufacturerPartNumber>
+            </ManufacturerPartNumbers>
+            <EANs>
+                <EAN>0213354752287</EAN>
+            </EANs>
+            <UPCs>
+                <UPC>138313830283</UPC>
+            </UPCs>
+            <!-- Custom product attributes -->
+            <Attributes>
+                <!-- Families this product is a member of -->
+                <Attribute id="BV_FE_FAMILY">
+                    <Value>Round</Value>
+                </Attribute>
+                <!-- Show all content from other products in the Round Family -->
+                <Attribute id="BV_FE_EXPAND">
+                    <Value>BV_FE_FAMILY:Round</Value>
+                </Attribute>
+                <!-- Product management group ID -->
+                <Attribute id="ProductManagementGroupId">
+                    <Value>Group56789</Value>
+                </Attribute>
+            </Attributes>
+        </Product>
+        <Product>
+            <ExternalId>55555</ExternalId>
+            <Name>Fifth Product- Family level</Name>
+            <Description>Use this product to collect reviews at a Family level. This product is also a member of the Green Family. It has the BV_FE_EXPAND Attribute set which will pull all reviews for the family</Description>
+            <BrandExternalId>BBB</BrandExternalId>
+            <CategoryExternalId>1021</CategoryExternalId>
+            <ProductPageUrl>http://www.example.com/product.htm?prod=2000002</ProductPageUrl>
+            <ImageUrl>http://images.example.com/prodimages/2000002.gif</ImageUrl>
+            <ModelNumbers>
+                <ModelNumber>1235832green</ModelNumber>
+                <ModelNumber>1235543green</ModelNumber>
+                <ModelNumber>127654green</ModelNumber>
+                <ModelNumber>123111green</ModelNumber>
+            </ModelNumbers>
+            <UPCs>
+                <UPC>138313830281</UPC>
+                <UPC>138313830282</UPC>
+                <UPC>138313830283</UPC>
+                <UPC>138313830284</UPC>
+            </UPCs>
+            <!-- Custom product attributes -->
+            <Attributes>
+                <!-- Families this product is a member of -->
+                <Attribute id="BV_FE_FAMILY">
+                    <Value>Green</Value>
+                </Attribute>
+                <!-- Show all content from other products in the Green Family -->
+                <Attribute id="BV_FE_EXPAND">
+                    <Value>BV_FE_FAMILY:Green</Value>
+                </Attribute>
+            </Attributes>
+        </Product>
+    </Products>
+</Feed>
