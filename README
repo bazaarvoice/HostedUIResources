@@ -1,13 +1,23 @@
-The files contained in this directory are aimed at assisting in a Bazaarvoice implementation.
+Bazaarvoice Hosted UI Implementation Resources
+==============================================
 
-UserAuthentication
-    Contains code in C++, ASP.NET (C#), ASP, and Java that may be used for user authentication
-    string encoding that is used for authenticated Bazaarvoice submissions.
+The files contained in this project are aimed at assisting in an implementation of Bazaarvoice's Hosted UI solution.
+
+PIEFeed
+-------
+Example post-interaction (or "transaction") feeds in TXT and XML formats.
+
+ProductFeed
+-----------
+An example product feed which includes examples for locale-specific product attributes and information for specifying "product families".
     
 SmartSEO
-    Contains example code for including Ratings & Reviews Smart SEO files on product pages, but may
-    be easily modified for Ask & Answer and Stories. Example code is written in C#, PHP, and JSP.
+--------
+Example code for implementing SmartSEO for Ratings & Reviews (can be easily modified for use with Ask & Answer and/or Stories) in PHP, C#, and Java.  Also includes an example Python script for downloading SmartSEO archives.
+
+UserAuthentication
+------------------
+Contains code in C++, ASP.NET (C#), ASP, and Java that may be used for user authentication string encoding that is used for authenticated Bazaarvoice submissions.
     
 If you have questions and/or find bugs with any of the code contained here, please contact your
-Bazaarvoice implementation or support engineer.
-
+Bazaarvoice Implementation or Support Engineer.
