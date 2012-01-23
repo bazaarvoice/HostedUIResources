@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/PostPurchaseFeed/5.0">
+<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/PostPurchaseFeed/5.1">
     <Interaction>
         <TransactionDate>2011-08-07T13:29:40.894</TransactionDate>
         <EmailAddress>user1@domain.com</EmailAddress>
