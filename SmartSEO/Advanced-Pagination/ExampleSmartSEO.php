@@ -11,7 +11,7 @@
         // Configurable, but must be kept in sync with your Bazaarvoice Implementation Engineer
         "REVIEWS_SMARTSEO_PARAM" => "bvrrp",                    
         
-        // The absolute path that does not contain your display code.  
+        // The absolute filesystem path (not URL path) that does not contain your display code.  
         // WARNING: The Smart SEO files should be the ONLY files within this location.
         // Files that should not be publicly exposed should not be in this directory.
         // Include trailing /.
