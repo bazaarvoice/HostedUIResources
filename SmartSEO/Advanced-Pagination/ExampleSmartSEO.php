@@ -1,3 +1,13 @@
+<!--
+
+Copyright 2013 Bazaarvoice, Inc.
+
+Unless required by applicable law or agreed to in writing, the example code
+below is provided "as is" without warranty of any kind, either express or
+implied, including without limitation any implied warranties of condition,
+uninterrupted use, merchantability, or fitness for a particular purpose.
+
+-->
 <div id="BVRRContainer">
 <?php
     $CONFIG = array(

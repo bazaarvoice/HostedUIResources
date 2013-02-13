@@ -1,5 +1,28 @@
+<!--
+
+    This example shows the XML syntax (using the "PostPurchaseFeed" schema)
+    for providing purchase transaction events to Bazaarvoice.
+
+    The following elements are requried:
+    - EmailAddress
+
+    If products are listed in an interaction, the following elements are
+    required:
+    - ExternalId
+
+    If you omit any optional elements, be sure to exclude the element
+    completely instead of providing an empty element.
+
+    Copyright 2013 Bazaarvoice, Inc.
+
+    Unless required by applicable law or agreed to in writing, the example code
+    below is provided "as is" without warranty of any kind, either express or
+    implied, including without limitation any implied warranties of condition,
+    uninterrupted use, merchantability, or fitness for a particular purpose.
+
+-->
 <?xml version="1.0" encoding="UTF-8"?>
-<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/PostPurchaseFeed/5.1">
+<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/PostPurchaseFeed/5.6">
     <Interaction>
         <TransactionDate>2011-08-07T13:29:40.894</TransactionDate>
         <EmailAddress>user1@domain.com</EmailAddress>

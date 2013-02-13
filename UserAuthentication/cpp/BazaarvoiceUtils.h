@@ -3,7 +3,7 @@
 // Class is used to get a String of hex characters that represents
 // the encoded version of the specified user ID.
 //
-// Copyright 2006 Bazaarvoice, Inc. 
+// Copyright 2013 Bazaarvoice, Inc. 
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License. 

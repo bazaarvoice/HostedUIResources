@@ -12,6 +12,17 @@ import java.io.InputStreamReader;
 import java.net.URLEncoder;
 import java.util.regex.Pattern;
 
+/*
+
+Copyright 2013 Bazaarvoice, Inc.
+
+Unless required by applicable law or agreed to in writing, the example code
+below is provided "as is" without warranty of any kind, either express or
+implied, including without limitation any implied warranties of condition,
+uninterrupted use, merchantability, or fitness for a particular purpose.
+
+*/
+
 public class ExampleSmartSEOServlet extends HttpServlet{
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

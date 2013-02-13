@@ -31,7 +31,7 @@
 
 -->
 <?xml version="1.0" encoding="utf-8"?>
-<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/StandardClientFeed/4.6" name="ExampleClient" extractDate="2012-02-12T05:17:33.945-06:00">
+<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/StandardClientFeed/5.6" name="ExampleClient" extractDate="2012-02-12T05:17:33.945-06:00">
     <Product id="1010">
         <ExternalId>1010</ExternalId>
         <Reviews>
