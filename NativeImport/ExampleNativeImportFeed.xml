@@ -1,0 +1,72 @@
+<!--
+
+    This example shows the XML syntax (using the "StandardClientFeed" schema)
+    for providing native review content to Bazaarvoice.
+
+    Some notes:
+    - extractDate should be expressed in XML dateTime format
+    - The "id" attribute of each Review element should be unique
+
+    Some elements may be optional and are listed below:
+    - ModerationStatus
+    - UserProfileReference
+    - Title
+    - ReviewText
+    - Rating
+    - Recommended
+    - ReviewerLocation
+    - SubmissionTime
+
+    If you omit any of these optional elements be sure to exclude the element
+    completely instead of providing an empty element.  One addendum to the list
+    above is that if UserProfileReference is included, the children elements
+    listed in the example below are required.
+
+    Copyright 2013 Bazaarvoice, Inc.
+
+    Unless required by applicable law or agreed to in writing, the example code
+    below is provided "as is" without warranty of any kind, either express or
+    implied, including without limitation any implied warranties of condition,
+    uninterrupted use, merchantability, or fitness for a particular purpose.
+
+-->
+<?xml version="1.0" encoding="utf-8"?>
+<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/StandardClientFeed/4.6" name="ExampleClient" extractDate="2012-02-12T05:17:33.945-06:00">
+    <Product id="1010">
+        <ExternalId>1010</ExternalId>
+        <Reviews>
+            <Review id="11" removed="false">
+                <ModerationStatus>APPROVED</ModerationStatus>
+                <UserProfileReference id="miketester112">
+                    <ExternalId>miketester112</ExternalId>
+                    <DisplayName>supermike</DisplayName>
+                    <Anonymous>false</Anonymous>
+                    <HyperlinkingEnabled>false</HyperlinkingEnabled>
+                </UserProfileReference>
+                <Title>Best product ever!</Title>
+                <ReviewText>This product truly changed my life; I don't know what I'd do without it.</ReviewText>
+                <Rating>5</Rating>
+                <Recommended>true</Recommended>
+                <ReviewerLocation>Austin, TX</ReviewerLocation>
+                <SubmissionTime>2012-01-23T12:59:25.000-06:00</SubmissionTime>
+                <Featured>false</Featured>
+            </Review>
+            <Review id="12" removed="false">
+                <ModerationStatus>APPROVED</ModerationStatus>
+                <UserProfileReference id="jimbob101">
+                    <ExternalId>jimbob101</ExternalId>
+                    <DisplayName>JimBob</DisplayName>
+                    <Anonymous>false</Anonymous>
+                    <HyperlinkingEnabled>false</HyperlinkingEnabled>
+                </UserProfileReference>
+                <Title>What an amazing product!</Title>
+                <ReviewText>This product is great and I'll definitely recommend it to my friends!</ReviewText>
+                <Rating>4</Rating>
+                <Recommended>true</Recommended>
+                <ReviewerLocation>Austin, TX</ReviewerLocation>
+                <SubmissionTime>2012-01-23T04:26:14.000-06:00</SubmissionTime>
+                <Featured>false</Featured>
+            </Review>
+        </Reviews>
+    </Product>
+</Feed>

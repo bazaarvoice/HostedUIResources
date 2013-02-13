@@ -5,6 +5,10 @@ The files contained in this project are aimed at assisting in an implementation 
 
 If you have questions and/or find bugs with any of the code contained here, please contact your Bazaarvoice Implementation or Support Engineer.
 
+NativeImport
+------------
+Example feed for imports of native content to Bazaarvoice in XML format (uses "StandardClientFeed" schema).
+
 PIEFeed
 -------
 Example post-interaction (or "transaction") feeds in TXT and XML formats.
@@ -20,3 +24,9 @@ Example code for implementing SmartSEO for Ratings & Reviews (can be easily modi
 UserAuthentication
 ------------------
 Contains code in C++, ASP.NET (C#), ASP, and Java that may be used for user authentication string encoding that is used for authenticated Bazaarvoice submissions.
+
+---
+
+_Copyright 2013 Bazaarvoice, Inc._
+
+_Unless required by applicable law or agreed to in writing, the example code in this repository is provided "as is" without warranty of any kind, either express or implied, including without limitation any implied warranties of condition, uninterrupted use, merchantability, or fitness for a particular purpose._
