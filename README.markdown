@@ -5,6 +5,10 @@ The files contained in this project are aimed at assisting in an implementation 
 
 If you have questions and/or find bugs with any of the code contained here, please contact your Bazaarvoice Implementation or Support Engineer.
 
+Cloud SEO SDKs
+------------
+Java, .NET, PHP, and Python Cloud SEO SDKs.  Also includes generic Cloud SEO implementation instructions. 
+
 NativeImport
 ------------
 Example feed for imports of native content to Bazaarvoice in XML format (uses "StandardClientFeed" schema).
