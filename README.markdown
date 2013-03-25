@@ -5,9 +5,9 @@ The files contained in this project are aimed at assisting in an implementation 
 
 If you have questions and/or find bugs with any of the code contained here, please contact your Bazaarvoice Implementation or Support Engineer.
 
-Cloud SEO SDKs
+[Cloud SEO SDKs](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO)
 ------------
-Java, .NET, PHP, and Python Cloud SEO SDKs.  Also includes generic Cloud SEO implementation instructions. 
+[Java](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/java), [.NET](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/dotnet), [PHP](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/php), and [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/python) Cloud SEO SDKs.  Also includes [generic Cloud SEO](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO#generic-cloud-seo) implementation instructions. 
 
 NativeImport
 ------------
