@@ -7,7 +7,7 @@ If you have questions and/or find bugs with any of the code contained here, plea
 
 [Cloud SEO SDKs](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO)
 ------------
-[Java](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/java), [.NET](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/dotnet), [PHP](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/php), and [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/python) Cloud SEO SDKs.  Also includes [generic Cloud SEO](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO#generic-cloud-seo) implementation instructions. 
+[.NET](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/dotnet), [Java](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/java), [PHP](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/php), and [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/python) Cloud SEO SDKs.  Also includes [generic Cloud SEO](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO#generic-cloud-seo) implementation instructions. 
 
 NativeImport
 ------------
