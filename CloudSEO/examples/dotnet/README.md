@@ -28,7 +28,7 @@ To run the sample example:
 - Open DotNetMVCExample.sln in Visual Studio 2010 or later
 - Hit Run icon or F5
 
-Here is a full list of the parameters you can pass into BV class we instantiated in step 2 above
+Here is a full list of the parameters you can pass into BV class we instantiated above
 
 
 Parameter Name | Default value | Example Value(s) | Required | Notes
