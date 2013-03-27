@@ -4,10 +4,10 @@
 >NOTE: This method is currently in Beta and still being piloted.  Please contact Michael DeHaven or Charles Himmer
 >for questions about usage / limitations. 
 
-Product reviews, questions, and answers can provide an immesnse amount of SEO value for product detail pages.  
-The language and keywords users use when writing reviews, quesitons, or answers often match users search keywords
-and can hep increase traffic to your product detail pages.  That and search engines like to see fresh content
-and reviews, quesitons, and answers are a great way of providing a steady stream of fresh content to often stagnant
+Product reviews, questions, and answers can provide an immense amount of SEO value for product detail pages.  
+The language and keywords users use when writing reviews, questions, or answers often match users search keywords
+and can help increase traffic to your product detail pages.  That and search engines like to see fresh content
+and reviews, questions, and answers are a great way of providing a steady stream of fresh content to often stagnant
 product information pages. 
 
 In order for search engines to crawl and index Bazaarvoice captured content, the content needs to be server side
@@ -19,7 +19,7 @@ will notice that JavaScript rendered markup is not present (i.e. look for the BV
 
 ### Cloud SEO
 Bazaarvoice's Cloud SEO allows you to server side include Bazaarvoice captured content so product detail pages 
-get the maximum SEO value possible from user submitted revies, questions or answers. When Cloud SEO is enabled, 
+get the maximum SEO value possible from user submitted reviews, questions or answers. When Cloud SEO is enabled, 
 Bazaarvoice will host URLs that will contain HTML blobs for all your products.  These HTML blobs 
 contain the review, questions, or answers content that user have submitted via Bazaarvoice, wrapped in SEO optimized
 markup (schema.org). 
@@ -39,9 +39,9 @@ are workarounds for this like configuring your CDN to pass through the user agen
 
 ## Generic Cloud SEO
 
-This section explains how to Cloud SEO works in general.  This will be helpful if you need to use Cloud SEO with a language we do not provide SDK for yet or for those who want to know the steps the SDKs take.  Which each language's SDK may differ slighty in the details, in general they all follow this general workflow.
+This section explains how to Cloud SEO works in general.  This will be helpful if you need to use Cloud SEO with a language we do not provide SDK for yet or for those who want to know the steps the SDKs take.  Which each language's SDK may differ slightly in the details, in general they all follow this general workflow.
 
-Here are the necessary to implemount Cloud SEO:
+Here are the necessary to implement Cloud SEO:
 
 1. Determine if the current request is a search engine by checking the user agent string. An example of how to do this would be to do a regular expression against the user agent string like this (take from PHP SDK):
    ```php
@@ -61,3 +61,4 @@ Here are the necessary to implemount Cloud SEO:
 4. Now that we have fetched our SEO content, we need to replace all instances of the string {INSERT\_URI_TOKEN} with the current page's URL.  This is to build in pagination between the pages of content so search engines can crawl all the pages of UGC content. 
 
 5. Now we are ready to render this formatted SEO string onto the page in the correct container.  For reviews this is inside the \<div id="BVRRContainer">\</div>, and for questions this is inside the \<div id="BVQAContainer">\</div>. 
+
