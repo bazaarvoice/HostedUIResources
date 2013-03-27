@@ -7,7 +7,7 @@
 Product reviews, questions, and answers can provide an immesnse amount of SEO value for product detail pages.  
 The language and keywords users use when writing reviews, quesitons, or answers often match users search keywords
 and can hep increase traffic to your product detail pages.  That and search engines like to see fresh content
-and reviews, quesitons, and answers are a great way of providing a steady stream of fresh content to often stagnic
+and reviews, quesitons, and answers are a great way of providing a steady stream of fresh content to often stagnant
 product information pages. 
 
 In order for search engines to crawl and index Bazaarvoice captured content, the content needs to be server side
