@@ -27,10 +27,10 @@ markup (schema.org).
 ### SEO SDKs
 In order to make implementing Cloud SEO easier, Bazaarvoice provides an SDK / library for the following languages:
 
-* [Java](https://github.com/bazaarvoice/HostedUIResources/tree/master/examples/java)
+* [Java](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/java)
 * [.NET](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/dotnet) 
-* [PHP](https://github.com/bazaarvoice/HostedUIResources/tree/master/examples/php)
-* [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/examples/python)
+* [PHP](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/php)
+* [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/python)
 
 If you are using a server side language that is not listed above, you can use still use Cloud SEO by following the generic
 implementation steps listed at the bottom of this page. NOTE: Using Cloud SEO (SDKs included) require that the requester's
