@@ -36,6 +36,7 @@ public class BazaarvoiceDisplayHelper {
      * @param userAgent   the user agent string for the current request.  If this agent is considered a search bot, the SmartSEO content will be included in the page.
      * @param baseURL     the base or canonical URL of the page requesting the SmartSEO content.  This will be inserted into the SmartSEO content where needed (i.e. pagination links).
      *                    This should not include any Bazaarvoice specific parameters
+     * @param queryString The full query string for this request including all URL parameters
      * @param contentType the type of content that should be included (reviews, questions/answers or stories)
      * @param subjectType the type of subject (product or category) that the content was written against
      * @param subjectId   the product/cagegory ID that the content was written against.
@@ -54,7 +55,10 @@ public class BazaarvoiceDisplayHelper {
         }
 
         if (showUserAgentSEOContent(userAgent)) {
+            long startTime = System.currentTimeMillis();
             sb.append(SmartSEOS3Client.getSmartSEOContent(baseURL, subjectType, contentType, BazaarvoiceUtils.getPageNumber(queryString), staging, subjectId));
+            long endTime = System.currentTimeMillis();
+            sb.append("\n<!-- SEO request took " + Long.toString(endTime - startTime) + " ms -->\n");
         }
         return sb.toString();
     }
