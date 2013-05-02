@@ -59,7 +59,7 @@ subjectType | Type of subject (product or category) that the content was written
 subjectId | Product/cagegory ID that the content was written against.  If set, then you should also pass in valid product/category IDs for your staging environment. | `"XXYY"`
 staging | True if the code is currently running in the staging (test) environment | `true`
 
-In addition, there is another method that will appempt to parse out the base URL and queryString if you do not specify these explicitly.
+In addition, there is another method that will attempt to parse out the base URL and queryString if you do not specify these explicitly.
 
 ```java
 BazaarvoiceDisplayHelper.getBVContent(userAgent,
