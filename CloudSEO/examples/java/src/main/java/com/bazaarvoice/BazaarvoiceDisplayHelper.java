@@ -63,6 +63,19 @@ public class BazaarvoiceDisplayHelper {
             sb.append(SmartSEOS3Client.getSmartSEOContent(baseURL, subjectType, contentType, BazaarvoiceUtils.getPageNumber(queryString), staging, subjectId));
             long endTime = System.currentTimeMillis();
             sb.append(getLogComment("timer " + Long.toString(endTime - startTime) + "ms"));
+            if (queryString.contains("bvreveal=debug")) {
+                sb.append(getLogComment(
+                        "\n    userAgent: " + userAgent +
+                        "\n    baseURL: " + baseURL +
+                        "\n    queryString: " + queryString +
+                        "\n    contentType: " + contentType +
+                        "\n    subjectType: " + subjectType +
+                        "\n    subjectId: " + subjectId +
+                        "\n    staging: " + Boolean.toString(staging) +
+                        "\n    pattern: " + Configuration.get("crawlerAgentPattern") +
+                        "\n    detectionEnabled: " + Configuration.get("botDetection") + "\n"
+                ));
+            }
         } else {
             sb.append(getLogComment("JavaScript-only Display"));
         }
