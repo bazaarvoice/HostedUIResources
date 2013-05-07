@@ -39,8 +39,8 @@ bv_product | None | BvProduct.REVIEWS | Yes | Use BvProduct enum that comes with
 seo_key |  None | 2b1d0e3b86ffa60cb2079dea11135c1e | Yes | |
 staging |  TRUE | TRUE or FALSE | No | |
 timeout_ms | 1000 | 500 | No | Integer in ms. Determines how much time the request will be given before timing out. 
-page_url | HttpRequest.Url.OriginalString |  http://www.example.com/pdp/test1 | No | If a current url is not provided the current page URL will be used instead.  You will want to provide the URL if you use query parameters or # in your URLs that you don't want google to index. |
-product_or_category | product | product, category | No | Reviews will always have this value set to product.  This is only used to questions which can be submitted against a category or a product. |
-bot_regex_string | "(msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)" | No | any regex valid expression | this is the regex used to determine if the current request is a bot or not (checking against user agent header) |
-bot_detection | true | No | true, false | this is the flag used to determine if bot detection is required. If set to false, it will always return the SEO content, otherwise it will only return seo contents when a bot is detected in the user agent. Default value is true. |
+page_url | HttpRequest.Url.OriginalString |  http://www.example.com/pdp/test1 | No | If a current URL is not provided the current page URL will be used instead.  You will want to provide the URL if you use query parameters or # in your URLs that you don't want Google to index. |
+product_or_category | product | product, category | No | Reviews will always have this value set to product.  Used only for questions that can be submitted against a category or product. |
+bot_regex_string | "(msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)" | No | any regex valid expression | Regular expression used to determine whether or not the current request is a bot (checking against user agent header) |
+bot_detection | true | No | true, false | Flag used to determine if bot detection is required. If set to false, it will always return the SEO content; otherwise, it will only return SEO contents when a bot is detected in the user agent. Default value is true. |
 
