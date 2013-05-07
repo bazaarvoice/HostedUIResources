@@ -31,6 +31,10 @@ public class BazaarvoiceDisplayHelper {
         return userAgent != null && pattern.matcher(userAgent).matches();
     }
 
+    private static String getLogComment(String message) {
+        return "\n<!-- BVSEO|dz:" + Configuration.get("deploymentZoneId") + "|sdk: v" + Configuration.get("version") + "-j|" + message + " -->\n";
+    }
+
     /**
      *
      * @param userAgent   the user agent string for the current request.  If this agent is considered a search bot, the SmartSEO content will be included in the page.
@@ -54,11 +58,13 @@ public class BazaarvoiceDisplayHelper {
             sb.append(getIntegrationCode(contentType, subjectType, subjectId));
         }
 
-        if (showUserAgentSEOContent(userAgent)) {
+        if (!Configuration.getBoolean("botDetection") || queryString.contains("bvreveal") || showUserAgentSEOContent(userAgent)) {
             long startTime = System.currentTimeMillis();
             sb.append(SmartSEOS3Client.getSmartSEOContent(baseURL, subjectType, contentType, BazaarvoiceUtils.getPageNumber(queryString), staging, subjectId));
             long endTime = System.currentTimeMillis();
-            sb.append("\n<!-- SEO request took " + Long.toString(endTime - startTime) + " ms -->\n");
+            sb.append(getLogComment("timer " + Long.toString(endTime - startTime) + "ms"));
+        } else {
+            sb.append(getLogComment("JavaScript-only Display"));
         }
         return sb.toString();
     }

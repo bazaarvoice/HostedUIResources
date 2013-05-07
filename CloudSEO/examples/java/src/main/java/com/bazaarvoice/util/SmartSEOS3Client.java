@@ -22,7 +22,7 @@ public class SmartSEOS3Client {
             throws URISyntaxException {
 
         final String s3Hostname = staging ? Configuration.get("stagingS3Hostname") : Configuration.get("productionS3Hostname");
-        final String s3Key = staging ? Configuration.get("stagingS3Key") : Configuration.get("productionS3Key");
+        final String s3Key = Configuration.get("cloudKey");
         final String deploymentZoneId = Configuration.get("deploymentZoneId");
 
         String encodedProductID;
