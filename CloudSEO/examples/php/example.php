@@ -22,17 +22,24 @@
     // all the possible parameters in the comments of
     // the bvsdk.php file
     $bv = new BV(array(
-        'display_code' => '12325',
+        'deployment_zone_id' => '12325',
         'product_id' => 'product1',
-        'seo_key' => 'agileville-78B2EF7DE83644CAB5F8C72F2D8C8491',
+        'cloud_key' => 'agileville-78B2EF7DE83644CAB5F8C72F2D8C8491',
         'staging' => TRUE,
     ));
 
+    // if you 
+    // $bv = new BV(array(
+    //     'deployment_zone_id' => '12335',
+    //     'product_id' => 'product1',
+    //     'internal_file_path' => '/path/to/unzipped/folder'
+    // ));
+
     // In order to test the SDK you can either modify your HTTP header
-    // user agent string to match a search engine bot, or add the ?bvfakebot
+    // user agent string to match a search engine bot, or add the ?bvreveal=bot
     // query parameter in URL. For example if the URL to this example page was
-    // http://localhost/example.php this would trigger the SDK to pull SEO content
-    // http://localhost/example.php?bvfakebot=true
+    // http://localhost/example.php, then this would trigger the SDK to pull SEO content
+    // http://localhost/example.php?bvreveal=bot
 ?>
 
 <html>
