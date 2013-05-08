@@ -3,8 +3,8 @@ Python BV SEO SDK using Bottle
 
 BV SEO SDK for Python implemented using the [Bottle](http://bottlepy.org/) web framework, a simple, tiny WSGI-compliant web framework.
 
-How to use:
------------
+Use
+---
 
 There are two ways to run this SDK. One way is to execute seo.py as a standalone web service. This can be done by uncommenting line 142:
 
@@ -14,7 +14,7 @@ Alternatively, you can initialize Bottle as a web server and import the BV SEO S
 
     python -m bottle -b localhost --debug --reload seo
 
-**Note**: *seo* corresponds to the module name, in this case *seo.py*. You must run this command in the same directory as *seo.py* in order for Bottle to pickup the module.
+**Note**: *seo* corresponds to the module name (in this case, *seo.py*). You must run this command in the same directory as *seo.py* for Bottle to pick up the module.
 
 Please note that both of the examples use debugging / auto-reloading and are intended for prototyping, *not* production.
 
