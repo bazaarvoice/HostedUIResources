@@ -24,6 +24,7 @@ namespace BvSeoSdk
         private bool _includeDisplayIntegrationCode;
         private int _timeoutMs;
         private string _botRegexString;
+        private string _internalFilePath;
         private string _productOrCategory;
         private string _commentStub = "<!--BVSEO|dz:{0}|sdk:v1.0-n|msg:{1} -->";
 
@@ -37,6 +38,7 @@ namespace BvSeoSdk
             String bot_regex_string= "(msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)",
             bool bot_detection = true,
             bool includeDisplayIntegrationCode=true,
+            String internalFilePath="",
             String user_agent = "",
             String page_url = "",
             String product_or_category="product"
@@ -56,6 +58,7 @@ namespace BvSeoSdk
             _botRegexString = bot_regex_string;
             _botDetection = bot_detection;
             _includeDisplayIntegrationCode = includeDisplayIntegrationCode;
+            _internalFilePath = internalFilePath;
         }
 
         private String getBvComment(String message)
@@ -97,9 +100,15 @@ namespace BvSeoSdk
             String response = "";
             try
             {
-                response = httpGet(String.Format("http://{0}/{1}/{2}/{3}/{4}/{5}/{6}.htm",
-                                                        endpoint, _seoKey, _deploymentZoneId, _bvProduct,
-                                                        _productOrCategory, bvpage, _productId));
+                if (!String.IsNullOrEmpty(_internalFilePath))
+                    response = getFile(Path.Combine(_internalFilePath, String.Format("{0}\\{1}\\{2}\\{3}\\{4}.htm",
+                                                                                     _deploymentZoneId, _bvProduct,
+                                                                                     _productOrCategory, bvpage,
+                                                                                     _productId)));
+                else
+                    response = httpGet(String.Format("http://{0}/{1}/{2}/{3}/{4}/{5}/{6}.htm",
+                                                     endpoint, _seoKey, _deploymentZoneId, _bvProduct,
+                                                     _productOrCategory, bvpage, _productId));
                 timeTakenInMs = (DateTime.Now - startTime).Milliseconds;
             }
             catch(Exception ex)
@@ -138,6 +147,11 @@ namespace BvSeoSdk
             
             return response;
 
+        }
+
+        private string getFile(string fileName)
+        {
+           return File.ReadAllText(fileName);
         }
 
         private bool isBot(HttpRequest request)
