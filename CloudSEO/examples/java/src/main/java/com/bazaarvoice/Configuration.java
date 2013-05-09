@@ -26,9 +26,9 @@ public class Configuration {
 
         Properties clientProperties = new Properties();
         try {
-            clientProperties.load(new FileInputStream("client.properties"));
+            clientProperties.load(new FileInputStream("bvclient.properties"));
         } catch (IOException ex) {
-            _log.error("Unable to find client.properties file in path.  Some required properties are not defined.");
+            _log.error("Unable to find bvclient.properties file in path.  Some required properties are not defined.");
             throw new RuntimeException(ex);
         }
         _properties = new Properties();
