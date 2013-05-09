@@ -18,8 +18,7 @@ public class ConfigurationTest
     @Test
     public void testRequiredUserProperties() {
         testStringProperty("deploymentZoneId");
-        testStringProperty("stagingS3Key");
-        testStringProperty("productionS3Key");
+        testStringProperty("cloudKey");
         testIntProperty("connectTimeout");
         testIntProperty("socketTimeout");
         testBooleanProperty("includeDisplayIntegrationCode");

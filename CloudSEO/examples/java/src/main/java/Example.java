@@ -3,26 +3,9 @@ import com.bazaarvoice.model.ContentType;
 import com.bazaarvoice.model.SubjectType;
 import com.bazaarvoice.util.BazaarvoiceUtils;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
 
 public class Example {
-
-    private static String readFile(String path) throws IOException {
-        FileInputStream stream = new FileInputStream(new File(path));
-        try {
-            FileChannel fc = stream.getChannel();
-            MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
-            return Charset.forName("UTF-8").decode(bb).toString();
-        }
-        finally {
-            stream.close();
-        }
-    }
 
     public static void main(String [] args) {
         // Request based parameters
@@ -40,7 +23,7 @@ public class Example {
 
         String htmlContent="%s";
         try {
-            htmlContent = readFile("index.html");
+            htmlContent = BazaarvoiceUtils.readFile("index.html");
         } catch (IOException ex) {
             System.err.println("Unable to load HTML file");
             System.exit(-1);
