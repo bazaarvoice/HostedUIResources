@@ -5,8 +5,13 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -101,5 +106,15 @@ public class BazaarvoiceUtils {
         }
     }
 
-
+    public static String readFile(String path) throws IOException {
+        FileInputStream stream = new FileInputStream(new File(path));
+        try {
+            FileChannel fc = stream.getChannel();
+            MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
+            return Charset.forName("UTF-8").decode(bb).toString();
+        }
+        finally {
+            stream.close();
+        }
+    }
 }
