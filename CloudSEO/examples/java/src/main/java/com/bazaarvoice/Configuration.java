@@ -18,17 +18,17 @@ public class Configuration {
     static {
         Properties classProperties = new Properties();
         try {
-            classProperties.load(BazaarvoiceDisplayHelper.class.getClassLoader().getResourceAsStream("config.properties"));
+            classProperties.load(BazaarvoiceDisplayHelper.class.getClassLoader().getResourceAsStream("bvconfig.properties"));
         } catch (IOException ex) {
-            _log.error("Unable to find config.properties file in path.  Some required properties are not defined.");
+            _log.error("Unable to find bvconfig.properties file in path.  Some required properties are not defined.");
             throw new RuntimeException(ex);
         }
 
         Properties clientProperties = new Properties();
         try {
-            clientProperties.load(new FileInputStream("client.properties"));
+            clientProperties.load(new FileInputStream("bvclient.properties"));
         } catch (IOException ex) {
-            _log.error("Unable to find client.properties file in path.  Some required properties are not defined.");
+            _log.error("Unable to find bvclient.properties file in path.  Some required properties are not defined.");
             throw new RuntimeException(ex);
         }
         _properties = new Properties();
