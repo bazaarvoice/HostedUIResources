@@ -1,16 +1,12 @@
 package com.bazaarvoice;
 
+import com.bazaarvoice.model.BVSEOException;
 import com.bazaarvoice.model.ContentType;
 import com.bazaarvoice.model.SubjectType;
 import com.bazaarvoice.util.BazaarvoiceUtils;
 import com.bazaarvoice.util.SmartSEOS3Client;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
 
-import java.nio.charset.Charset;
 import java.text.MessageFormat;
-import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BazaarvoiceDisplayHelper {
@@ -54,30 +50,35 @@ public class BazaarvoiceDisplayHelper {
         }
 
         StringBuilder sb = new StringBuilder();
-        if (Configuration.getBoolean("includeDisplayIntegrationCode")) {
-            sb.append(getIntegrationCode(contentType, subjectType, subjectId));
-        }
 
-        if (!Configuration.getBoolean("botDetection") || queryString.contains("bvreveal") || showUserAgentSEOContent(userAgent)) {
-            long startTime = System.currentTimeMillis();
-            sb.append(SmartSEOS3Client.getSmartSEOContent(baseURL, subjectType, contentType, BazaarvoiceUtils.getPageNumber(queryString), staging, subjectId));
-            long endTime = System.currentTimeMillis();
-            sb.append(getLogComment("timer " + Long.toString(endTime - startTime) + "ms"));
-            if (queryString.contains("bvreveal=debug")) {
-                sb.append(getLogComment(
-                        "\n    userAgent: " + userAgent +
-                        "\n    baseURL: " + baseURL +
-                        "\n    queryString: " + queryString +
-                        "\n    contentType: " + contentType +
-                        "\n    subjectType: " + subjectType +
-                        "\n    subjectId: " + subjectId +
-                        "\n    staging: " + Boolean.toString(staging) +
-                        "\n    pattern: " + Configuration.get("crawlerAgentPattern") +
-                        "\n    detectionEnabled: " + Configuration.get("botDetection") + "\n"
-                ));
+        try {
+            if (Configuration.getBoolean("includeDisplayIntegrationCode")) {
+                sb.append(getIntegrationCode(contentType, subjectType, subjectId));
             }
-        } else {
-            sb.append(getLogComment("JavaScript-only Display"));
+
+            if (!Configuration.getBoolean("botDetection") || queryString.contains("bvreveal") || showUserAgentSEOContent(userAgent)) {
+                long startTime = System.currentTimeMillis();
+                sb.append(SmartSEOS3Client.getSmartSEOContent(baseURL, subjectType, contentType, BazaarvoiceUtils.getPageNumber(queryString), staging, subjectId));
+                long endTime = System.currentTimeMillis();
+                sb.append(getLogComment("timer " + Long.toString(endTime - startTime) + "ms"));
+                if (queryString.contains("bvreveal=debug")) {
+                    sb.append(getLogComment(
+                            "\n    userAgent: " + userAgent +
+                                    "\n    baseURL: " + baseURL +
+                                    "\n    queryString: " + queryString +
+                                    "\n    contentType: " + contentType +
+                                    "\n    subjectType: " + subjectType +
+                                    "\n    subjectId: " + subjectId +
+                                    "\n    staging: " + Boolean.toString(staging) +
+                                    "\n    pattern: " + Configuration.get("crawlerAgentPattern") +
+                                    "\n    detectionEnabled: " + Configuration.get("botDetection") + "\n"
+                    ));
+                }
+            } else {
+                sb.append(getLogComment("JavaScript-only Display"));
+            }
+        } catch (BVSEOException e) {
+            return getLogComment("Error: " + e.getMessage());
         }
         return sb.toString();
     }

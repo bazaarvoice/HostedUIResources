@@ -1,6 +1,7 @@
 package com.bazaarvoice.util;
 
 import com.bazaarvoice.Configuration;
+import com.bazaarvoice.model.BVSEOException;
 import com.bazaarvoice.model.ContentType;
 import com.bazaarvoice.model.SubjectType;
 import org.apache.commons.logging.Log;
@@ -9,6 +10,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.utils.URIBuilder;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
@@ -38,7 +40,7 @@ public class SmartSEOS3Client {
         return builder.build();
     }
 
-    public static String getSmartSEOContent(String pageURL, SubjectType subjectType, ContentType contentType, int page, boolean staging, String productID) {
+    private static String getSmartSEOContentHTTP(SubjectType subjectType, ContentType contentType, int page, boolean staging, String productID) {
         String smartSEOPayload;
 
         try {
@@ -48,24 +50,59 @@ public class SmartSEOS3Client {
             int connectionTimeout = Integer.parseInt(Configuration.get("connectTimeout"));
             int socketTimeout = Integer.parseInt(Configuration.get("socketTimeout"));
             smartSEOPayload = Request.Get(targetUrl).connectTimeout(connectionTimeout).socketTimeout(socketTimeout).execute().returnContent().asString();
-            if (smartSEOPayload.contains("{INSERT_PAGE_URI}")) {
-                if(!BazaarvoiceUtils.validateURI(pageURL)) {
-                    throw new IllegalArgumentException("The current page URL is required and invalid");
-                }
-                smartSEOPayload = smartSEOPayload.replace("{INSERT_PAGE_URI}", pageURL + (pageURL.contains("?") ? "&" : "?"));
-            }
         } catch (ClientProtocolException e) {
-            _log.error("Unable to download SmartSEO content from S3.", e);
-            return "";
+            _log.error("Unable to download SmartSEO content via HTTP.", e);
+            throw new BVSEOException("Unable to download SmartSEO content from S3.");
         } catch (IOException e) {
-            _log.error("Unable to download SmartSEO content from S3.", e);
-            return "";
+            _log.error("Unable to download SmartSEO content via HTTP.", e);
+            throw new BVSEOException("Unable to download SmartSEO content from S3.");
         } catch (URISyntaxException e) {
-            _log.error("Unable to download SmartSEO content from S3.  Invalid URL.", e);
-            return "";
+            _log.error("Unable to download SmartSEO content via HTTP.  Invalid URL.", e);
+            throw new BVSEOException("Unable to download SmartSEO content via HTTP.  Invalid URL.");
         }
 
         return smartSEOPayload;
     }
 
+    private static String getSmartSEOContentFilesystem(SubjectType subjectType, ContentType contentType, int page, String productID) {
+        if (Configuration.get("localSEOFileRoot").isEmpty()) {
+            throw new BVSEOException("Unable to read SEO file.  Please set correct root directory.");
+        }
+
+        final String deploymentZoneId = Configuration.get("deploymentZoneId");
+        String encodedProductID;
+        try {
+            encodedProductID = URLEncoder.encode(productID, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            encodedProductID = URLEncoder.encode(productID);
+        }
+
+        String path = Configuration.get("localSEOFileRoot") + File.separator + deploymentZoneId + File.separator + contentType.uriValue() + File.separator + subjectType.uriValue() + File.separator + page + File.separator + encodedProductID + ".htm";
+
+        _log.debug("SEO file path = " + path);
+
+        try {
+            return BazaarvoiceUtils.readFile(path);
+        } catch (IOException ex) {
+            throw new BVSEOException("Unable to read SEO file.");
+        }
+    }
+
+    public static String getSmartSEOContent(String pageURL, SubjectType subjectType, ContentType contentType, int page, boolean staging, String productID) {
+        String smartSEOPayload;
+
+        if (Configuration.getBoolean("loadSEOFilesLocally")) {
+            smartSEOPayload = getSmartSEOContentFilesystem(subjectType, contentType, page, productID);
+        } else {
+            smartSEOPayload = getSmartSEOContentHTTP(subjectType, contentType, page, staging, productID);
+        }
+
+        if (smartSEOPayload.contains("{INSERT_PAGE_URI}")) {
+            if(!BazaarvoiceUtils.validateURI(pageURL)) {
+                throw new BVSEOException("The current page URL is required and invalid");
+            }
+            smartSEOPayload = smartSEOPayload.replace("{INSERT_PAGE_URI}", pageURL + (pageURL.contains("?") ? "&" : "?"));
+        }
+        return smartSEOPayload;
+    }
 }
