@@ -243,6 +243,9 @@ namespace BvSeoSdk
 
         private String injectJs()
         {
+            if (_bvProduct == BvProduct.QUESTIONS)
+                return
+                string.Format(@"<script type=""text/javascript"">$BV.ui(""qa"",""show_questions"", {{productId: ""{0}""}});</script>", _productId); 
             return
                 string.Format(@"<script type=""text/javascript"">$BV.ui(""rr"",""show_reviews"", {{productId: ""{0}""}});</script>", _productId); 
         } 
