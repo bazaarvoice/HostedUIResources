@@ -35,7 +35,7 @@ Follow these steps to use the PHP SDK:
 
 Parameter Name | Default value | Example Value(s) | Required | Notes
 ------------ | ------------- | ------------ | ------------ | ------------
-display_code |  None | 1234-en_us | Yes | |
+deployment_zone_id |  None | 1234-en_us | Yes | |
 product_id |  None | test1 | Yes | |
 seo_key |  None | 2b1d0e3b86ffa60cb2079dea11135c1e | Yes | |
 staging |  TRUE | TRUE or FALSE | No | |
