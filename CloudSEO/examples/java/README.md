@@ -9,6 +9,11 @@ Dependencies:
 
 * Apache's fluent HTTP client ( http://hc.apache.org/httpcomponents-client-ga/fluent-hc/ )
 
+Binaries:
+------------
+
+* The JAR files for the Java SDK can be downloaded from the following URL: http://bazaarvoice.github.io/HostedUIResources/
+
 Running the example:
 -------------------
 
