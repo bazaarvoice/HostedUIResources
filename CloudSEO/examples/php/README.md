@@ -28,7 +28,7 @@ Follow these steps to use the PHP SDK:
         <?php echo $bv->reviews->renderSeo();?>
     </div>
     ```
-4. To test this you will need to modify your HTTP user agent string to match that of a search engine. Or for testing convenience, you can add the query parameter ?bvfakebot=true to trigger the SDK to return SEO content.
+4. To test this you will need to modify your HTTP user agent string to match that of a search engine. Or for testing convenience, you can add the query parameter ?bvreveal=bot to trigger the SDK to return SEO content.
 
     Here is a full list of the parameters you can pass into BV class we instantiated in step 2 above
 
