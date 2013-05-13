@@ -37,8 +37,8 @@ Parameter Name | Default value | Example Value(s) | Required | Notes
 ------------ | ------------- | ------------ | ------------ | ------------
 deployment_zone_id |  None | 1234-en_us | Yes | Sometimes this is also referred to as your display code. |
 product_id |  None | test1 | Yes | The product ID needs to match the product ID you reference in your product data feed and use to power your display of UGC.|
-cloud_key |  None | 2b1d0e3b86ffa60cb2079dea11135c1e | Yes | |
-staging |  TRUE | TRUE or FALSE | No | |
+cloud_key |  None | 2b1d0e3b86ffa60cb2079dea11135c1e | Yes | Will be provided by your Bazaarvoice team.  |
+staging |  TRUE | TRUE or FALSE | No | Toggle if the SDK should pull SEO content from staging or production. |
 latency_timeout | 1000 | 500 | No | Integer in ms. Determines how much time the request will be given before timing out. 
 current_page_url | Current page using $_SERVER |  http://www.example.com/pdp/test1 | No | If a current URL is not provided, the current page URL will be used instead.  You will want to provide the URL if you use query parameters or # in your URLs that you don't want Google to index. |
 subject_type | product | product, category | No | Reviews will always have this value set to product.  This is used only for questions that can be submitted against a category or a product. |
