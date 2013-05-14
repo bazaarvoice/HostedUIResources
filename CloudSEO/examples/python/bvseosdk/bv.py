@@ -7,15 +7,15 @@ class BV:
     def __init__(
             self,
             product_id,
-            display_code,
+            deployment_zone_id,
             bv_product,
             page_url,
-            seo_key,
+            cloud_key,
             user_agent,
             current_request_query_string = {},
             product_or_category = 'product',
             staging = True,
-            hosted_display = False,
+            include_display_integration_code = False,
             timeout_ms = 1000,
             internal_file_path = None,
             bot_regex_string = '(msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)',
@@ -24,13 +24,12 @@ class BV:
         ):
 
         self.PRODUCT_ID             = product_id
-        self.DISPLAY_CODE           = display_code
+        self.DEPLOYMENT_ZONE_ID     = deployment_zone_id
         self.BV_PRODUCT             = bv_product
         self.PAGE_URL               = page_url
         self.PRODUCT_OR_CATEGORY    = product_or_category
-        self.SEO_KEY                = seo_key
+        self.CLOUD_KEY              = cloud_key
         self.STAGING                = staging
-        self.HOSTED_DISPLAY         = hosted_display
         self.TIMEOUT_MS             = timeout_ms
         self.USER_AGENT             = user_agent
         self.INTERNAL_FILE_PATH     = internal_file_path
@@ -39,10 +38,11 @@ class BV:
         self.QUERY_STRING           = current_request_query_string
         self.seo_contents           = self.seo(cache_enabled=cache_enabled)
         self.SDK_VERSION            = '1.0'
+        self.INCLUDE_DISPLAY_INTEGRATION_CODE = include_display_integration_code
 
     # define getter method
     def getSeo(self, cache_enabled=True, withDisplay=True):
-        if withDisplay:
+        if withDisplay or self.INCLUDE_DISPLAY_INTEGRATION_CODE:
             return '%s%s%s' % (self.seo(cache_enabled=cache_enabled), self.inject_js())
         return self.seo(cache_enabled=cache_enabled)
 
@@ -87,7 +87,7 @@ class BV:
 
         # If debugging is enabled, output all the input values, except for the cloud key
         if bv_reveal == 'debug':
-            input_parameters = ', '.join('%s: %s' % item for item in vars(BV()).items()).replace(self.SEO_KEY, '')
+            input_parameters = ', '.join('%s: %s' % item for item in vars(BV()).items()).replace(self.CLOUD_KEY, '')
             self.msg_output(input_parameters)
 
         # Bot or not: only return non-empty string for bots, unless bvfakebot is set or bot detection is disabled
@@ -114,8 +114,8 @@ class BV:
             # prepare request URL
             request_url = 'http://%s/%s/%s/%s/%s/%s/%s.htm' % (
                 endpoint_domain,
-                self.SEO_KEY,
-                self.DISPLAY_CODE,
+                self.CLOUD_KEY,
+                self.DEPLOYMENT_ZONE_ID,
                 self.BV_PRODUCT,
                 self.PRODUCT_OR_CATEGORY,
                 page_number,
@@ -180,7 +180,7 @@ class BV:
 
     # Formatted messaging output
     def msg_output(self, message):
-        return '<!--BVSEO:dz: {0}|sdk:{1}-y|msg: {2}-->'.format(self.DISPLAY_CODE, self.SDK_VERSION, message)
+        return '<!--BVSEO:dz: {0}|sdk:{1}-y|msg: {2}-->'.format(self.DEPLOYMENT_ZONE_ID, self.SDK_VERSION, message)
 
     # method for JavaScript display
     def inject_js(self):
