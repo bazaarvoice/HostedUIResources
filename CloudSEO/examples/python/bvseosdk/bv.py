@@ -2,7 +2,9 @@ import os, re, datetime, urllib2
 
 class BV:
 
-    seo_contents = ''
+    seo_contents    = ''
+    SDK_VERSION     = '1.0'
+    message_buffer  = ''
 
     def __init__(
             self,
@@ -37,13 +39,12 @@ class BV:
         self.BOT_DETECT             = bot_detection
         self.QUERY_STRING           = current_request_query_string
         self.seo_contents           = self.seo(cache_enabled=cache_enabled)
-        self.SDK_VERSION            = '1.0'
         self.INCLUDE_DISPLAY_INTEGRATION_CODE = include_display_integration_code
 
     # define getter method
     def getSeo(self, cache_enabled=True, withDisplay=True):
         if withDisplay or self.INCLUDE_DISPLAY_INTEGRATION_CODE:
-            return '%s%s%s' % (self.seo(cache_enabled=cache_enabled), self.inject_js())
+            return '%s%s' % (self.seo(cache_enabled=cache_enabled), self.inject_js())
         return self.seo(cache_enabled=cache_enabled)
 
     # convenience function
@@ -54,21 +55,28 @@ class BV:
     def getPageNumber(self, query):
 
         page_number = query.get('bvpage', None) or query.get('bvrrp', None) or query.get('bvqap', None) or query.get('bvsyp', None)
-        
+
         # some frameworks provide a list of values for the same key
         if isinstance(page_number, list):
             page_number = page_number[0]
+        elif isinstance(page_number, str):
+            page_number_search = re.search(r'\/(\d+?)\/[^\/]+$', page_number)
 
-        page_number_search = re.search(r'\/(\d+?)\/[^\/]+$', page_number)
-
-        if page_number_search is not None:
-            page_number = page_number_search.group(1)
+            if page_number_search is not None:
+                page_number = page_number_search.group(1)
 
         # default to page 1, if we didn't find a number
         if not isinstance(page_number, int):
             page_number = 1
 
         return page_number
+
+    def msgBuffer(self, message):
+        if message:
+            self.message_buffer += message
+
+    def getMessagesFromBuffer(self):
+        return self.message_buffer
 
     # where the real work gets done
     def seo(self, cache_enabled=True):
@@ -83,15 +91,15 @@ class BV:
             raise ValueError, "Query string data must be passed as a dictionary object."
 
         page_number = self.getPageNumber(query)
-        bv_reveal = self.QUERY_STRING.get('bvreveal', None)
+        bv_reveal   = query.get('bvreveal', None)
 
         # If debugging is enabled, output all the input values, except for the cloud key
         if bv_reveal == 'debug':
-            input_parameters = ', '.join('%s: %s' % item for item in vars(BV()).items()).replace(self.CLOUD_KEY, '')
-            self.msg_output(input_parameters)
+            input_parameters = ', '.join('%s: %s' % item for item in vars(self).items()).replace(self.CLOUD_KEY, '')
+            self.msgBuffer(self.msg_output(input_parameters))
 
-        # Bot or not: only return non-empty string for bots, unless bvfakebot is set or bot detection is disabled
-        if (self.BOT_REGEX_STRING.search(self.USER_AGENT) or bv_reveal == 'bot') and (self.BOT_DETECT is True):
+        # Bot or not: only return non-empty string for bots, unless bvreveal is set or bot detection is disabled
+        if (self.BOT_DETECT is False) or (self.BOT_REGEX_STRING.search(self.USER_AGENT)) or (bv_reveal in ('bot', 'debug')):
 
             # If internal file path is specified, open and output the contents of the file. Then exit.
             if self.INTERNAL_FILE_PATH is not None:
@@ -99,9 +107,11 @@ class BV:
                     # Assumes file will never be greater than available memory to Python process
                     # @TODO: make this safer
                     f = file(self.INTERNAL_FILE_PATH, 'r')
-                    return f.read()
+                    self.msgBuffer(self.msg_output('Internal data read'))
+                    self.msgBuffer(f.read())
+                    return self.getMessagesFromBuffer()
                 except:
-                    self.msg_output('Unable to access specified internal file path.')
+                    self.msgBuffer(self.msg_output('Unable to access specified internal file path.'))
 
             # determine request endpoint (staging or production)
             if self.STAGING:
@@ -139,7 +149,8 @@ class BV:
 
                 # if response data was empty, return error
                 if not seo_contents:
-                    return self.msg_output('no SEO file')
+                    self.msgBuffer(self.msg_output('no SEO file'))
+                    return self.getMessagesFromBuffer()
 
                 # decide whether we should append a ? or & to add a parameter to the URL
                 # if there is a query string
@@ -153,30 +164,38 @@ class BV:
                 # replace token in response with correct endpoint
                 seo_contents = seo_contents.replace('{INSERT_PAGE_URI}', self.PAGE_URL + page_url_query_prefix)
                 # add bvtimer code
-                seo_contents = seo_contents + self.msg_output('timer {0}'.format(request_time))
+                self.msgBuffer(self.msg_output('timer {0}'.format(request_time)))
 
             # catch HTTP exceptions, such as 403's, 500's, etc.
             except urllib2.HTTPError, e:
                 # update output variable
-                return self.msg_output('no SEO file; server returned {0}'.format(str(e)))
+                self.msgBuffer(self.msg_output('no SEO file; server returned {0}'.format(str(e))))
+                return self.getMessagesFromBuffer()
             except urllib2.URLError, e:
                 # did we not get a response within the time window?
                 if '[errno 36]' in str(e.reason).lower():
-                    return self.msg_output('no SEO file; request timeout')
+                    self.msgBuffer(self.msg_output('no SEO file; request timeout'))
+                    return self.getMessagesFromBuffer()
                 # did we establish a connection within the time window?
                 elif 'timed out' in str(e.reason).lower():
-                    return self.msg_output('no SEO file; connection timeout')
+                    self.msgBuffer(self.msg_output('no SEO file; connection timeout'))
+                    return self.getMessagesFromBuffer()
                 else:
                     # go to next Exception block
                     raise
             except Exception, e:
                 # return canned response for errors
-                return self.msg_output('no SEO file')
+                self.msgBuffer(self.msg_output('no SEO file'))
+                return self.getMessagesFromBuffer()
 
         else:
-            return self.msg_output('JavaScript-only display')
+            self.msgBuffer(self.msg_output('JavaScript-only display'))
+            return self.getMessagesFromBuffer()
 
-        return seo_contents
+        if seo_contents:
+            self.msgBuffer(seo_contents)
+
+        return self.getMessagesFromBuffer()
 
     # Formatted messaging output
     def msg_output(self, message):
