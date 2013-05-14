@@ -30,7 +30,7 @@ To make implementing Cloud SEO easier, Bazaarvoice provides an SDK / library for
 * [Java](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/java)
 * [.NET](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/dotnet) 
 * [PHP](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/php)
-* [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/python)
+* [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/python_(in_development))
 
 If you are using a server-side language that is not listed above, you still can use Cloud SEO by following the generic
 implementation steps listed at the bottom of this page. 
