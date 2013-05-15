@@ -42,6 +42,7 @@ timeout_ms | 1000 | 500 | No | Integer in ms. Determines how much time the reque
 page_url | HttpRequest.Url.OriginalString |  http://www.example.com/pdp/test1 | No | If a current URL is not provided the current page URL will be used instead.  You will want to provide the URL if you use query parameters or # in your URLs that you don't want Google to index. |
 product_or_category | product | product, category | No | Reviews will always have this value set to product.  Used only for questions that can be submitted against a category or product. |
 bot_regex_string | "(msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)" | No | any regex valid expression | Regular expression used to determine whether or not the current request is a bot (checking against user agent header) |
-bot_detection | true | No | true, false | Flag used to determine if bot detection is required. If set to false, it will always return the SEO content; otherwise, it will only return SEO contents when a bot is detected in the user agent. Default value is true. |
-internalFilePath | None | C:\bv_seotools | No | This is the base folder of the downloaded zip file, if you do not wish to use the cloud content.
+bot_detection | true | true, false | No | Flag used to determine if bot detection is required. If set to false, it will always return the SEO content; otherwise, it will only return SEO contents when a bot is detected in the user agent. Default value is true. |
+internalFilePath | None | C:\bv_seotools | No | This is the base folder of the downloaded zip file, if you do not wish to use the cloud content. |
+includeDisplayIntegrationCode | true | true, false | No | Setting this to false will not include BV.ui js call in the response.
 
