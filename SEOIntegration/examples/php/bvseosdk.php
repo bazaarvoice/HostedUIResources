@@ -82,7 +82,7 @@ class BV {
             'current_page_url' => $this->_getCurrentUrl(),
             'bot_detection' => TRUE,  // for some clients who are behind a CDN or something they may want to include SEO content with every request
             'include_display_integration_code' => FALSE,  
-            'client_name' => $this->config['deployment_zone_id'],
+            'client_name' => $params['deployment_zone_id'],
             'internal_file_path' => FALSE,
             'bot_list' => 'msnbot|googlebot|teoma|bingbot|yandexbot|yahoo', // used in regex to determine if request is a bot or not
         );
