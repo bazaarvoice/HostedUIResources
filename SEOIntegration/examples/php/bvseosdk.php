@@ -176,11 +176,14 @@ class Base{
             $seo_content = $this->_replaceTokens($seo_content);
 
             // if debug mode is on we want to include more debug data
-            if($_GET['bvreveal'] == 'debug')
+            if (isset($_GET['bvreveal']))
             {
-                $printable_config = $this->config;
-                unset($printable_config['cloud_key']);
-                $seo_content .= $this->_buildComment('Config options: '.print_r($printable_config, TRUE));
+                if($_GET['bvreveal'] == 'debug')
+                {
+                    $printable_config = $this->config;
+                    unset($printable_config['cloud_key']);
+                    $seo_content .= $this->_buildComment('Config options: '.print_r($printable_config, TRUE));
+                }
             }
 
             $pay_load = $seo_content;
