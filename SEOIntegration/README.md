@@ -1,9 +1,6 @@
 #Bazaarvoice Cloud SEO SDK
 
 
->NOTE: This method is currently in Beta and still being piloted.  Please contact Michael DeHaven or Charles Himmer
->for questions about usage / limitations. 
-
 Product reviews, questions, and answers can provide an immense amount of SEO value for product detail pages.  
 The language and keywords users use when writing reviews, questions, or answers often match other users' search keywords,
 and can help increase traffic to your product detail pages.  In addition, search engines like to see fresh content,
