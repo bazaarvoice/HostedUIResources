@@ -37,7 +37,7 @@ namespace BvSeoSdk
             int timeout_ms = 1000,
             String bot_regex_string= "(msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)",
             bool bot_detection = true,
-            bool includeDisplayIntegrationCode=true,
+            bool includeDisplayIntegrationCode=false,
             String internalFilePath="",
             String user_agent = "",
             String page_url = "",
@@ -123,13 +123,19 @@ namespace BvSeoSdk
             if (String.IsNullOrEmpty(basePage))
             {
                 //use the current url as the base url
-                //Clear bvrrp query parameter from basepage if it already exists
+                //Clear bvrrp,bvqap, or bvsyp query parameter from basepage if it already exists
                 String bvrrpQuery = request.Url.Query.TrimStart('?').Split('&').FirstOrDefault(x => x.StartsWith("bvrrp"));
+                String bvqapQuery = request.Url.Query.TrimStart('?').Split('&').FirstOrDefault(x => x.StartsWith("bvqap"));
+                String bvsypQuery = request.Url.Query.TrimStart('?').Split('&').FirstOrDefault(x => x.StartsWith("bvsyp"));
                 basePage = request.Url.OriginalString;
                 if (!String.IsNullOrEmpty(bvrrpQuery))
                 {
                     basePage = basePage.Replace("?" + bvrrpQuery, "");
                     basePage = basePage.Replace("&" + bvrrpQuery, "");
+                    basePage = basePage.Replace("?" + bvqapQuery, "");
+                    basePage = basePage.Replace("&" + bvqapQuery, "");
+                    basePage = basePage.Replace("?" + bvsypQuery, "");
+                    basePage = basePage.Replace("&" + bvsypQuery, "");
                 }
             }
 
@@ -195,13 +201,9 @@ namespace BvSeoSdk
             {
                 if (!String.IsNullOrEmpty(request.QueryString["bvpage"]))
                     bvpage = Int32.Parse(request.QueryString["bvpage"]);
-                else if (!String.IsNullOrEmpty(request.QueryString["bvrrp"]))
-                    bvpage = Int32.Parse(request.QueryString["bvrrp"]);
-                else if (!String.IsNullOrEmpty(request.QueryString["bvqap"]))
-                    bvpage = Int32.Parse(request.QueryString["bvqap"]);
-                else if (!String.IsNullOrEmpty(request.QueryString["bvsyp"]))
-                    bvpage = Int32.Parse(request.QueryString["bvsyp"]);
-                else
+                else if (!String.IsNullOrEmpty(request.QueryString["bvrrp"]) ||
+                        !String.IsNullOrEmpty(request.QueryString["bvqap"]) ||
+                        !String.IsNullOrEmpty(request.QueryString["bvsyp"]))
                 {
                     //search the querystring for a number
                     Match m = new Regex(@"\/(\d+?)\/[^\/]+$", RegexOptions.IgnoreCase).Match(request.Url.Query);
