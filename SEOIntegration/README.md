@@ -61,5 +61,5 @@ Here are the steps you must follow to implement Cloud SEO:
 
 4. Now that we have fetched our SEO content, we need to replace all instances of the string {INSERT\_URI_TOKEN} with the current page's URL.  This is to build in pagination between the pages of content so search engines can crawl all the pages of UGC content. 
 
-5. Now we are ready to render this formatted SEO string onto the page in the correct container.  For reviews this is inside the \<div id="BVRRContainer">\</div>, and for questions this is inside the \<div id="BVQAContainer">\</div>. 
+5. Now we are ready to render this formatted SEO string onto the page in the correct container.  For reviews this is inside the \<div id="BVRRContainer">\</div>, and for questions this is inside the \<div id="BVQAContainer">\</div>. To test if your SEO integration is working, click view source on your page and verify you are seeing the SEO content inside the BVRRContainer div.
 
