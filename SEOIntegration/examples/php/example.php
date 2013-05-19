@@ -28,9 +28,9 @@
         'staging' => TRUE,
     ));
 
-    // if you are wanting to load the SEO content from disk you can do something 
+    // if you are wanting to load the SEO content from disk you can do something like 
     // this. NOTE this requires you to handle connecting to our FTP server, downloading
-    // the zip file, and unzipped it daily. 
+    // the zip file, unzipping and storing it daily. 
     // 
     // $bv = new BV(array(
     //     'deployment_zone_id' => '12335',
