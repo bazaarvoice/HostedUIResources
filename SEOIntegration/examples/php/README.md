@@ -43,5 +43,6 @@ latency_timeout | 1000 | 500 | No | Integer in ms. Determines how much time the 
 current_page_url | Current page using $_SERVER |  http://www.example.com/pdp/test1 | No | If a current URL is not provided, the current page URL will be used instead.  You will want to provide the URL if you use query parameters or # in your URLs that you don't want Google to index. |
 subject_type | product | product, category | No | Reviews will always have this value set to product.  This is used only for questions that can be submitted against a category or a product. |
 bot_list | msnbot, googlebot, teoma, bingbot, yandexbot, yahoo | No | Any regex valid expression | Regular expression used to determine whether or not the current request is a bot (checking against user agent header) |
+bot_detection | TRUE | TRUE or FALSE | No | Used for clients who are behind a CDN and want the SDK to return SEO content with every call. |
 include_display_integration_code |  FALSE | TRUE or FALSE | No | If you want the SDK to also include the JavaScript to power display as well.  You will need to include the bvapi.js file seperately.  |
 internal_file_path |  FALSE | '/home/zip/smart_seo/ | No | If you want to still download the zip file of SEO content and serve it from disk, you can pass the SDK an aboslute path to the unzipped folder of Smart SEO content.  |
