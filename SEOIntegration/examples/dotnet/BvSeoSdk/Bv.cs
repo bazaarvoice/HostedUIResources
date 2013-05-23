@@ -119,37 +119,40 @@ namespace BvSeoSdk
             if (String.IsNullOrEmpty(response))
                 return getBvComment("WARNING: No SEO File");
 
-            string queryPrefix, basePage = _pageUrl;
+            string basePage = _pageUrl;
             if (String.IsNullOrEmpty(basePage))
             {
                 //use the current url as the base url
-                //Clear bvrrp,bvqap, or bvsyp query parameter from basepage if it already exists
-                String bvrrpQuery = request.Url.Query.TrimStart('?').Split('&').FirstOrDefault(x => x.StartsWith("bvrrp"));
-                String bvqapQuery = request.Url.Query.TrimStart('?').Split('&').FirstOrDefault(x => x.StartsWith("bvqap"));
-                String bvsypQuery = request.Url.Query.TrimStart('?').Split('&').FirstOrDefault(x => x.StartsWith("bvsyp"));
                 basePage = request.Url.OriginalString;
-                if (!String.IsNullOrEmpty(bvrrpQuery))
-                {
-                    basePage = basePage.Replace("?" + bvrrpQuery, "");
-                    basePage = basePage.Replace("&" + bvrrpQuery, "");
-                    basePage = basePage.Replace("?" + bvqapQuery, "");
-                    basePage = basePage.Replace("&" + bvqapQuery, "");
-                    basePage = basePage.Replace("?" + bvsypQuery, "");
-                    basePage = basePage.Replace("&" + bvsypQuery, "");
-                }
             }
-
+           
+            //Clear bvrrp,bvqap, or bvsyp query parameter from basepage if it already exists
+            if (basePage.Split('?').Length > 1)
+            { 
+                basePage = (basePage.Split('?')[0] + "?" + String.Join("&", basePage.Split('?')[1].Split('&').ToList().FindAll(
+                    x => !x.StartsWith("bvrrp=") && !x.StartsWith("bvqap=") && !x.StartsWith("bvsyp=")).ToArray())).TrimEnd('?');
+              
+            }
+            
             //decide if we should append a ? or & to add a parameter to the url
-            queryPrefix = (basePage.Contains("?")) 
-                                    ? "&"
-                                    : "?";
+            string queryPrefix = (basePage.Contains("?")) 
+                                     ? "&"
+                                     : "?";
             
 
             //replace token in response with correct endpoint
             response = response.Replace("{INSERT_PAGE_URI}", basePage + queryPrefix);
 
             //add bvtimer code
-            response += getBvComment(String.Format("timer {0}ms", timeTakenInMs));
+            if (!isBvRevealADebug(request))
+                response += getBvComment(String.Format("timer {0}ms", timeTakenInMs));
+            else
+            {
+                response += getBvComment(String.Format
+                    ("timer {0}ms, parameters: bvProduct: {1}, Deployment Zone: {2}, BotDetection: {3}, BotRegex: {4}, includeDisplayIntegration: {5}, internalFilePath: {6}, pageUrl: {7}, productId: {8}, ProductType: {9}, SEOKey: {10}, staging: {11}, userAgent: {12}",
+                    timeTakenInMs, _bvProduct, _deploymentZoneId, _botDetection, _botRegexString,
+                    _includeDisplayIntegrationCode, _internalFilePath, _pageUrl, _productId, _productOrCategory, _seoKey, _staging, _userAgent));
+            }
             
             return response;
 
