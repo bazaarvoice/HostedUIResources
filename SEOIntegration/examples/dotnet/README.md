@@ -44,5 +44,5 @@ product_or_category | product | product, category | No | Reviews will always hav
 bot_regex_string | "(msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)" | No | any regex valid expression | Regular expression used to determine whether or not the current request is a bot (checking against user agent header) |
 bot_detection | true | true, false | No | Flag used to determine if bot detection is required. If set to false, it will always return the SEO content; otherwise, it will only return SEO contents when a bot is detected in the user agent. Default value is true. |
 internalFilePath | None | C:\bv_seotools | No | This is the base folder of the downloaded zip file, if you do not wish to use the cloud content. |
-includeDisplayIntegrationCode | true | true, false | No | Setting this to false will not include BV.ui js call in the response.
+includeDisplayIntegrationCode | false | true, false | No | Setting this to false will not include BV.ui js call in the response.
 
