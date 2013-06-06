@@ -82,7 +82,7 @@ class BV {
             'current_page_url' => $this->_getCurrentUrl(),
             'bot_detection' => TRUE,  // for some clients who are behind a CDN or something they may want to include SEO content with every request
             'include_display_integration_code' => FALSE,  
-            'client_name' => $this->config['deployment_zone_id'],
+            'client_name' => $params['deployment_zone_id'],
             'internal_file_path' => FALSE,
             'bot_list' => 'msnbot|googlebot|teoma|bingbot|yandexbot|yahoo', // used in regex to determine if request is a bot or not
         );
@@ -176,11 +176,14 @@ class Base{
             $seo_content = $this->_replaceTokens($seo_content);
 
             // if debug mode is on we want to include more debug data
-            if($_GET['bvreveal'] == 'debug')
+            if (isset($_GET['bvreveal']))
             {
-                $printable_config = $this->config;
-                unset($printable_config['cloud_key']);
-                $seo_content .= $this->_buildComment('Config options: '.print_r($printable_config, TRUE));
+                if($_GET['bvreveal'] == 'debug')
+                {
+                    $printable_config = $this->config;
+                    unset($printable_config['cloud_key']);
+                    $seo_content .= $this->_buildComment('Config options: '.print_r($printable_config, TRUE));
+                }
             }
 
             $pay_load = $seo_content;
@@ -455,7 +458,7 @@ class Reviews extends Base{
            $pay_load .= '
                <script>
                    $BV.ui("rr", "show_reviews", {
-                       productId: '.$this->config['product_id'].'
+                       productId: "'.$this->config['product_id'].'"
                    });
                </script>
            ';
@@ -494,7 +497,7 @@ class Questions extends Base{
            $pay_load .= '
                <script>
                    $BV.ui("qa", "show_questions", {
-                       productId: '.$this->config['product_id'].'
+                       productId: "'.$this->config['product_id'].'"
                    });
                </script>
            ';

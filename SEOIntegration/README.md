@@ -1,9 +1,6 @@
 #Bazaarvoice Cloud SEO SDK
 
 
->NOTE: This method is currently in Beta and still being piloted.  Please contact Michael DeHaven or Charles Himmer
->for questions about usage / limitations. 
-
 Product reviews, questions, and answers can provide an immense amount of SEO value for product detail pages.  
 The language and keywords users use when writing reviews, questions, or answers often match other users' search keywords,
 and can help increase traffic to your product detail pages.  In addition, search engines like to see fresh content,
@@ -27,10 +24,10 @@ markup (schema.org).
 ### SEO SDKs
 To make implementing Cloud SEO easier, Bazaarvoice provides an SDK / library for these languages:
 
-* [Java](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/java)
-* [.NET](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/dotnet) 
-* [PHP](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/php)
-* [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/python)
+* [Java](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/java)
+* [.NET](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/dotnet) 
+* [PHP](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/php)
+* [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/python)
 
 If you are using a server-side language that is not listed above, you still can use Cloud SEO by following the generic
 implementation steps listed at the bottom of this page. 
@@ -64,5 +61,5 @@ Here are the steps you must follow to implement Cloud SEO:
 
 4. Now that we have fetched our SEO content, we need to replace all instances of the string {INSERT\_URI_TOKEN} with the current page's URL.  This is to build in pagination between the pages of content so search engines can crawl all the pages of UGC content. 
 
-5. Now we are ready to render this formatted SEO string onto the page in the correct container.  For reviews this is inside the \<div id="BVRRContainer">\</div>, and for questions this is inside the \<div id="BVQAContainer">\</div>. 
+5. Now we are ready to render this formatted SEO string onto the page in the correct container.  For reviews this is inside the \<div id="BVRRContainer">\</div>, and for questions this is inside the \<div id="BVQAContainer">\</div>. To test SEO integration, view source on your page and verify you are seeing the SEO content inside the BVRRContainer div.
 

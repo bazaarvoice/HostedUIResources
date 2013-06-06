@@ -9,10 +9,15 @@ Dependencies:
 
 * Apache's fluent HTTP client ( http://hc.apache.org/httpcomponents-client-ga/fluent-hc/ )
 
+Binaries:
+------------
+
+* The JAR files for the Java SDK can be downloaded from the following URL: http://bazaarvoice.github.io/HostedUIResources/
+
 Running the example:
 -------------------
 
-Before running the code, you must edit [client.properties](client.properties) and include the settings we've provided you for your integration.
+Before running the code, you must edit [bvclient.properties](bvclient.properties) and include the settings we've provided you for your integration.
 
 After editing the properties, the main method in [Example.java](src/main/java/Example.java) provides a simple example of how to use the library.  The example reads a sample HTML page file, retrieves the corresponding SmartSEO content from S3, inserts it into the document, and prints the results to stdout.  Be sure to change the hardcoded values in the example to a valid product ID and page URL for your environment.
 

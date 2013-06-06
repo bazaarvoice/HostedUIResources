@@ -37,7 +37,7 @@ namespace BvSeoSdk
             int timeout_ms = 1000,
             String bot_regex_string= "(msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)",
             bool bot_detection = true,
-            bool includeDisplayIntegrationCode=true,
+            bool includeDisplayIntegrationCode=false,
             String internalFilePath="",
             String user_agent = "",
             String page_url = "",
@@ -119,31 +119,40 @@ namespace BvSeoSdk
             if (String.IsNullOrEmpty(response))
                 return getBvComment("WARNING: No SEO File");
 
-            string queryPrefix, basePage = _pageUrl;
+            string basePage = _pageUrl;
             if (String.IsNullOrEmpty(basePage))
             {
                 //use the current url as the base url
-                //Clear bvrrp query parameter from basepage if it already exists
-                String bvrrpQuery = request.Url.Query.TrimStart('?').Split('&').FirstOrDefault(x => x.StartsWith("bvrrp"));
                 basePage = request.Url.OriginalString;
-                if (!String.IsNullOrEmpty(bvrrpQuery))
-                {
-                    basePage = basePage.Replace("?" + bvrrpQuery, "");
-                    basePage = basePage.Replace("&" + bvrrpQuery, "");
-                }
             }
-
+           
+            //Clear bvrrp,bvqap, or bvsyp query parameter from basepage if it already exists
+            if (basePage.Split('?').Length > 1)
+            { 
+                basePage = (basePage.Split('?')[0] + "?" + String.Join("&", basePage.Split('?')[1].Split('&').ToList().FindAll(
+                    x => !x.StartsWith("bvrrp=") && !x.StartsWith("bvqap=") && !x.StartsWith("bvsyp=")).ToArray())).TrimEnd('?');
+              
+            }
+            
             //decide if we should append a ? or & to add a parameter to the url
-            queryPrefix = (basePage.Contains("?")) 
-                                    ? "&"
-                                    : "?";
+            string queryPrefix = (basePage.Contains("?")) 
+                                     ? "&"
+                                     : "?";
             
 
             //replace token in response with correct endpoint
             response = response.Replace("{INSERT_PAGE_URI}", basePage + queryPrefix);
 
             //add bvtimer code
-            response += getBvComment(String.Format("timer {0}ms", timeTakenInMs));
+            if (!isBvRevealADebug(request))
+                response += getBvComment(String.Format("timer {0}ms", timeTakenInMs));
+            else
+            {
+                response += getBvComment(String.Format
+                    ("timer {0}ms, parameters: bvProduct: {1}, Deployment Zone: {2}, BotDetection: {3}, BotRegex: {4}, includeDisplayIntegration: {5}, internalFilePath: {6}, pageUrl: {7}, productId: {8}, ProductType: {9}, SEOKey: {10}, staging: {11}, userAgent: {12}",
+                    timeTakenInMs, _bvProduct, _deploymentZoneId, _botDetection, _botRegexString,
+                    _includeDisplayIntegrationCode, _internalFilePath, _pageUrl, _productId, _productOrCategory, _seoKey, _staging, _userAgent));
+            }
             
             return response;
 
@@ -195,13 +204,9 @@ namespace BvSeoSdk
             {
                 if (!String.IsNullOrEmpty(request.QueryString["bvpage"]))
                     bvpage = Int32.Parse(request.QueryString["bvpage"]);
-                else if (!String.IsNullOrEmpty(request.QueryString["bvrrp"]))
-                    bvpage = Int32.Parse(request.QueryString["bvrrp"]);
-                else if (!String.IsNullOrEmpty(request.QueryString["bvqap"]))
-                    bvpage = Int32.Parse(request.QueryString["bvqap"]);
-                else if (!String.IsNullOrEmpty(request.QueryString["bvsyp"]))
-                    bvpage = Int32.Parse(request.QueryString["bvsyp"]);
-                else
+                else if (!String.IsNullOrEmpty(request.QueryString["bvrrp"]) ||
+                        !String.IsNullOrEmpty(request.QueryString["bvqap"]) ||
+                        !String.IsNullOrEmpty(request.QueryString["bvsyp"]))
                 {
                     //search the querystring for a number
                     Match m = new Regex(@"\/(\d+?)\/[^\/]+$", RegexOptions.IgnoreCase).Match(request.Url.Query);
@@ -243,6 +248,9 @@ namespace BvSeoSdk
 
         private String injectJs()
         {
+            if (_bvProduct == BvProduct.QUESTIONS)
+                return
+                string.Format(@"<script type=""text/javascript"">$BV.ui(""qa"",""show_questions"", {{productId: ""{0}""}});</script>", _productId); 
             return
                 string.Format(@"<script type=""text/javascript"">$BV.ui(""rr"",""show_reviews"", {{productId: ""{0}""}});</script>", _productId); 
         } 
