@@ -50,7 +50,9 @@ Troubleshooting
 ----------------
 
 1. The SEO content for reviews show up, but not for question and answer (QA).
-Make sure that you are making a separate call to the SDK with bv_product parameter set to BVProduct.QUESTIONS. If content for reviews is coming back, then one way of quickly verifying that the problem is with the SEO cloud or not is to replace the call for BVProduct.REVIEWS to BVProduct.QUESTIONS. Depending on various .NET implementations, sometimes the ASP.NET page lifecycle may not hit certain piece of code-behind code. So, it is always good to make sure that your code is making all the calls to SDK that you intend to make. 
+   
+   Make sure that you are making a separate call to the SDK with bv_product parameter set to BVProduct.QUESTIONS. If content for reviews is coming back, then one way of quickly verifying that the problem is with the SEO cloud or not is to replace the call for BVProduct.REVIEWS to BVProduct.QUESTIONS. Depending on various .NET implementations, sometimes the ASP.NET page lifecycle may not hit certain piece of code-behind code. So, it is always good to make sure that your code is making all the calls to SDK that you intend to make. 
 
 2. I only see SEO content for page 1 of my reviews. Page 2 links simply load the contents for page 1.
-This suggests that the SDK is not being able to parse the page number from the given HttpRequest URL, and is defaulting to Page 1. For example, if the URL being passed is http://example.com/?bvrrp=1234/reviews/product/2/1234.htm, then the SDK knows the page you are asking for is page 2. If you want to make sure that the SDK is looking at the correct URL, you can provide the value of the url in the page_url parameter.
+   
+   This suggests that the SDK is not being able to parse the page number from the given HttpRequest URL, and is defaulting to Page 1. For example, if the URL being passed is http://example.com/?bvrrp=1234/reviews/product/2/1234.htm, then the SDK knows the page you are asking for is page 2. If you want to make sure that the SDK is looking at the correct URL, you can provide the value of the url in the page_url parameter.
