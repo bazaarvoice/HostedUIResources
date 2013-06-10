@@ -241,7 +241,7 @@ namespace BvSeoSdk
                 }
                 catch (Exception ex)
                 {
-                    _exception = "error occurred in extracting the page number. Exception: " + ex.Message;
+                    _exception = "error occurred in extracting the page number. Url passed: " + queryString + " Exception: " + ex.Message;
                 }
             }
             return 1;
