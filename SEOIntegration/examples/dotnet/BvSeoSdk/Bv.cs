@@ -215,7 +215,7 @@ namespace BvSeoSdk
                         !String.IsNullOrEmpty(request.QueryString["bvsyp"]))
                 {
                     //search the querystring for a number
-                    bvpage = parsePageNumber(request.Url.Query);
+                    bvpage = parsePageNumber(HttpUtility.UrlDecode(request.Url.Query));
                 }
                 else if (!String.IsNullOrEmpty(_pageUrl)) // if we can't find in request string, then try the passed in url parameter
                 {
