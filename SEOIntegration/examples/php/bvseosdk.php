@@ -190,7 +190,7 @@ class Base{
         }
         else
         {
-            $pay_load = $this->_buildComment('JavaScript-only');
+            $pay_load = $this->_buildComment('Bot not detected, JavaScript-only');
         }
 
         return $pay_load;
@@ -295,7 +295,7 @@ class Base{
             $this->config['bv_product'],
             $this->config['subject_type'],
             $page_number,
-            $this->config['product_id'].'.htm'
+            urlencode($this->config['product_id']).'.htm'
         );
 
         // if our SEO content source is a file path
