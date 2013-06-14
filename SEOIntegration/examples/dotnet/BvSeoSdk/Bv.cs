@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -26,7 +27,9 @@ namespace BvSeoSdk
         private string _botRegexString;
         private string _internalFilePath;
         private string _productOrCategory;
-        private string _commentStub = "<!--BVSEO|dz:{0}|sdk:v1.0-n|msg:{1} -->";
+        private string _commentStub = "<!--BVSEO|dz:{0}|sdk:v{1}-n|msg:{2} -->";
+        private string _exception = "no exceptions";
+        private string _version;
 
         public Bv(String deploymentZoneID,
             String product_id,
@@ -59,11 +62,12 @@ namespace BvSeoSdk
             _botDetection = bot_detection;
             _includeDisplayIntegrationCode = includeDisplayIntegrationCode;
             _internalFilePath = internalFilePath;
+            _version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         private String getBvComment(String message)
         {
-            return String.Format(_commentStub, _deploymentZoneId, message);
+            return String.Format(_commentStub, _deploymentZoneId, _version, message);
         }
 
         public string ProductOrCategory
@@ -149,9 +153,11 @@ namespace BvSeoSdk
             else
             {
                 response += getBvComment(String.Format
-                    ("timer {0}ms, parameters: bvProduct: {1}, Deployment Zone: {2}, BotDetection: {3}, BotRegex: {4}, includeDisplayIntegration: {5}, internalFilePath: {6}, pageUrl: {7}, productId: {8}, ProductType: {9}, SEOKey: {10}, staging: {11}, userAgent: {12}",
+                    ("timer {0}ms, parameters: bvProduct: {1}, Deployment Zone: {2}, BotDetection: {3}, BotRegex: {4}, includeDisplayIntegration: {5}, internalFilePath: {6}, pageUrl: {7}, productId: {8}, ProductType: {9}, SEOKey: {10}, staging: {11}, userAgent: {12}, requestUrl: {13}, requestQuery: {14}, exceptions: {15}",
                     timeTakenInMs, _bvProduct, _deploymentZoneId, _botDetection, _botRegexString,
-                    _includeDisplayIntegrationCode, _internalFilePath, _pageUrl, _productId, _productOrCategory, _seoKey, _staging, _userAgent));
+                    _includeDisplayIntegrationCode, _internalFilePath, _pageUrl, _productId, _productOrCategory, _seoKey, _staging, _userAgent, 
+                    request.Url.OriginalString, request.Url.Query,
+                    _exception));
             }
             
             return response;
@@ -209,23 +215,36 @@ namespace BvSeoSdk
                         !String.IsNullOrEmpty(request.QueryString["bvsyp"]))
                 {
                     //search the querystring for a number
-                    Match m = new Regex(@"\/(\d+?)\/[^\/]+$", RegexOptions.IgnoreCase).Match(request.Url.Query);
-                    if (m.Success)
-                    {
-                        try
-                        {
-                            bvpage = Int32.Parse(m.Groups[0].Captures[0].Value.Split('/')[1]);
-                        }
-                        catch(Exception ex)
-                        {
-                            Console.WriteLine("error occurred in extracting the page number. Exception: " + ex.Message);
-                        }
-                    }
-                    
+                    bvpage = parsePageNumber(HttpUtility.UrlDecode(request.Url.Query));
+                }
+                else if (!String.IsNullOrEmpty(_pageUrl)) // if we can't find in request string, then try the passed in url parameter
+                {
+                    bvpage = parsePageNumber(_pageUrl);
                 }
 
             }
+            else // if we can't find in request string, then try the passed in url parameter
+            {
+                bvpage = parsePageNumber(_pageUrl);
+            }
             return bvpage;
+        }
+
+        private int parsePageNumber(String queryString)
+        {
+            Match m = new Regex(@"\/(\d+?)\/[^\/]+$", RegexOptions.IgnoreCase).Match(queryString);
+            if (m.Success)
+            {
+                try
+                {
+                    return Int32.Parse(m.Groups[0].Captures[0].Value.Split('/')[1]);
+                }
+                catch (Exception ex)
+                {
+                    _exception = "error occurred in extracting the page number. Url passed: " + queryString + " Exception: " + ex.Message;
+                }
+            }
+            return 1;
         }
 
         private String httpGet(String url)

@@ -44,5 +44,15 @@ product_or_category | product | product, category | No | Reviews will always hav
 bot_regex_string | "(msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)" | No | any regex valid expression | Regular expression used to determine whether or not the current request is a bot (checking against user agent header) |
 bot_detection | true | true, false | No | Flag used to determine if bot detection is required. If set to false, it will always return the SEO content; otherwise, it will only return SEO contents when a bot is detected in the user agent. Default value is true. |
 internalFilePath | None | C:\bv_seotools | No | This is the base folder of the downloaded zip file, if you do not wish to use the cloud content. |
-includeDisplayIntegrationCode | true | true, false | No | Setting this to false will not include BV.ui js call in the response.
+includeDisplayIntegrationCode | false | true, false | No | Setting this to false will not include BV.ui js call in the response.
 
+Troubleshooting
+----------------
+
+1. The SEO content for reviews show up, but not for question and answer (QA).
+   
+   Make sure that you are making a separate call to the SDK with bv_product parameter set to BVProduct.QUESTIONS. If content for reviews is coming back, then one way of quickly verifying that the problem is with the SEO cloud or not is to replace the call for BVProduct.REVIEWS to BVProduct.QUESTIONS. Depending on various .NET implementations, sometimes the ASP.NET page lifecycle may not hit certain piece of code-behind code. So, it is always good to make sure that your code is making all the calls to SDK that you intend to make. 
+
+2. I only see SEO content for page 1 of my reviews. Page 2 links simply load the contents for page 1.
+   
+   This suggests that the SDK is not being able to parse the page number from the given HttpRequest URL, and is defaulting to Page 1. For example, if the URL being passed is http://example.com/?bvrrp=1234/reviews/product/2/1234.htm, then the SDK knows the page you are asking for is page 2. If you want to make sure that the SDK is looking at the correct URL, you can provide the value of the url in the page_url parameter.

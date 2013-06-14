@@ -458,7 +458,7 @@ class Reviews extends Base{
            $pay_load .= '
                <script>
                    $BV.ui("rr", "show_reviews", {
-                       productId: '.$this->config['product_id'].'
+                       productId: "'.$this->config['product_id'].'"
                    });
                </script>
            ';
@@ -497,7 +497,7 @@ class Questions extends Base{
            $pay_load .= '
                <script>
                    $BV.ui("qa", "show_questions", {
-                       productId: '.$this->config['product_id'].'
+                       productId: "'.$this->config['product_id'].'"
                    });
                </script>
            ';
