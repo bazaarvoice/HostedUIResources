@@ -56,3 +56,12 @@ Troubleshooting
 2. I only see SEO content for page 1 of my reviews. Page 2 links simply load the contents for page 1.
    
    This suggests that the SDK is not being able to parse the page number from the given HttpRequest URL, and is defaulting to Page 1. For example, if the URL being passed is http://example.com/?bvrrp=1234/reviews/product/2/1234.htm, then the SDK knows the page you are asking for is page 2. If you want to make sure that the SDK is looking at the correct URL, you can provide the value of the url in the page_url parameter.
+
+3. Request is erroring out / timing out / etc.
+   
+   This could be due to firewall issues. Please try going directly to our seo url. The url is of the following format: 
+   
+   For staging: seo-stg.bazaarvoice.com/seo_key/deployment_zone_id/bv_product/product/page/product_id.htm
+   
+   For production: seo.bazaarvoice.com/seo_key/deployment_zone_id/bv_product/product/page/product_id.htm
+   
