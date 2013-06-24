@@ -84,7 +84,7 @@ class BV {
             'include_display_integration_code' => FALSE,  
             'client_name' => $params['deployment_zone_id'],
             'internal_file_path' => FALSE,
-            'bot_list' => 'msnbot|googlebot|teoma|bingbot|yandexbot|yahoo', // used in regex to determine if request is a bot or not
+            'bot_list' => 'msnbot|google|teoma|bingbot|yandexbot|yahoo', // used in regex to determine if request is a bot or not
         );
 
         // merge passed in params with defualts for config. 
