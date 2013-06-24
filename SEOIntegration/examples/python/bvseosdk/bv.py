@@ -20,7 +20,7 @@ class BV:
             include_display_integration_code = False,
             timeout_ms = 1000,
             internal_file_path = None,
-            bot_regex_string = '(msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)',
+            bot_regex_string = '(msnbot|google|teoma|bingbot|yandexbot|yahoo)',
             bot_detection = True,
             cache_enabled = True
         ):
