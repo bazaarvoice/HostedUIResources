@@ -38,7 +38,7 @@ namespace BvSeoSdk
             bool staging = true,
             bool hosted_display = false,
             int timeout_ms = 1000,
-            String bot_regex_string= "(msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)",
+            String bot_regex_string= "(msnbot|google|teoma|bingbot|yandexbot|yahoo)",
             bool bot_detection = true,
             bool includeDisplayIntegrationCode=false,
             String internalFilePath="",
