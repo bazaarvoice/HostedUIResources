@@ -24,7 +24,7 @@ public class BazaarvoiceDisplayHelper {
         final String crawlerAgentPattern = Configuration.get("crawlerAgentPattern");
         final Pattern pattern = Pattern.compile(crawlerAgentPattern, Pattern.CASE_INSENSITIVE);
 
-        return userAgent != null && pattern.matcher(userAgent).matches();
+        return userAgent != null && (pattern.matcher(userAgent).matches() || userAgent.toLowerCase().contains("google"));
     }
 
     private static String getLogComment(String message) {

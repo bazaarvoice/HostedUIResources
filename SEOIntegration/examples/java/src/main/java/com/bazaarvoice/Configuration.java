@@ -28,8 +28,13 @@ public class Configuration {
         try {
             clientProperties.load(new FileInputStream("bvclient.properties"));
         } catch (IOException ex) {
-            _log.error("Unable to find bvclient.properties file in path.  Some required properties are not defined.");
-            throw new RuntimeException(ex);
+            try {
+                classProperties.load(BazaarvoiceDisplayHelper.class.getClassLoader().getResourceAsStream("bvclient.properties"));
+
+            } catch (IOException ex2) {
+                _log.error("Unable to find bvclient.properties file in path.  Please make sure the file in your classpath or application root.  Some required properties are not defined.");
+                throw new RuntimeException(ex2);
+            }
         }
         _properties = new Properties();
         _properties.putAll(classProperties);
