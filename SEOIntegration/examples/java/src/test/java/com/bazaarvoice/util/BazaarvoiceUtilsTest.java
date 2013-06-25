@@ -8,6 +8,7 @@ public class BazaarvoiceUtilsTest {
     @Test
     public void testGetPageNumber() {
         Assert.assertEquals(BazaarvoiceUtils.getPageNumber("foo=bar&campaignId=fallpromotion&bvrrp=1234-en_gb/reviews/product/2/15864.htm&heavy=light"), 2);
+        Assert.assertEquals(BazaarvoiceUtils.getPageNumber("foo=bar&campaignId=fallpromotion&bvrrp=12325%2Freviews%2Fproduct%2F2%2F15864.htm&day=night"), 2);
         Assert.assertEquals(BazaarvoiceUtils.getPageNumber("foo=bar&campaignId=fallpromotion&heavy=light"), 1); // no bvrrp
         Assert.assertEquals(BazaarvoiceUtils.getPageNumber("foo=bar&campaignId=fallpromotion&bvrrp=1234-en_gb/product/2/15864.htm&heavy=light"), 1);  // malformed bvrrp
 
