@@ -6,9 +6,9 @@ This project contains information and resources to help you implement the Bazaar
 If you have any questions or encounter issues with the code in this project, contact your Bazzarvoice Implementation or Support Engineer.
 
 
-[Cloud SEO SDKs](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO)
+[Cloud SEO SDKs](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration)
 ------------
-Contains [.NET](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/dotnet), [Java](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/java), [PHP](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/php), and [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO/examples/python) Cloud SEO SDKs.  Also includes [generic Cloud SEO](https://github.com/bazaarvoice/HostedUIResources/tree/master/CloudSEO#generic-cloud-seo) implementation instructions. 
+Contains [.NET](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/dotnet), [Java](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/java), [PHP](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/php), and [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/python) Cloud SEO SDKs.  Also includes [generic Cloud SEO](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration#generic-cloud-seo) implementation instructions. 
 
 NativeImport
 ------------

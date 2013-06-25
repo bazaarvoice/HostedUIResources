@@ -84,7 +84,7 @@ class BV {
             'include_display_integration_code' => FALSE,  
             'client_name' => $params['deployment_zone_id'],
             'internal_file_path' => FALSE,
-            'bot_list' => 'msnbot|googlebot|teoma|bingbot|yandexbot|yahoo', // used in regex to determine if request is a bot or not
+            'bot_list' => 'msnbot|google|teoma|bingbot|yandexbot|yahoo', // used in regex to determine if request is a bot or not
         );
 
         // merge passed in params with defualts for config. 
@@ -190,7 +190,7 @@ class Base{
         }
         else
         {
-            $pay_load = $this->_buildComment('JavaScript-only');
+            $pay_load = $this->_buildComment('Bot not detected, JavaScript-only');
         }
 
         return $pay_load;
@@ -295,7 +295,7 @@ class Base{
             $this->config['bv_product'],
             $this->config['subject_type'],
             $page_number,
-            $this->config['product_id'].'.htm'
+            urlencode($this->config['product_id']).'.htm'
         );
 
         // if our SEO content source is a file path
