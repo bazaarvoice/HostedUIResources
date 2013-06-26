@@ -4,7 +4,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class Configuration {
@@ -25,16 +27,22 @@ public class Configuration {
         }
 
         Properties clientProperties = new Properties();
+        InputStream propertyStream;
         try {
-            clientProperties.load(new FileInputStream("bvclient.properties"));
-        } catch (IOException ex) {
-            try {
-                classProperties.load(BazaarvoiceDisplayHelper.class.getClassLoader().getResourceAsStream("bvclient.properties"));
+            propertyStream = new FileInputStream("bvclient.properties");
+        } catch (FileNotFoundException ex) {
+            propertyStream = BazaarvoiceDisplayHelper.class.getClassLoader().getResourceAsStream("bvclient.properties");
 
-            } catch (IOException ex2) {
+            if (propertyStream == null) {
                 _log.error("Unable to find bvclient.properties file in path.  Please make sure the file in your classpath or application root.  Some required properties are not defined.");
-                throw new RuntimeException(ex2);
+                throw new RuntimeException("Unable to find bvclient.properties file in path.  Please make sure the file in your classpath or application root.");
             }
+        }
+
+        try {
+            clientProperties.load(propertyStream);
+        } catch (IOException ex) {
+            throw new RuntimeException("Unable to load bvclient.properties.  Some required properties are not defined.");
         }
         _properties = new Properties();
         _properties.putAll(classProperties);
