@@ -247,7 +247,7 @@ namespace BvSeoSdk
         private String httpGet(String url)
         {
             WebRequest wrGetUrl = WebRequest.Create(url);
-            wrGetUrl.Timeout = 1000; //Timeout at 1 second
+            wrGetUrl.Timeout = _timeoutMs; //Timeout at 1 second
             String result = "";
             
             using (var response = wrGetUrl.GetResponse())
