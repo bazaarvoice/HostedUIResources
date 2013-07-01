@@ -59,7 +59,7 @@ Troubleshooting
 
 3. Request is erroring out / timing out / etc.
    
-   This could be due to firewall issues. Please try going directly to our seo url. The url is of the following format: 
+   This could be due to firewall issues, or a missing SEO document. Please try going directly to our seo url. The url is of the following format: 
    
    For staging: seo-stg.bazaarvoice.com/seo_key/deployment_zone_id/bv_product/product/page/product_id.htm
    
