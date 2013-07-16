@@ -20,12 +20,12 @@ import java.net.URLEncoder;
 public class SmartSEOS3Client {
     private static final Log _log = LogFactory.getLog(SmartSEOS3Client.class);
 
-    private static URI getS3ContentURI(SubjectType subjectType, ContentType contentType, int page, boolean staging, String productID)
+    private static URI getS3ContentURI(Configuration config, SubjectType subjectType, ContentType contentType, int page, boolean staging, String productID)
             throws URISyntaxException {
 
-        final String s3Hostname = staging ? Configuration.get("stagingS3Hostname") : Configuration.get("productionS3Hostname");
-        final String s3Key = Configuration.get("cloudKey");
-        final String deploymentZoneId = Configuration.get("deploymentZoneId");
+        final String s3Hostname = staging ? config.get(Configuration.STAGING_S3_HOSTNAME) : config.get(Configuration.PRODUCTION_S3_HOSTNAME);
+        final String s3Key = config.get(Configuration.CLOUD_KEY);
+        final String deploymentZoneId = config.get(Configuration.DEPLOYMENT_ZONE_ID);
 
         String encodedProductID;
         try {
@@ -40,15 +40,15 @@ public class SmartSEOS3Client {
         return builder.build();
     }
 
-    private static String getSmartSEOContentHTTP(SubjectType subjectType, ContentType contentType, int page, boolean staging, String productID) {
+    private static String getSmartSEOContentHTTP(Configuration config, SubjectType subjectType, ContentType contentType, int page, boolean staging, String productID) {
         String smartSEOPayload;
 
         try {
-            URI targetUrl = getS3ContentURI(subjectType, contentType, page, staging, productID);
+            URI targetUrl = getS3ContentURI(config, subjectType, contentType, page, staging, productID);
             _log.debug("Fetching : " + targetUrl);
 
-            int connectionTimeout = Integer.parseInt(Configuration.get("connectTimeout"));
-            int socketTimeout = Integer.parseInt(Configuration.get("socketTimeout"));
+            int connectionTimeout = Integer.parseInt(config.get(Configuration.CONNECT_TIMEOUT));
+            int socketTimeout = Integer.parseInt(config.get(Configuration.SOCKET_TIMEOUT));
             smartSEOPayload = Request.Get(targetUrl).connectTimeout(connectionTimeout).socketTimeout(socketTimeout).execute().returnContent().asString();
         } catch (ClientProtocolException e) {
             _log.error("Unable to download SmartSEO content via HTTP.", e);
@@ -64,12 +64,12 @@ public class SmartSEOS3Client {
         return smartSEOPayload;
     }
 
-    private static String getSmartSEOContentFilesystem(SubjectType subjectType, ContentType contentType, int page, String productID) {
-        if (Configuration.get("localSEOFileRoot").isEmpty()) {
+    private static String getSmartSEOContentFilesystem(Configuration config, SubjectType subjectType, ContentType contentType, int page, String productID) {
+        if (config.get(Configuration.LOCAL_SEO_FILE_ROOT).isEmpty()) {
             throw new BVSEOException("Unable to read SEO file.  Please set correct root directory.");
         }
 
-        final String deploymentZoneId = Configuration.get("deploymentZoneId");
+        final String deploymentZoneId = config.get(Configuration.DEPLOYMENT_ZONE_ID);
         String encodedProductID;
         try {
             encodedProductID = URLEncoder.encode(productID, "UTF-8");
@@ -77,7 +77,7 @@ public class SmartSEOS3Client {
             encodedProductID = URLEncoder.encode(productID);
         }
 
-        String path = Configuration.get("localSEOFileRoot") + File.separator + deploymentZoneId + File.separator + contentType.uriValue() + File.separator + subjectType.uriValue() + File.separator + page + File.separator + encodedProductID + ".htm";
+        String path = config.get(Configuration.LOCAL_SEO_FILE_ROOT) + File.separator + deploymentZoneId + File.separator + contentType.uriValue() + File.separator + subjectType.uriValue() + File.separator + page + File.separator + encodedProductID + ".htm";
 
         _log.debug("SEO file path = " + path);
 
@@ -88,13 +88,13 @@ public class SmartSEOS3Client {
         }
     }
 
-    public static String getSmartSEOContent(String pageURL, SubjectType subjectType, ContentType contentType, int page, boolean staging, String productID) {
+    public static String getSmartSEOContent(Configuration config, String pageURL, SubjectType subjectType, ContentType contentType, int page, boolean staging, String productID) {
         String smartSEOPayload;
 
-        if (Configuration.getBoolean("loadSEOFilesLocally")) {
-            smartSEOPayload = getSmartSEOContentFilesystem(subjectType, contentType, page, productID);
+        if (config.getBoolean(Configuration.LOAD_SEO_FILES_LOCALLY)) {
+            smartSEOPayload = getSmartSEOContentFilesystem(config, subjectType, contentType, page, productID);
         } else {
-            smartSEOPayload = getSmartSEOContentHTTP(subjectType, contentType, page, staging, productID);
+            smartSEOPayload = getSmartSEOContentHTTP(config, subjectType, contentType, page, staging, productID);
         }
 
         if (smartSEOPayload.contains("{INSERT_PAGE_URI}")) {

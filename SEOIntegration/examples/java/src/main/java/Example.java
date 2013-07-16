@@ -1,4 +1,5 @@
 import com.bazaarvoice.BazaarvoiceDisplayHelper;
+import com.bazaarvoice.Configuration;
 import com.bazaarvoice.model.ContentType;
 import com.bazaarvoice.model.SubjectType;
 import com.bazaarvoice.util.BazaarvoiceUtils;
@@ -13,6 +14,7 @@ public class Example {
 
         // Environment based variables
         final boolean staging = true;
+        final BazaarvoiceDisplayHelper bazaarvoiceDisplayHelper = new BazaarvoiceDisplayHelper(Configuration.newInstance());
 
         // Page related variables
         final String baseURI = "http://www.example.com/store/products/data-gen-696yl2lg1kurmqxn88fqif5y2/";
@@ -31,9 +33,9 @@ public class Example {
 
         try {
             if (args.length > 0 && args[0].length() > 0) {
-                System.out.format(htmlContent, BazaarvoiceDisplayHelper.getBVContent(args[0], baseURI, BazaarvoiceUtils.getQueryString(pageURI), contentType, subjectType, subjectId, staging));
+                System.out.format(htmlContent, bazaarvoiceDisplayHelper.getBVContent(args[0], baseURI, BazaarvoiceUtils.getQueryString(pageURI), contentType, subjectType, subjectId, staging));
             } else {
-                System.out.format(htmlContent, BazaarvoiceDisplayHelper.getBVContent(userAgent, baseURI, BazaarvoiceUtils.getQueryString(pageURI), contentType, subjectType, subjectId, staging));
+                System.out.format(htmlContent, bazaarvoiceDisplayHelper.getBVContent(userAgent, baseURI, BazaarvoiceUtils.getQueryString(pageURI), contentType, subjectType, subjectId, staging));
             }
         } catch (Exception ex) {
             System.err.println("Unable to load Bazaarvoice content:\n");

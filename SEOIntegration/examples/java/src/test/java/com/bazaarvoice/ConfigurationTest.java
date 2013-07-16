@@ -25,7 +25,7 @@ public class ConfigurationTest
     }
 
     private String testStringProperty(String key) {
-        String property = Configuration.get(key);
+        String property = Configuration.newInstance().get(key);
         Assert.assertTrue(property != null && !property.isEmpty(), "Required property '" + key + "'is not defined.");
         return property;
     }
