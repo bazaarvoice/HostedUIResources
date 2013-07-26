@@ -14,7 +14,8 @@ public class Example {
 
         // Environment based variables
         final boolean staging = true;
-        final BazaarvoiceDisplayHelper bazaarvoiceDisplayHelper = new BazaarvoiceDisplayHelper(Configuration.newInstance());
+        final Configuration configWithIntegrationCode = Configuration.newInstance().setIncludeDisplayIntegrationCode(true);
+        final BazaarvoiceDisplayHelper bazaarvoiceDisplayHelper = new BazaarvoiceDisplayHelper(configWithIntegrationCode);
 
         // Page related variables
         final String baseURI = "http://www.example.com/store/products/data-gen-696yl2lg1kurmqxn88fqif5y2/";

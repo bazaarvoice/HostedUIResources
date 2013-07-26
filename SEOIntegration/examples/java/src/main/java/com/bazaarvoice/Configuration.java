@@ -76,37 +76,96 @@ public class Configuration {
         }
     }
 
+
+    /**
+     * Creates a new Configuration object with default values possibly set by the bvclient.properties file.
+     * @return
+     */
     static public Configuration newInstance() {
         return new Configuration();
     }
 
+    /**
+     * This field is also known as the display code for this integration.
+     *
+     * @param deploymentZoneId no default
+     * @return a reference to this Configuration
+     */
     public Configuration setDeploymentZoneId(String deploymentZoneId) {
         return setStringValue(DEPLOYMENT_ZONE_ID, deploymentZoneId);
     }
 
+    /**
+     * This property is a unique string assigned by Bazaarvoice and included in the path to all S3 content URLs.
+     * This is not necessary if you have unpacked your files locally.
+     *
+     * @param cloudKey no default
+     * @return a reference to this Configuration
+     */
     public Configuration setCloudKey(String cloudKey) {
         return setStringValue(CLOUD_KEY, cloudKey);
     }
 
+    /**
+     * If true, the SEO contents will be retrieved from the local filesystem rather than via an HTTP request. Enable this flag if you are retrieving your daily
+     * SEO feed from the Bazaarvoice FTP server and expanding it into a directory accessible through your local filesystem.  You must also set the root directory
+     * in the following property.
+     *
+     * @param value default is false
+     * @return a reference to this Configuration
+     */
     public Configuration setLoadSEOFilesLocally(boolean value) {
         return setStringValue(LOAD_SEO_FILES_LOCALLY, Boolean.toString(value));
 
     }
+
+    /**
+     * If loadSEOFilesLocally is true, the root directory must be set here.
+     *
+     * @param localSEOFileRoot no default
+     * @return a reference to this Configuration
+     */
     public Configuration setLocalSEOFileRoot(String localSEOFileRoot) {
         return setStringValue(LOCAL_SEO_FILE_ROOT, localSEOFileRoot);
     }
 
+    /**
+     * The maximum timeout (in milliseconds) when initializing a connection to S3.
+     *
+     * @param timeout default is 1000ms
+     * @return a reference to this Configuration
+     */
     public Configuration setConnectTimeout(int timeout) {
         return setStringValue(CONNECT_TIMEOUT, Integer.toString(timeout));
     }
+
+    /**
+     * The maximum timeout (in milliseconds) when waiting for data on the socket.
+     *
+     * @param timeout default is 1000ms
+     * @return a reference to this Configuration
+     */
     public Configuration setSocketTimeout(int timeout) {
         return setStringValue(SOCKET_TIMEOUT, Integer.toString(timeout));
     }
 
+    /**
+     * If enabled, the code will also generate the display integration script associated with the SmartSEO content and include it alongside the payload.
+     *
+     * @param includeDisplayIntegrationCode default is false
+     * @return a reference to this Configuration
+     */
     public Configuration setIncludeDisplayIntegrationCode(boolean includeDisplayIntegrationCode) {
         return setStringValue(INCLUDE_DISPLAY_INTEGRATION_CODE, Boolean.toString(includeDisplayIntegrationCode));
     }
 
+    /**
+     * If enabled, the CloudSEO content will only be included if the user agent matches the crawlerAgentPattern property.
+     * If disabled, you must implement a caching layer for the returned content since the CloudSEO content is included on every page.
+     *
+     * @param botDetection default is true
+     * @return a reference to this Configuration
+     */
     public Configuration setBotDetection(boolean botDetection) {
         return setStringValue(BOT_DETECTION, Boolean.toString(botDetection));
     }
