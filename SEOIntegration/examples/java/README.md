@@ -40,7 +40,8 @@ The main line to look at is the point where we call `BazaarvoiceDisplayHelper.ge
 API Usage
 ---------
 
-There are two static methods that can be used to generate the Bazaarvoice content:
+There are two static methods and two instance methods in the BazaarvoiceDisplayHelper class that can be used to
+generate the Bazaarvoice content.  The instance methods are as follows:
 
 ```java
 BazaarvoiceDisplayHelper.getBVContent(userAgent,
@@ -52,7 +53,8 @@ BazaarvoiceDisplayHelper.getBVContent(userAgent,
                                       staging));
 ```
 
-The configuration files for this class are loaded during class instantiation and the remaining parameters are passed into the method as follows:
+The configuration files for this class are passed in during class instantiation and the remaining parameters are
+passed into the method as follows:
 
 Parameter Name | Definition | Example
 -------------- | ---------- | --------
@@ -64,7 +66,8 @@ subjectType | Type of subject (product or category) that the content was written
 subjectId | Product/cagegory ID that the content was written against.  If set, then you should also pass in valid product/category IDs for your staging environment. | `"XXYY"`
 staging | True if the code is currently running in the staging (test) environment | `true`
 
-In addition, there is another method that will attempt to parse out the base URL and queryString if you do not specify these explicitly.
+There is another method that will attempt to parse out the base URL and queryString if you do not specify these
+explicitly.
 
 ```java
 BazaarvoiceDisplayHelper.getBVContent(userAgent,
@@ -80,4 +83,8 @@ Parameter Name | Definition | Example
 -------------- | ---------- | --------
 fullURL | Full URL of the page requesting the SmartSEO content | `"http://www.example.com/store/products/XXYY/?campaign=bazaarvoice&bvrrp=1234/reviews/product/2/XXYY.htm"`
 
+
+Finally, there are two static versions of these methods which take in a Configuration object as a parameter.  The 
+Configuration object is built using the client defined properties file, but individual options can be configured
+per instance.
 
