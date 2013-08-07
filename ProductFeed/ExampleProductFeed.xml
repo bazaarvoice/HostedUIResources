@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 
     This example shows the XML syntax (using the "ProductFeed" schema)
@@ -11,7 +12,6 @@
     uninterrupted use, merchantability, or fitness for a particular purpose.
 
 -->
-<?xml version="1.0" encoding="utf-8"?>
 <Feed xmlns="http://www.bazaarvoice.com/xs/PRR/ProductFeed/5.6" name="ExampleClient" incremental="false" extractDate="2011-10-18T12:00:00.000000">
 
     <!-- Brands -->
