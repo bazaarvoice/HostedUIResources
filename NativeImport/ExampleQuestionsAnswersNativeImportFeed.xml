@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/SyndicationFeed/5.6" name="clientname" extractDate="2008-11-21T22:44:33.179+01:00">
+<Product id="testid">
+  <ExternalId>testid</ExternalId>
+  <Questions>
+    <Question id="44135">
+     <SubmissionTime>2008-11-21T22:44:33.179+01:00</SubmissionTime>
+     <UserNickname>Dave</UserNickname>
+     <UserLocation>London</UserLocation>
+     <QuestionSummary>Can we import A&amp;A questions?</QuestionSummary>
+     <QuestionDetails>The reason I ask is that I'm really curious</QuestionDetails>
+     <DisplayLocale>en_GB</DisplayLocale>
+     <Answers>
+        <Answer id="1">
+          <SubmissionTime>2008-11-22T22:44:33.179+01:00</SubmissionTime>
+          <UserNickname>Tim</UserNickname>
+          <UserLocation>Edinburgh</UserLocation>
+          <AnswerText>I think so</AnswerText>
+          <DisplayLocale>en_GB</DisplayLocale>
+        </Answer>
+        <Answer id="2">
+          <SubmissionTime>2008-11-23T22:44:33.179+01:00</SubmissionTime>
+          <UserNickname>James</UserNickname>
+          <UserLocation>Birmingham</UserLocation>
+          <AnswerText>A guy I know has done it</AnswerText>
+          <DisplayLocale>en_GB</DisplayLocale>
+        </Answer>
+        <Answer id="3">
+          <SubmissionTime>2008-11-23T22:44:33.19+01:00</SubmissionTime>
+          <UserNickname>James</UserNickname>
+          <UserLocation>Barcelona</UserLocation>
+          <AnswerText>Of course you can, here's how :D</AnswerText>
+          <DisplayLocale>es_ES</DisplayLocale>
+        </Answer>
+     </Answers>
+    </Question>
+  </Questions>
+</Product> 
+<Product id="testid2">
+  <ExternalId>testid2</ExternalId>
+  <Questions>
+    <Question id="44136">
+     <SubmissionTime>2008-11-21T22:44:33.179+01:00</SubmissionTime>
+     <UserNickname>Dave</UserNickname>
+     <UserLocation>London</UserLocation>
+     <QuestionSummary>Can we import A&amp;A answers?</QuestionSummary>
+     <QuestionDetails>The reason I ask is that I'm really curious</QuestionDetails>
+     <DisplayLocale>en_GB</DisplayLocale>
+     <Answers>
+        <Answer id="4">
+          <SubmissionTime>2008-11-22T22:44:33.179+01:00</SubmissionTime>
+          <UserNickname>Tim</UserNickname>
+          <UserLocation>Edinburgh</UserLocation>
+          <AnswerText>I think so</AnswerText>
+          <DisplayLocale>en_GB</DisplayLocale>
+        </Answer>
+        <Answer id="5">
+          <SubmissionTime>2008-11-23T22:44:33.179+01:00</SubmissionTime>
+          <UserNickname>Becker</UserNickname>
+          <UserLocation>Madrid</UserLocation>
+          <AnswerText>A guy I know has done it</AnswerText>
+          <DisplayLocale>es_ES</DisplayLocale>
+        </Answer>
+        <Answer id="6">
+          <SubmissionTime>2008-11-23T22:44:33.19+01:00</SubmissionTime>
+          <UserNickname>Tsango</UserNickname>
+          <UserLocation>Berlin</UserLocation>
+          <AnswerText>Of course you can, here's how :D</AnswerText>
+          <DisplayLocale>de_DE</DisplayLocale>
+        </Answer>
+     </Answers>
+    </Question>
+  </Questions>
+</Product> 
+</Feed>
