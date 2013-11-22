@@ -1,5 +1,6 @@
 .NET BV SEO SDK
 ================
+The .NET BV SEO SDK is compatible with .NET 3.5 and above.
 
 There are two ways to use the BV SEO SDK: 
  - Reference the BvSeoSdk.dll found in BvSeoSdk_binaries folder, or 
