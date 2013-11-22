@@ -10,11 +10,11 @@ To get the SEO content, all that needs to be done is:
 
 ```c#
 String SEO_CONTENTS = new Bv(
-                deploymentZoneID: "XXXX-en_us",
+                deploymentZoneID: "Main_Site-en_US", 
                 product_id: "XXYYY", 
                 //The page_url is optional
                 //page_url: "http://www.example.com/store/products/data-gen-696yl2lg1kurmqxn88fqif5y2/",
-                cloudKey: "sdkfkjflsjdfl", 
+                cloudKey: "agileville-78B2EF7DE83644CAB5F8C72F2D8C8491" // use value populated in "cloud key" field under "SEO configuration" in the config hub. 
                 bv_product:  BvProduct.REVIEWS, 
                 //bot_detection: false, //by default bot_detection is set to true
                 user_agent: "msnbot") //Setting user_agent for testing. Leave this blank in production.
