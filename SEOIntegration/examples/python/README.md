@@ -16,10 +16,10 @@
 
 	```
     bvSeo = bv.BV(
-        deployment_zone_id='1234-en_us',
+        deployment_zone_id='Main_Site-en_US',
         product_id='test1',
         page_url='http://example.com/reviews/?foo=bar&test=yes',
-        seo_key='hiutrh80ersy508hise45',
+        seo_key='agileville-78B2EF7DE83644CAB5F8C72F2D8C8491', 
         content_type='reviews',
         current_request_query_string=request.args,
         user_agent='msnbot'
@@ -37,7 +37,7 @@
 Name | Default Value | Example Values | Required | Notes
 ------ | ------------- | ------------ | ------------ | ------------
 product_id |  None | test1 | Yes | |
-display_code |  None | 1234-en_us | Yes | |
+display_code |  None | Main_Site-en_US | Yes | |
 bv_product | reviews | reviews, questions | No | |
 page_url | None |  http://www.example.com/pdp/test1 | Yes | Pass the URL of the current page to this parameter. For example, using the Flask framework, you would pass `request.path` to this parameter. |
 seo_key |  None | 2b1d0e3b86ffa60cb2079dea11135c1e | Yes | |
