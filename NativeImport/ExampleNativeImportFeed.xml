@@ -46,6 +46,7 @@
                 <Title>Best product ever!</Title>
                 <ReviewText>This product truly changed my life; I don't know what I'd do without it.</ReviewText>
                 <Rating>5</Rating>
+                <IpAddress>64.94.228.137</IpAddress>
                 <Recommended>true</Recommended>
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
                 <SubmissionTime>2012-01-23T12:59:25.000-06:00</SubmissionTime>
@@ -62,6 +63,7 @@
                 <Title>What an amazing product!</Title>
                 <ReviewText>This product is great and I'll definitely recommend it to my friends!</ReviewText>
                 <Rating>4</Rating>
+                <IpAddress>64.94.228.136</IpAddress>
                 <Recommended>true</Recommended>
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
                 <SubmissionTime>2012-01-23T04:26:14.000-06:00</SubmissionTime>
