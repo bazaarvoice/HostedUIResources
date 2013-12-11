@@ -22,7 +22,7 @@ Follow these steps to use the PHP SDK:
     ));
     ```
 
-3. Call $bv->reviews->renderSeo() to grab the product's review SEO content.  This call will return the SEO HTML as a string. This string needs to be rendered on the product page inside the \<div id="BVRRContainer">\</div>. For example: 
+3. Call $bv->reviews->renderSeo() to grab the product's review SEO content.  This call will return the SEO HTML as a string. This string needs to be rendered on the product page inside the `<div id="BVRRContainer"></div>`. For example: 
     ```php
     <div id="BVRRContainer">
         <?php echo $bv->reviews->renderSeo();?>
