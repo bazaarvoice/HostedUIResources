@@ -3,7 +3,7 @@ Bazaarvoice Hosted UI Implementation Resources
 
 This project contains information and resources to help you implement the Bazaarvoice Hosted UI solution.
 
-If you have any questions or encounter issues with the code in this project, contact your Bazzarvoice Implementation or Support Engineer.
+If you have any questions or encounter issues with the code in this project, contact your Bazaarvoice Implementation or Support Engineer.
 
 
 [Cloud SEO SDKs](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration)
