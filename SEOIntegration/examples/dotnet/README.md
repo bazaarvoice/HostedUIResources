@@ -31,13 +31,13 @@ Here is a full list of the parameters you can pass into BV class shown above.
 
 Parameter Name | Default value | Example Value(s) | Required | Notes
 ------------ | ------------- | ------------ | ------------ | ------------
-cloudKey |  None | company-cdfa682b84bef44672efed074093ccd3 | Yes | Value will be provided by BV |
+cloudKey |  None | company-cdfa682b84bef446 72efed074093ccd3 | Yes | Value will be provided by BV |
 deploymentZoneID |  None | 1234-en_US | Yes | Value will be provided by BV |
 product_id |  None | test1 | Yes | Value and case must match ExternalID in the BV product feed |
 bv_product | None | BvProduct.REVIEWS or BvProduct.QUESTIONS | Yes | Use BvProduct enum that comes with the BvSeoSdk dll. |
 staging |  true | true or false | Yes | Do not forget to set this to false when publishing to production. |
 timeout_ms | 1000 | 1500 | No | Integer in ms. Determines how much time the request will be given before timing out. 
-page_url | HttpRequest.Url.OriginalString |  http://www.example.com/pdp/test1 | No | If a current URL is not provided the current page URL will be used instead.  You will want to provide the URL if you use query parameters or # in your URLs that you don't want Google to index. |
+page_url | HttpRequest.Url. OriginalString |  http://www.example.com/ pdp/test1 | No | If a current URL is not provided the current page URL will be used instead.  You will want to provide the URL if you use query parameters or # in your URLs that you don't want Google to index. |
 product_or_category | product | product, category | No | Reviews will always have this value set to product.  Used only for questions that can be submitted against a category or product. |
 bot_regex_string | "(msnbot|google|teoma|bingbot|yandexbot|yahoo)" | No | any regex valid expression | Regular expression used to determine whether or not the current request is a bot (checking against user agent header) |
 bot_detection | true | true, false | No | Flag used to determine if bot detection is required. Only use bot detection if cloud-based content retrieval averages greater than 350ms, as reported via the BVSEO comment tag that is written to the page source. |
