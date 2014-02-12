@@ -23,10 +23,10 @@
  * require(bvsdk.php);
  *
  * $bv = new BV(array(
- *    'deployment_zone_id' => '12325',
- *    'product_id' => 'product1',
- *    'cloud_key' => 'agileville-78B2EF7DE83644CAB5F8C72F2D8C8491',
- *    'staging' => TRUE
+ *    'deployment_zone_id' => '1234-en_US',
+ *    'product_id' => 'XXYYY',
+ *    'cloud_key' => 'company-cdfa682b84bef44672efed074093ccd3',
+ *    'staging' => FALSE
  * ));
  * 
  */
@@ -46,10 +46,10 @@
  *
  *   Optional fields
  *      current_page_url (string) (defaults to detecting the current_page automtically)
- *      staging (boolean) (defaults to true, need to put false when go to production)
+ *      staging (boolean) (defaults to false, need to put true for testing with staging data)
  *      subject_type (string) (defaults to product, for questions you can pass in categories here if needed)
  *      latency_timeout (int) (in millseconds) (defaults to 1000ms)
- *      bv_product (string) (defaults to reviews which is the only supported product right now)
+ *      bv_product (string) (defaults to reviews)
  *      bot_list (string) (defualts to msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)
  */
 
@@ -76,11 +76,11 @@ class BV {
 
         // config array, defaults are defined here
         $this->config = array(
-            'staging' => TRUE,
+            'staging' => FALSE,
             'subject_type' => 'product',
             'latency_timeout' => 1000,
             'current_page_url' => $this->_getCurrentUrl(),
-            'bot_detection' => TRUE,  // for some clients who are behind a CDN or something they may want to include SEO content with every request
+            'bot_detection' => FALSE,  // bot detection should only be enabled if average execution time regularly exceeds 350ms.
             'include_display_integration_code' => FALSE,  
             'client_name' => $params['deployment_zone_id'],
             'internal_file_path' => FALSE,
@@ -95,6 +95,8 @@ class BV {
 
         // setup the questions object
         $this->questions = new Questions($this->config);
+        
+        // setup the timer object
 
     }
 
@@ -176,21 +178,20 @@ class Base{
             $seo_content = $this->_replaceTokens($seo_content);
 
             // if debug mode is on we want to include more debug data
-            if (isset($_GET['bvreveal']))
-            {
-                if($_GET['bvreveal'] == 'debug')
-                {
-                    $printable_config = $this->config;
-                    unset($printable_config['cloud_key']);
-                    $seo_content .= $this->_buildComment('Config options: '.print_r($printable_config, TRUE));
-                }
-            }
+            //if (isset($_GET['bvreveal']))
+            //{
+            //  if($_GET['bvreveal'] == 'debug')
+            //    {
+            //        $printable_config = $this->config;
+            //        $seo_content .= $this->_buildComment('Config options: '.print_r($printable_config, TRUE));
+            //    }
+            //}
 
             $pay_load = $seo_content;
         }
         else
         {
-            $pay_load = $this->_buildComment('Bot not detected, JavaScript-only');
+            $pay_load = $this->_buildComment('JavaScript-only Display');
         }
 
         return $pay_load;
@@ -391,7 +392,7 @@ class Base{
         }
 
         // if we are here we got a response so let's return it
-        $msg = 'timer '.($request['info']['total_time'] * 1000).'ms';
+        $this->response_time = round($request['info']['total_time'] * 1000);
         return $request['response'].$this->_buildComment($msg);
     }
 
@@ -422,8 +423,56 @@ class Base{
     }
 
     private function _buildComment($msg){
-        return "\n".'<!--BVSEO|dp: '.$this->config['deployment_zone_id'].'|sdk: v1.0-p|msg: '.$msg.' -->';
+    	$footer = '<ul id="BVSEOSDK" style="display:none;">';
+    	$footer .= "\n".'	<li id="vn">bvseo-1.0.1.1</li>';
+    	$footer .= "\n".'	<li id="sl">bvseo-p</li>';
+    	if ($this->config['internal_file_path']) {
+    		$footer .= "\n".'	<li id="mt">bvseo-FILE</li>';
+    	} else {
+    		$footer .= "\n".'	<li id="mt">bvseo-CLOUD</li>';
+    	}
+    	$footer .= "\n".'	<li id="et">bvseo-'.$this->response_time.'ms</li>';
+    	$footer .= "\n".'	<li id="ct">bvseo-'.strtoupper($this->config['bv_product']).'</li>';
+    	$footer .= "\n".'	<li id="st">bvseo-'.strtoupper($this->config['subject_type']).'</li>';
+    	$footer .= "\n".'	<li id="am">bvseo-getContent</li>';
+    	if (strlen($msg) > 0) {
+    		$footer .= "\n".'	<li id="ms">bvseo-msg: '.$msg.'</li>';
+    	}
+     	$footer .= "\n".'</ul>';   
+     	
+    	//when in debug mode, also display the following information
+    	if($_GET['bvreveal'] == 'debug') {
+    	$footer .= "\n".'<ul id="BVSEOSDK_DEBUG" style="display:none;">';
+    	$footer .= "\n".'	<li id="cloudKey">'.$this->config['cloud_key'].'</li>';
+    	$footer .= "\n".'	<li id="bv.root.folder">'.$this->config['deployment_zone_id'].'</li>';
+    	$footer .= "\n".'	<li id="stagingS3Hostname">'.$this->bv_config['seo-domain']['staging'].'</li>';
+    	$footer .= "\n".'	<li id="productionS3Hostname">'.$this->bv_config['seo-domain']['production'].'</li>';
+    	$staging = ($this->config['staging']) ? 'TRUE' : 'FALSE';
+       	$footer .= "\n".'	<li id="staging">'.$staging.'</li>'; 	
+    	$footer .= "\n".'	<li id="seo.sdk.execution.timeout">'.$this->config['latency_timeout'].'</li>';
+    	$bot_detection = ($this->config['bot_detection']) ? 'TRUE' : 'FALSE';
+    	$footer .= "\n".'	<li id="botDetection">'.$bot_detection.'</li>';
+    	$footer .= "\n".'	<li id="crawlerAgentPattern">'.$this->config['bot_list'].'</li>';
+    	$footer .= "\n".'	<li id="userAgent">'.$_SERVER['HTTP_USER_AGENT'].'</li>';
+    	$footer .= "\n".'	<li id="pageURI">'.$this->config['current_page_url'].'</li>';
+    	$footer .= "\n".'	<li id="subjectID">'.urlencode($this->config['product_id']).'</li>';
+    	$footer .= "\n".'	<li id="contentType">'.strtoupper($this->config['bv_product']).'</li>';
+    	$footer .= "\n".'	<li id="subjectType">'.strtoupper($this->config['subject_type']).'</li>';
+     	$footer .= "\n".'</ul>';    	
+    	}
+
+        return $footer;
+       // return "\n".'<!--BVSEO|dp: '.$this->config['deployment_zone_id'].'|sdk: v1.0-p|msg: '.$msg.' -->';
     }
+	
+	private function _booleanToString($boolean){
+		if ($boolean){
+			return 'TRUE';
+		}else{
+			return 'FALSE';
+		}
+	}
+
 
 } // end of Base class
 
