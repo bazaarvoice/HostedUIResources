@@ -30,6 +30,7 @@ namespace BvSeoSdk
         private string _commentStub = "<!--BVSEO|dz:{0}|sdk:v{1}-n|msg:{2} -->";
         private string _exception = "no exceptions";
         private string _version;
+        private string _bvUrl = "";
 
         public Bv(String deploymentZoneID,
             String product_id,
@@ -70,11 +71,11 @@ namespace BvSeoSdk
             if (!isBvRevealADebug(request))
                 return String.Format(_commentStub, _deploymentZoneId, _version, message);
             return String.Format
-                    (_commentStub, _deploymentZoneId, _version, message + String.Format("-- parameters: bvProduct: {0}, Deployment Zone: {1}, BotDetection: {2}, BotRegex: {3}, includeDisplayIntegration: {4}, internalFilePath: {5}, pageUrl: {6}, productId: {7}, ProductType: {8}, SEOKey: {9}, staging: {10}, userAgent: {11}, requestUrl: {12}, requestQuery: {13}, exceptions: {14}",
+                    (_commentStub, _deploymentZoneId, _version, message + String.Format("-- parameters: bvProduct: {0}, Deployment Zone: {1}, BotDetection: {2}, BotRegex: {3}, includeDisplayIntegration: {4}, internalFilePath: {5}, pageUrl: {6}, productId: {7}, ProductType: {8}, SEOKey: {9}, staging: {10}, userAgent: {11}, requestUrl: {12}, requestQuery: {13}, exceptions: {14}, bvUrl: {15}",
                     _bvProduct, _deploymentZoneId, _botDetection, _botRegexString,
                     _includeDisplayIntegrationCode, _internalFilePath, _pageUrl, _productId, _productOrCategory, _seoKey, _staging, _userAgent,
                     request.Url.OriginalString, request.Url.Query,
-                    _exception));
+                    _exception, _bvUrl));
         }
 
         public string ProductOrCategory
@@ -112,14 +113,19 @@ namespace BvSeoSdk
             try
             {
                 if (!String.IsNullOrEmpty(_internalFilePath))
+                {
                     response = getFile(Path.Combine(_internalFilePath, String.Format("{0}\\{1}\\{2}\\{3}\\{4}.htm",
                                                                                      _deploymentZoneId, _bvProduct,
                                                                                      _productOrCategory, bvpage,
                                                                                      _productId)));
+                }
                 else
-                    response = httpGet(String.Format("http://{0}/{1}/{2}/{3}/{4}/{5}/{6}.htm",
-                                                     endpoint, _seoKey, _deploymentZoneId, _bvProduct,
-                                                     _productOrCategory, bvpage, _productId));
+                {
+                    _bvUrl = String.Format("http://{0}/{1}/{2}/{3}/{4}/{5}/{6}.htm",
+                                           endpoint, _seoKey, _deploymentZoneId, _bvProduct,
+                                           _productOrCategory, bvpage, _productId);
+                    response = httpGet(_bvUrl);
+                }
                 timeTakenInMs = (DateTime.Now - startTime).Milliseconds;
             }
             catch(Exception ex)
@@ -256,7 +262,6 @@ namespace BvSeoSdk
                 {
                     using (StreamReader objReader = new StreamReader(objStream))
                     {
-
                         String line = objReader.ReadLine();
                         while (line != null)
                         {
