@@ -7,6 +7,7 @@
     Some notes:
     - extractDate should be expressed in XML dateTime format
     - The "id" attribute of each Review element should be unique
+    - DisplayLoacle will be required for content to be imported to different locales
 
     Some elements may be optional and are listed below:
     - ModerationStatus
@@ -17,6 +18,7 @@
     - Recommended
     - ReviewerLocation
     - SubmissionTime
+    - DisplayLocale
 
     If you omit any of these optional elements be sure to exclude the element
     completely instead of providing an empty element.  One addendum to the list
@@ -46,6 +48,7 @@
                 <Title>Best product ever!</Title>
                 <ReviewText>This product truly changed my life; I don't know what I'd do without it.</ReviewText>
                 <Rating>5</Rating>
+                <DisplayLocale>en_US</DisplayLocale>
                 <IpAddress>64.94.228.137</IpAddress>
                 <Recommended>true</Recommended>
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
