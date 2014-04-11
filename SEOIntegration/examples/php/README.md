@@ -17,7 +17,7 @@ Follow these steps to use the PHP SDK:
     $bv = new BV(array(
          'deployment_zone_id' => 'Main_Site-en_US', // replace with your display code (BV provided)
          'product_id' => 'product1', // replace with product id 
-         'cloud_key' => 'agileville-78B2EF7DE83644CAB5F8C72F2D8C8491', // use value populated in "cloud key" field under "SEO configuration" in the config hub. 
+         'cloud_key' => 'agileville-78B2EF7DE83644CAB5F8C72F2D8C8491', // Get from the config hub. On the left panel, click "Technical Setup" > "SEO Configuration." The value will be in the "Cloud Key" field.
          'staging' => TRUE
     ));
     ```
