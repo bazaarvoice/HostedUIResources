@@ -36,7 +36,7 @@
 
 Name | Default Value | Example Values | Required | Notes
 ------ | ------------- | ------------ | ------------ | ------------
-product_id |  None | test1 | Yes | |
+product_id |  None | test1 | Yes | This will match the value of the product External ID in the XML product feed.  |
 display_code |  None | Main_Site-en_US | Yes | Default display code. Will vary when implementing on different locales/languages. |
 bv_product | reviews | reviews, questions | No | |
 page_url | None |  http://www.example.com/pdp/test1 | Yes | Pass the URL of the current page to this parameter. For example, using the Flask framework, you would pass `request.path` to this parameter. |
