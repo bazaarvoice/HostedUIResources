@@ -7,6 +7,7 @@
     Some notes:
     - extractDate should be expressed in XML dateTime format
     - The "id" attribute of each Review element should be unique
+    - DisplayLocale is required to import content of different locales/languages
 
     Some elements may be optional and are listed below:
     - ModerationStatus
@@ -19,7 +20,7 @@
     - SubmissionTime
 
     If you omit any of these optional elements be sure to exclude the element
-    completely instead of providing an empty element.  One addendum to the list
+    completely instead of providing an empty element, such as <Recommended></Recommended>. One addendum to the list
     above is that if UserProfileReference is included, the children elements
     listed in the example below are required.
 
