@@ -31,8 +31,8 @@ Here is a full list of the parameters you can pass into BV class shown above.
 
 Parameter Name | Default value | Example Value(s) | Required | Notes
 ------------ | ------------- | ------------ | ------------ | ------------
-cloudKey |  None | company-cdfa682b84bef446 72efed074093ccd3 | Yes | Value will be provided by BV |
-deploymentZoneID |  None | 1234-en_US | Yes | Value will be provided by BV |
+cloudKey |  None | company-cdfa682b84bef446 72efed074093ccd3 | Yes | Get from the config hub. On the left panel, click "Technical Setup" > "SEO Configuration." The value will be in the "Cloud Key" field |
+deploymentZoneID |  None | Main_Site-en_US | Yes | Default value. Will vary if implementing on different locales/languages |
 product_id |  None | test1 | Yes | Value and case must match ExternalID in the BV product feed |
 bv_product | None | BvProduct.REVIEWS or BvProduct.QUESTIONS | Yes | Use BvProduct enum that comes with the BvSeoSdk dll. |
 staging |  true | true or false | Yes | Do not forget to set this to false when publishing to production. |
@@ -63,7 +63,7 @@ Troubleshooting
    
    This suggests that the SDK is not being able to parse the page number from the given HttpRequest URL, and is defaulting to Page 1. For example, if the URL being passed is http://example.com/?bvrrp=1234/reviews/product/2/1234.htm, then the SDK knows the page you are asking for is page 2. If you want to make sure that the SDK is looking at the correct URL, you can provide the value of the url in the page_url parameter.
 
-3.  The SDK is reporting a 403 erroring
+3.  The SDK is reporting a 403 error
 
    The "403 error" message is expected behavior when SEO files for a product have not been published.  If a product has no review contnet, this message will be displayed in a source code comment.  If a page does have reviews and SEO publishing has been active for at least 36 hours, use the following techniques (in #4) to debug.
 
