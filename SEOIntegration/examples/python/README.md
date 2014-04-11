@@ -37,10 +37,10 @@
 Name | Default Value | Example Values | Required | Notes
 ------ | ------------- | ------------ | ------------ | ------------
 product_id |  None | test1 | Yes | |
-display_code |  None | Main_Site-en_US | Yes | |
+display_code |  None | Main_Site-en_US | Yes | Default display code. Will vary when implementing on different locales/languages. |
 bv_product | reviews | reviews, questions | No | |
 page_url | None |  http://www.example.com/pdp/test1 | Yes | Pass the URL of the current page to this parameter. For example, using the Flask framework, you would pass `request.path` to this parameter. |
-seo_key |  None | 2b1d0e3b86ffa60cb2079dea11135c1e | Yes | |
+seo_key |  None | 2b1d0e3b86ffa60cb2079dea11135c1e | Yes | Get from the config hub. On the left panel, click "Technical Setup" > "SEO Configuration." The value will be in the "Cloud Key" field. |
 user_agent | None | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.152 Safari/537.22 | Yes | Pass the user agent string of the request to this parameter. For example, using the Flask framework, you would pass `request.headers.get('User-Agent')` to this parameter. |
 current_request_query_string | Empty | | Yes | Pass the current request query string as a `dict` object. For example, using the Flask framework, you would pass `request.args` as a `dict` object. |
 product_or_category | product | product, category | No | |
