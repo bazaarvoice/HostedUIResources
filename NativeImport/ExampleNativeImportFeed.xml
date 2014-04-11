@@ -51,6 +51,7 @@
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
                 <SubmissionTime>2012-01-23T12:59:25.000-06:00</SubmissionTime>
                 <Featured>false</Featured>
+                <DisplayLocale>en_US</DisplayLocale>
             </Review>
             <Review id="12" removed="false">
                 <ModerationStatus>APPROVED</ModerationStatus>
@@ -68,6 +69,7 @@
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
                 <SubmissionTime>2012-01-23T04:26:14.000-06:00</SubmissionTime>
                 <Featured>false</Featured>
+                <DisplayLocale>en_US</DisplayLocale>
             </Review>
         </Reviews>
     </Product>
