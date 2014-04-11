@@ -65,7 +65,7 @@ Troubleshooting
 
 3.  The SDK is reporting a 403 error
 
-   The "403 error" message is expected behavior when SEO files for a product have not been published.  If a product has no review contnet, this message will be displayed in a source code comment.  If a page does have reviews and SEO publishing has been active for at least 36 hours, use the following techniques (in #4) to debug.
+   The "403 error" message is expected behavior when SEO files for a product have not been published.  If a product has no review content, this message will be displayed in a source code comment.  If a page does have reviews and SEO publishing has been active for at least 36 hours, use the following techniques (in #4) to debug.
 
 4. Request is erroring out / timing out / etc.
    
