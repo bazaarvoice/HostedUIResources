@@ -11,7 +11,7 @@ To get the SEO content, call the BV class using the following format.  NOTE: all
 ```c#
 String SEO_CONTENTS = new Bv(
                 cloudKey: "company-cdfa682b84bef44672efed074093ccd3",
-                deploymentZoneID: "1234-en_US",
+                deploymentZoneID: "Main_Site-en_US",
                 product_id: "XXYYY", 
                 page_url: "http://www.example.com/store/products/data-gen-696yl2lg1kurmqxn88fqif5y2/",
             	staging: false,
