@@ -25,9 +25,7 @@
     - SubmissionTime
 
     If you omit any of these optional elements be sure to exclude the element
-    completely instead of providing an empty element, such as <Recommended></Recommended>. One addendum to the list
-    above is that if UserProfileReference is included, the children elements
-    listed in the example below are required.
+    completely instead of providing an empty element, such as <Recommended></Recommended>. 
 
     Copyright 2013 Bazaarvoice, Inc.
 
