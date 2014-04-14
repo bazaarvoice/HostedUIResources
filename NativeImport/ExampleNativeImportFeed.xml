@@ -5,9 +5,11 @@
     for providing native review content to Bazaarvoice.
 
     Some notes:
-    - extractDate should be expressed in XML dateTime format
-    - The "id" attribute of each Review element should be unique
-    - DisplayLocale is required to import content from different locales/languages
+    - Use unique values for the "id" attribute of each Review element.
+    - Express ExtractDate and SubmissionTime in XML dateTime format.
+    - Match the external IDs to the product IDs that you are calling on the source code of your product pages (example: <ExternalId>test4</ExternalId>) to ensure the imported content can be viewed on your site.
+    - Ensure nicknames are unique. For example, if there are multiple contributors using the same profile display name "Bob," the subsequent contributors who use "Bob" as their display name may be set to “Anonymous.” Otherwise, the display name may be modified to make it unique.
+    - The DisplayLocale element is required to import content from different locales or languages.
 
     Some elements may be optional and are listed below:
     - ModerationStatus
