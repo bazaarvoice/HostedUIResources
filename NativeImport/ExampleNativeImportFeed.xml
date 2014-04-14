@@ -7,25 +7,26 @@
     Some notes:
     - Use unique values for the "id" attribute of each Review element.
     - Express ExtractDate and SubmissionTime in XML dateTime format.
-    - Match the external IDs to the product IDs that you are calling on the source code of your product pages.
-      (Example: <ExternalId>test4</ExternalId>) to ensure the imported content can be viewed on your site.
-    - Ensure nicknames are unique. For example, if there are multiple contributors using the same profile display name "Bob," 
-      the subsequent contributors who use "Bob" as their display name may be set to “Anonymous.” 
-      Otherwise, the display name may be modified to make it unique.
+    - Match the value of the ExternalId element to the product IDs that you are calling 
+      on the source code of your product pages to ensure the imported content can be displayed on your site. 
+      For example: <ExternalId>test4</ExternalId>
+    - Ensure nicknames are unique. For example, if there are multiple contributors using the same 
+      profile display name "Bob," the subsequent contributors who use "Bob" as their display name 
+      may be set to “Anonymous.” Otherwise, the display name may be modified to make it unique.
     - The DisplayLocale element is required to import content from different locales or languages.
 
-    Some elements may be optional and are listed below:
+    Optional elements are listed below. When leaving out optional elements, exclude the element
+    completely instead of providing an empty element, such as <Recommended></Recommended> to avoid validation errors. 
+
     - ModerationStatus
-    - UserProfileReference - If included, the children elements (DisplayName, Anonymous, HyperlinkingEnabled) are required. 
+    - UserProfileReference - if included, the children elements ExternalId, DisplayName, Anonymous, 
+      and HyperlinkingEnabled are required. 
     - Title
     - ReviewText
     - Rating
     - Recommended
     - ReviewerLocation
     - SubmissionTime
-
-    If you omit any of these optional elements be sure to exclude the element
-    completely instead of providing an empty element, such as <Recommended></Recommended>. 
 
     Copyright 2013 Bazaarvoice, Inc.
 
