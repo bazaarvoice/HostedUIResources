@@ -52,11 +52,11 @@ Here are the steps you must follow to implement Cloud SEO:
 2. If the current request is coming from a search engine, we need to determine which page of SEO content we need to request.  This can be determined by the bvrrp URL parameter.  If this parameter doesn't exist we default to requesting page 1.  If it exists, then the page we need to request will be inside the value of this parameter.  
 
 3.  Next, we make a request to the URL containing the SEO content we need.  You can use this pattern to build that URL:
->http://seo-stg.bazaarvoice.com/{seo-key}/{display-code}/{content-type}/{subject-type}/{page-number}/{product-id}.htm
+>http://seo-stg.bazaarvoice.com/{seo-key}/{deployment-zone}-{locale}/{content-type}/{subject-type}/{page-number}/{product-id}.htm
 
    For example, you were going to request page 1 of review content for the product1 product, the full URL would look like this:
->http://seo-stg.bazaarvoice.com/agileville-78B2EF7DE83644CAB5F8C72F2D8C8491/12325/questions/product/1/product1.htm
-   
+>http://seo.bazaarvoice.com/brim-44a1a9b0ea7a809ba45134f8b5570a03/Main_Site-en_US/reviews/product/1/50001.htm
+
    These URLs are pointing to staging.  To request production data you would use seo.bazaarvoice.com instead of seo-stg.bazaarvoice.com
 
 4. Now that we have fetched our SEO content, we need to replace all instances of the string {INSERT\_URI_TOKEN} with the current page's URL.  This is to build in pagination between the pages of content so search engines can crawl all the pages of UGC content. 
