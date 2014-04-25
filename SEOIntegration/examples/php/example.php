@@ -22,7 +22,7 @@
     // all the possible parameters in the comments of
     // the bvsdk.php file
     $bv = new BV(array(
-        'deployment_zone_id' => '12325',
+        'deployment_zone_id' => 'Main_Site-en_US',
         'product_id' => 'product1',
         'cloud_key' => 'agileville-78B2EF7DE83644CAB5F8C72F2D8C8491',
         'staging' => TRUE,
@@ -33,7 +33,7 @@
     // the zip file, unzipping and storing it daily. 
     // 
     // $bv = new BV(array(
-    //     'deployment_zone_id' => '12335',
+    //     'deployment_zone_id' => 'Main_Site-en_US',
     //     'product_id' => 'product1',
     //     'internal_file_path' => '/path/to/unzipped/folder'
     // ));
