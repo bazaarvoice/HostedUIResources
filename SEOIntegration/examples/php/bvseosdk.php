@@ -211,6 +211,7 @@ class Base{
      * @access private
      * @return bool
      */
+
     private function _isBot()
     {
         // we need to check the user agent string to see if this is a bot,
@@ -379,6 +380,8 @@ class Base{
         // Close the cURL resource, and free system resources
         curl_close($ch);
 
+        $msg="";
+
         // see if we got any errors with the connection
         if($request['error_number'] != 0){
             $msg = 'Error - '.$request['error_message'];
@@ -441,25 +444,27 @@ class Base{
      	$footer .= "\n".'</ul>';   
      	
     	//when in debug mode, also display the following information
-    	if($_GET['bvreveal'] == 'debug') {
-    	$footer .= "\n".'<ul id="BVSEOSDK_DEBUG" style="display:none;">';
-    	$footer .= "\n".'	<li id="cloudKey">'.$this->config['cloud_key'].'</li>';
-    	$footer .= "\n".'	<li id="bv.root.folder">'.$this->config['deployment_zone_id'].'</li>';
-    	$footer .= "\n".'	<li id="stagingS3Hostname">'.$this->bv_config['seo-domain']['staging'].'</li>';
-    	$footer .= "\n".'	<li id="productionS3Hostname">'.$this->bv_config['seo-domain']['production'].'</li>';
-    	$staging = ($this->config['staging']) ? 'TRUE' : 'FALSE';
-       	$footer .= "\n".'	<li id="staging">'.$staging.'</li>'; 	
-    	$footer .= "\n".'	<li id="seo.sdk.execution.timeout">'.$this->config['latency_timeout'].'</li>';
-    	$bot_detection = ($this->config['bot_detection']) ? 'TRUE' : 'FALSE';
-    	$footer .= "\n".'	<li id="botDetection">'.$bot_detection.'</li>';
-    	$footer .= "\n".'	<li id="crawlerAgentPattern">'.$this->config['bot_list'].'</li>';
-    	$footer .= "\n".'	<li id="userAgent">'.$_SERVER['HTTP_USER_AGENT'].'</li>';
-    	$footer .= "\n".'	<li id="pageURI">'.$this->config['current_page_url'].'</li>';
-    	$footer .= "\n".'	<li id="subjectID">'.urlencode($this->config['product_id']).'</li>';
-    	$footer .= "\n".'	<li id="contentType">'.strtoupper($this->config['bv_product']).'</li>';
-    	$footer .= "\n".'	<li id="subjectType">'.strtoupper($this->config['subject_type']).'</li>';
-     	$footer .= "\n".'</ul>';    	
-    	}
+    	if (isset($_GET['bvreveal'])){
+            if($_GET['bvreveal'] == 'debug') {
+                $footer .= "\n".'<ul id="BVSEOSDK_DEBUG" style="display:none;">';
+                $footer .= "\n".'   <li id="cloudKey">'.$this->config['cloud_key'].'</li>';
+                $footer .= "\n".'   <li id="bv.root.folder">'.$this->config['deployment_zone_id'].'</li>';
+                $footer .= "\n".'   <li id="stagingS3Hostname">'.$this->bv_config['seo-domain']['staging'].'</li>';
+                $footer .= "\n".'   <li id="productionS3Hostname">'.$this->bv_config['seo-domain']['production'].'</li>';
+                $staging = ($this->config['staging']) ? 'TRUE' : 'FALSE';
+                $footer .= "\n".'   <li id="staging">'.$staging.'</li>';    
+                $footer .= "\n".'   <li id="seo.sdk.execution.timeout">'.$this->config['latency_timeout'].'</li>';
+                $bot_detection = ($this->config['bot_detection']) ? 'TRUE' : 'FALSE';
+                $footer .= "\n".'   <li id="botDetection">'.$bot_detection.'</li>';
+                $footer .= "\n".'   <li id="crawlerAgentPattern">'.$this->config['bot_list'].'</li>';
+                $footer .= "\n".'   <li id="userAgent">'.$_SERVER['HTTP_USER_AGENT'].'</li>';
+                $footer .= "\n".'   <li id="pageURI">'.$this->config['current_page_url'].'</li>';
+                $footer .= "\n".'   <li id="subjectID">'.urlencode($this->config['product_id']).'</li>';
+                $footer .= "\n".'   <li id="contentType">'.strtoupper($this->config['bv_product']).'</li>';
+                $footer .= "\n".'   <li id="subjectType">'.strtoupper($this->config['subject_type']).'</li>';
+                $footer .= "\n".'</ul>';        
+            }
+        }
 
         return $footer;
        // return "\n".'<!--BVSEO|dp: '.$this->config['deployment_zone_id'].'|sdk: v1.0-p|msg: '.$msg.' -->';
