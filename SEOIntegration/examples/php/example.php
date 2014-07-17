@@ -26,6 +26,7 @@
         'product_id' => 'product1',
         'cloud_key' => 'agileville-78B2EF7DE83644CAB5F8C72F2D8C8491',
         'staging' => TRUE,
+        'current_page_url' => 'bvrrp=12325/reviews/product/2/product1.htm',
     ));
 
     // if you are wanting to load the SEO content from disk you can do something like 
