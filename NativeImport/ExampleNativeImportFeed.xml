@@ -5,6 +5,7 @@
     for providing native review content to Bazaarvoice.
 
     DATA REQUIREMENTS - READ THIS FIRST.
+    
     - Use unique values for the "id" attribute of each Review element.
     - Express ExtractDate and SubmissionTime in XML dateTime format.
     - Match the value of the ExternalId element to the product IDs that you are calling 
