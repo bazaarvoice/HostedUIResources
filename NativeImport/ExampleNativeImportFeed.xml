@@ -21,7 +21,7 @@
 
     - ModerationStatus
     - UserProfileReference - if included, the children elements ExternalId, DisplayName, Anonymous, 
-      and HyperlinkingEnabled are required. 
+      and HyperlinkingEnabled are required. If omitted, the reviews will be imported as "Anonymous."
     - Title
     - ReviewText
     - Rating
