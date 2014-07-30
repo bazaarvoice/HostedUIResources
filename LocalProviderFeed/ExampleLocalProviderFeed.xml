@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessOrganization xmlns="http://www.bazaarvoice.com/xs/BusinessOrganizationFeed/1.0"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://www.bazaarvoice.com/xs/BusinessOrganizationFeed/1.0 bvlocal_0.1.xsd"
+                      extractDate="2013-02-04T11:23:00-07:00" feedName="test" incremental="true">
+    <FeedSchemaVersion>1.0</FeedSchemaVersion>
+
+
+    <!-- Pass thru -->
+    <Brands>
+        <Brand>
+            <Name>ABC Test Brand</Name>
+            <ExternalId>1928739</ExternalId>
+            <Attributes>
+                <Attribute id="brand_test">
+                    <UrlValue>http://www</UrlValue>
+                </Attribute>
+            </Attributes>
+        </Brand>
+    </Brands>
+
+    <!-- Pass thru -->
+    <Categories>
+          <Category>
+            <ExternalId>USA</ExternalId>
+            <Name>USA</Name>
+        </Category>
+        
+        <Category>
+            <ExternalId>SD</ExternalId>
+            <ParentExternalId>USA</ParentExternalId>
+            <Name>SD</Name>
+        </Category>
+    </Categories>
+
+
+    <LocalProviders>
+        <LocalProvider removed="false">
+            <ExternalId>abc123</ExternalId>
+            <Name>ABC 123 Service Provider</Name>
+            <BrandLocatorPageUrl>http://www.brandXYZ.com/providers/abc123</BrandLocatorPageUrl>
+            <LocalProviderPageUrl>http://ww.brandXYZ.com/providers/abc123</LocalProviderPageUrl>
+            <CategoryExternalId>Categorynew122</CategoryExternalId>
+            <LogoUrl>http://www.brandXYZ.com/providers/abc123/logo.jpg</LogoUrl>
+
+            <BVLocalActive>true</BVLocalActive>
+
+            <Reviewable>true</Reviewable>
+
+            <Attributes>
+                <!-- Families the product is a member of -->
+                <Attribute id="BV_FE_FAMILY">
+                    <Value>Round</Value>
+                </Attribute>
+                <Attribute id="BV_FE_FAMILY">
+                    <Value>Green</Value>
+                </Attribute>
+                <!-- Show all content from other products in the Round Family -->
+                <Attribute id="BV_FE_EXPAND">
+                    <Value>BV_FE_FAMILY:Round</Value>
+                </Attribute>
+                <!-- any custom attribute -->
+                <Attribute id="ProductManagementGroupId">
+                    <Value>Group56789</Value>
+                </Attribute>
+            </Attributes>
+
+            <ExternalReviewMonitoring>
+                <Implementation name="Chatmeter">
+                    <PrimaryCategory>tires</PrimaryCategory>
+                        <CategoryKeywords>
+                            <CategoryKeyword>flat tire</CategoryKeyword>
+                            ...
+                        </CategoryKeywords>
+                </Implementation>
+            </ExternalReviewMonitoring>
+
+            <ContactInfo>
+                <StreetAddress>22 4th Street</StreetAddress>
+                <StreetAddress2>6th floor</StreetAddress2>
+                <City>San Francisco</City>
+                <StateProvince>CA</StateProvince>
+                <PostalCode>94104</PostalCode>
+                <Country>USA</Country>
+                <BusinessPhone>(415) 555 1234</BusinessPhone>
+                <AlternatePhone>415-555-2345</AlternatePhone>
+            </ContactInfo>
+
+            <SocialMediaChannels>
+                <SocialMediaChannel>
+                    <Type>Facebook</Type>
+                    <Url>http://www.facebook.com/abc123</Url>
+                </SocialMediaChannel>
+                <SocialMediaChannel>
+                    <Type>Twitter</Type>
+                    <Url>https://twitter.com/Abc123</Url>
+                </SocialMediaChannel>
+                <SocialMediaChannel>
+                    <Type>Yelp</Type>
+                    <Url>http://www.yelp.com/biz/abc123-san-francisco</Url>
+                </SocialMediaChannel>
+                <SocialMediaChannel>
+                    <Type>Google+</Type>
+                    <Url>https://plus.google.com/109306131876896773242</Url>
+                </SocialMediaChannel>
+            </SocialMediaChannels>
+
+            <Services>
+                <Service removed="false">
+                    <ExternalId>svc123</ExternalId>
+                    <Name>Service 123</Name>
+
+                    <PageUrl>http://www</PageUrl>
+                    <ImageUrl>http://www.test.png</ImageUrl>
+                </Service>
+                <Service removed="false">
+                    <ExternalId>emp123</ExternalId>
+                    <Name>Employee 123</Name>
+                    <PageUrl>http://www</PageUrl>
+                    <ImageUrl>http://www/test.png</ImageUrl>
+                    <Attributes>
+                        <Attribute id="test">
+                            <UrlValue>http://www</UrlValue>
+                        </Attribute>
+                    </Attributes>
+                </Service>
+            </Services>
+        </LocalProvider>
+    </LocalProviders>
+</BusinessOrganization>
