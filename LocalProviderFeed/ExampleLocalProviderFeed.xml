@@ -6,7 +6,7 @@
     <FeedSchemaVersion>1.0</FeedSchemaVersion>
 
 
-    <!-- Pass thru -->
+    <!-- Brands associated with local providers -->
     <Brands>
         <Brand>
             <Name>ABC Test Brand</Name>
@@ -19,7 +19,7 @@
         </Brand>
     </Brands>
 
-    <!-- Pass thru -->
+    <!-- Categories associated with local providers -->
     <Categories>
           <Category>
             <ExternalId>USA</ExternalId>
@@ -38,10 +38,18 @@
         <LocalProvider removed="false">
             <ExternalId>abc123</ExternalId>
             <Name>ABC 123 Service Provider</Name>
+            
+             <!-- Usually the brand's local page for the local provider -->
             <BrandLocatorPageUrl>http://www.brandXYZ.com/providers/abc123</BrandLocatorPageUrl>
+           
+            <!-- Usually local provider's website -->
             <LocalProviderPageUrl>http://ww.brandXYZ.com/providers/abc123</LocalProviderPageUrl>
+            
             <CategoryExternalId>Categorynew122</CategoryExternalId>
+            
+            <!-- Optional if local provider's logo is avaialble -->
             <LogoUrl>http://www.brandXYZ.com/providers/abc123/logo.jpg</LogoUrl>
+
 
             <BVLocalActive>true</BVLocalActive>
 
@@ -65,16 +73,9 @@
                 </Attribute>
             </Attributes>
 
-            <ExternalReviewMonitoring>
-                <Implementation name="Chatmeter">
-                    <PrimaryCategory>tires</PrimaryCategory>
-                        <CategoryKeywords>
-                            <CategoryKeyword>flat tire</CategoryKeyword>
-                            ...
-                        </CategoryKeywords>
-                </Implementation>
-            </ExternalReviewMonitoring>
+            
 
+            <!-- Only needed for 3rd party monitoring or social sharing features -->
             <ContactInfo>
                 <StreetAddress>22 4th Street</StreetAddress>
                 <StreetAddress2>6th floor</StreetAddress2>
@@ -86,15 +87,29 @@
                 <AlternatePhone>415-555-2345</AlternatePhone>
             </ContactInfo>
 
+            
+            
+            <!-- Only needed for 3rd party monitoring or social sharing features -->
+            <ExternalReviewMonitoring>
+                <Implementation name="Chatmeter">
+                
+                    <!-- Use if business name is different on 3rd party sites like Yelp than specified in name -->
+                    <OverrideBusinessName>ABC Corp, San Diego</OverrideBusinessName>
+                    <PrimaryCategory>tires</PrimaryCategory>
+                    
+                        <!-- Only needed for 3rd party monitoring -->
+                        <CategoryKeywords>
+                            <CategoryKeyword>flat tire</CategoryKeyword>
+                            ...
+                        </CategoryKeywords>
+                </Implementation>
+            </ExternalReviewMonitoring>
+
+
+            <!-- Optional for social sharing or 3rd party monitoring features -->
             <SocialMediaChannels>
-                <SocialMediaChannel>
-                    <Type>Facebook</Type>
-                    <Url>http://www.facebook.com/abc123</Url>
-                </SocialMediaChannel>
-                <SocialMediaChannel>
-                    <Type>Twitter</Type>
-                    <Url>https://twitter.com/Abc123</Url>
-                </SocialMediaChannel>
+            
+                <!-- Google+ and Yelp are optional for social sharing -->
                 <SocialMediaChannel>
                     <Type>Yelp</Type>
                     <Url>http://www.yelp.com/biz/abc123-san-francisco</Url>
@@ -103,8 +118,21 @@
                     <Type>Google+</Type>
                     <Url>https://plus.google.com/109306131876896773242</Url>
                 </SocialMediaChannel>
+                
+                <!-- Facebook and Twitter are optional for 3rd party monitoring -->
+                <SocialMediaChannel>
+                    <Type>Facebook</Type>
+                    <Url>http://www.facebook.com/abc123</Url>
+                </SocialMediaChannel>
+                <SocialMediaChannel>
+                    <Type>Twitter</Type>
+                    <Url>https://twitter.com/Abc123</Url>
+                </SocialMediaChannel>
+                
             </SocialMediaChannels>
 
+
+             <!-- Only needed in rare cases where taking reviews on services under a local provider using the same submission form -->
             <Services>
                 <Service removed="false">
                     <ExternalId>svc123</ExternalId>
