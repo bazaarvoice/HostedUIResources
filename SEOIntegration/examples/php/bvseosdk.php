@@ -305,11 +305,15 @@ class Base{
         }
         
         
-        preg_match('/\/(\d+?)\/[^\/]+$/', $bvparam, $page_number);
+        if(isset($bvparam))
+        {
+           preg_match('/\/(\d+?)\/[^\/]+$/', $bvparam, $page_number);
+        // remove the bvrrp parameter from the base URL so we don't keep appending it
+           $seo_param = str_replace('/', '\/', $bvparam); // need to escape slashses for regex
+        }
+        
         $page_number = max(1, (int) $page_number[1]);
 
-        // remove the bvrrp parameter from the base URL so we don't keep appending it
-        $seo_param = str_replace('/', '\/', $bvparam); // need to escape slashses for regex
         $this->config['base_page_url'] = preg_replace('/[?&]bvrrp='.$seo_param.'/', '', $this->config['base_page_url']);
 
         return $page_number;
