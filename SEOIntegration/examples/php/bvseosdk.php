@@ -107,7 +107,7 @@ class BV {
     public function _getCurrentUrl(){
         // depending on protocal set the 
         // beginging of url and defualt port
-        if(isset($_SERVER["HTTPS"])){
+        if(isset($_SERVER["HTTPS"]) && $_SERVER['HTTPS'] === 'on'){
             $url = 'https://';
             $defaultPort = '443';
         }else{
