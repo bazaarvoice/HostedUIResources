@@ -87,6 +87,8 @@ class BV {
             'internal_file_path' => FALSE,
             'bot_list' => 'msnbot|google|teoma|bingbot|yandexbot|yahoo', // used in regex to determine if request is a bot or not
             'ssl_enabled' => FALSE,
+            'proxy_host' => '',
+            'proxy_port' => '',
 
         );
 
@@ -413,6 +415,12 @@ class Base{
         curl_setopt($ch, CURLOPT_HEADER, 0); // Include header in result? (0 = yes, 1 = no)
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Should cURL return or print out the data? (true = return, false = print)
         curl_setopt($ch, CURLOPT_TIMEOUT, ($this->config['latency_timeout'] / 1000)); // Timeout in seconds
+
+        if ($this->config['proxy_host'] != '')
+        {
+            curl_setopt($ch, CURLOPT_PROXY, $this->config['proxy_host']);
+            curl_setopt($ch, CURLOPT_PROXYPORT, $this->config['proxy_port']);
+        }
 
         // make the request to the given URL and then store the response, request info, and error number
         // so we can use them later
