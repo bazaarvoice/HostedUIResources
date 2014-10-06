@@ -4,8 +4,8 @@
  * BV PHP SEO SDK
  *
  * Base code to power either SEO or SEO and display. This SDK 
- * is provided as is and Bazaarvoice, Inc. is not responsbile
- * for future mainentence or support.  You are free to modify
+ * is provided as is and Bazaarvoice, Inc. is not responsible
+ * for future maintenance or support.  You are free to modify
  * this SDK as needed to suit your needs. 
  *
  * This SDK was built with the following assumptions:
@@ -45,12 +45,12 @@
  *      cloud_key (string)
  *
  *   Optional fields
- *      current_page_url (string) (defaults to detecting the current_page automtically)
+ *      current_page_url (string) (defaults to detecting the current_page automatically)
  *      staging (boolean) (defaults to false, need to put true for testing with staging data)
  *      subject_type (string) (defaults to product, for questions you can pass in categories here if needed)
- *      latency_timeout (int) (in millseconds) (defaults to 1000ms)
+ *      latency_timeout (int) (in milliseconds) (defaults to 1000ms)
  *      bv_product (string) (defaults to reviews)
- *      bot_list (string) (defualts to msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)
+ *      bot_list (string) (defaults to msnbot|googlebot|teoma|bingbot|yandexbot|yahoo)
  */
 
 class BV {
@@ -66,10 +66,10 @@ class BV {
      */
     public function __construct($params = array())
     {
-        // check to make sure we have the required paramaters
+        // check to make sure we have the required parameters
         if( empty($params) OR ! $params['deployment_zone_id'] OR ! $params['product_id']) 
         {
-            throw new Exception('BV Class missing required paramters. 
+            throw new Exception('BV Class missing required parameters.
              BV expects an array with the following indexes: deployment_zone_id (string) and product_id 
              (string). ');
         }
@@ -92,7 +92,7 @@ class BV {
 
         );
 
-        // merge passed in params with defualts for config. 
+        // merge passed in params with defaults for config.
         $this->config = array_merge($this->config, $params);
 
         // setup the reviews object
@@ -108,8 +108,8 @@ class BV {
     // since this is used to set the default for an optional config option it is
     // included in the BV class. 
     public function _getCurrentUrl(){
-        // depending on protocal set the 
-        // beginging of url and defualt port
+        // depending on protocol set the
+        // beginning of url and default port
         if(isset($_SERVER["HTTPS"])){
             $url = 'https://';
             $defaultPort = '443';
@@ -131,7 +131,7 @@ class BV {
     }
 } // end of BV class
 
-// Most shared functionatly is here so when we add support for questions
+// Most shared functionality is here so when we add support for questions
 // and answers it should be minimal changes. Just need to create an answers
 // class which inherits from Base.
 class Base{
@@ -213,7 +213,7 @@ class Base{
      * isBot
      *
      * Helper method to determine if current request is a bot or not. Will 
-     * use the configured regex string which can be overriden with params. 
+     * use the configured regex string which can be overridden with params.
      * 
      * @access private
      * @return bool
@@ -228,7 +228,7 @@ class Base{
             return TRUE;
         }
 
-        // search the user agent string for an indictation if this is a search bot or not
+        // search the user agent string for an indication if this is a search bot or not
         return preg_match('/('.$this->config['bot_list'].')/i', $_SERVER['HTTP_USER_AGENT']);
     }
 
@@ -257,7 +257,7 @@ class Base{
             $page_number = (int) $_GET['bvpage'];
 
             // remove the bvpage parameter from the base URL so we don't keep appending it
-            $seo_param = str_replace('/', '\/', $_GET['bvrrp']); // need to escape slashses for regex
+            $seo_param = str_replace('/', '\/', $_GET['bvrrp']); // need to escape slashes for regex
             $this->config['base_page_url'] = preg_replace('/[?&]bvrrp='.$seo_param.'/', '', $this->config['base_page_url']);
         }
         // other implementations use the bvrrp, bvqap, or bvsyp parameter ?bvrrp=1234-en_us/reviews/product/2/ASF234.htm
@@ -312,7 +312,7 @@ class Base{
         $page_number = max(1, (int) $page_number[1]);
 
         // remove the bvrrp parameter from the base URL so we don't keep appending it
-        $seo_param = str_replace('/', '\/', $bvparam); // need to escape slashses for regex
+        $seo_param = str_replace('/', '\/', $bvparam); // need to escape slashes for regex
         $this->config['base_page_url'] = preg_replace('/[?&]bvrrp='.$seo_param.'/', '', $this->config['base_page_url']);
 
         return $page_number;
@@ -467,7 +467,7 @@ class Base{
     private function _replaceTokens($content){
         // determine if query string exists in current page url
         if (parse_url($this->config['base_page_url'], PHP_URL_QUERY) != ''){
-            // append an amperstand, because the URL already has a ? mark
+            // append an ampersand, because the URL already has a ? mark
             $page_url_query_prefix = '&';
         } else {
             // append a question mark, since this URL currently has no query
