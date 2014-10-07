@@ -89,7 +89,7 @@ class BV {
             'ssl_enabled' => FALSE,
             'proxy_host' => '',
             'proxy_port' => '',
-
+            'seo_sdk_enabled' => TRUE,
         );
 
         // merge passed in params with defaults for config.
@@ -150,6 +150,19 @@ class Base{
         $this->bv_config['seo-domain']['production']  = 'seo.bazaarvoice.com';
     }
 
+    /*
+     * Return true if either seo_sdk_enabled or bvreveal flags are set, and false otherwise
+     */
+    private function _isSdkEnabled() {
+        if ($this->config['seo_sdk_enabled']) {
+            return true;
+        } else if (isset($_GET['bvreveal']) && $_GET['bvreveal'] == 'debug') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * Render SEO
      *
@@ -177,8 +190,13 @@ class Base{
             // this product / page combination
             $seo_url = $this->_buildSeoUrl($page_number);
 
-            // make call to get SEO payload from cloud
-            $seo_content = $this->_fetchSeoContent($seo_url);
+            // make call to get SEO payload from cloud unless seo_sdk_enabled is false
+            // make call if bvreveal param in query string is set to 'debug'
+            if ($this->_isSdkEnabled()) {
+                $seo_content = $this->_fetchSeoContent($seo_url);
+            } else {    // show footer even if seo_sdk_enabled flag is false
+                $seo_content = $this->_buildComment('', $seo_url);
+            }
 
             // replace tokens for pagination URLs with page_url
             $seo_content = $this->_replaceTokens($seo_content);
