@@ -163,6 +163,84 @@ class Base{
         }
     }
 
+    private function _getFullSeoContents($access_method)
+    {
+        // get the page number of SEO content to load
+        $page_number = $this->_getPageNumber();
+
+        // build the URL to access the SEO content for
+        // this product / page combination
+        $seo_url = $this->_buildSeoUrl($page_number);
+
+        // make call to get SEO payload from cloud unless seo_sdk_enabled is false
+        // make call if bvreveal param in query string is set to 'debug'
+        if ($this->_isSdkEnabled())
+            $seo_content = $this->_fetchSeoContent($seo_url, $access_method);
+        else    // show footer even if seo_sdk_enabled flag is false
+            $seo_content = $this->_buildComment('', $seo_url, $access_method);
+
+        // replace tokens for pagination URLs with page_url
+        $seo_content = $this->_replaceTokens($seo_content);
+
+        $pay_load = $page_number;
+        $pay_load .= $seo_content;
+
+        return $pay_load;
+    }
+
+    private function _replaceSection($str, $search_str_begin, $search_str_end)
+    {
+        $result = $str;
+        $start_index = strrpos($str, $search_str_begin);
+
+        if ($start_index !== false)
+        {
+            $end_index = strrpos($str, $search_str_end);
+
+            if ($end_index !== false)
+            {
+                $end_index += strlen($search_str_end);
+                $length = $end_index - $start_index;
+                $result = substr_replace($str, '', $start_index, $length);
+            }
+        }
+
+        return $result;
+    }
+
+    protected function _renderAggregateRating()
+    {
+        $pay_load = $this->_renderSEO('getAggregateRating');
+
+        if ($this->_isBot())
+        {
+            // remove reviews section from full_contents
+            $pay_load = $this->_replaceSection($pay_load, '<!--begin-reviews-->', '<!--end-reviews-->');
+
+            // remove pagination section from full contents
+            $pay_load = $this->_replaceSection($pay_load, '<!--begin-pagination-->', '<!--end-pagination-->');
+        }
+
+        return $pay_load;
+    }
+
+    protected function _renderReviews()
+    {
+        $pay_load = $this->_renderSEO('getReviews');
+
+        if ($this->_isBot())
+        {
+            // remove aggregate rating section from full_contents
+            $pay_load = $this->_replaceSection($pay_load, '<!--begin-aggregate-rating-->', '<!--end-aggregate-rating-->');
+
+            // Remove schema.org product text from reviews if it exists
+            $schema_org_text = "itemscope itemtype=\"http://schema.org/Product\"";
+            $pay_load = str_replace($schema_org_text, '', $pay_load);
+        }
+
+        return $pay_load;
+    }
+
     /**
      * Render SEO
      *
@@ -173,50 +251,16 @@ class Base{
      * @access protected
      * @return string
      */
-    protected function _renderSEO()
+    protected function _renderSEO($access_method)
     {
-        // we will return a payload of a string
-        $pay_load = '';
-
         // we only want to render SEO when it's a search engine bot
         if ($this->_isBot())
         {
-
-
-            // get the page number of SEO content to load
-            $page_number = $this->_getPageNumber();
-
-            // build the URL to access the SEO content for
-            // this product / page combination
-            $seo_url = $this->_buildSeoUrl($page_number);
-
-            // make call to get SEO payload from cloud unless seo_sdk_enabled is false
-            // make call if bvreveal param in query string is set to 'debug'
-            if ($this->_isSdkEnabled()) {
-                $seo_content = $this->_fetchSeoContent($seo_url);
-            } else {    // show footer even if seo_sdk_enabled flag is false
-                $seo_content = $this->_buildComment('', $seo_url);
-            }
-
-            // replace tokens for pagination URLs with page_url
-            $seo_content = $this->_replaceTokens($seo_content);
-
-            // if debug mode is on we want to include more debug data
-            //if (isset($_GET['bvreveal']))
-            //{
-            //  if($_GET['bvreveal'] == 'debug')
-            //    {
-            //        $printable_config = $this->config;
-            //        $seo_content .= $this->_buildComment('Config options: '.print_r($printable_config, TRUE));
-            //    }
-            //}
-
-            $pay_load = $page_number;
-            $pay_load .= $seo_content;
+            $pay_load = $this->_getFullSeoContents($access_method);
         }
         else
         {
-            $pay_load = $this->_buildComment('JavaScript-only Display','');
+            $pay_load = $this->_buildComment('JavaScript-only Display','',$access_method);
         }
 
         return $pay_load;
@@ -381,7 +425,7 @@ class Base{
         return implode("/", $url_parts);
     }
 
-    private function _fetchSeoContent($resource)
+    private function _fetchSeoContent($resource, $access_method)
     {
         if($this->config['internal_file_path'])
         {
@@ -389,7 +433,7 @@ class Base{
         }
         else
         {
-            return $this->_fetchCloudContent($resource);
+            return $this->_fetchCloudContent($resource, $access_method);
         }
     }
 
@@ -418,7 +462,7 @@ class Base{
      * @param string (valid url)
      * @return string
      */
-    private function _fetchCloudContent($url){
+    private function _fetchCloudContent($url, $access_method){
 
         // is cURL installed yet?
         // if ( ! function_exists('curl_init')){
@@ -457,18 +501,18 @@ class Base{
         // see if we got any errors with the connection
         if($request['error_number'] != 0){
             $msg = 'Error - '.$request['error_message'];
-            $this->_buildComment($msg,$url);
+            $this->_buildComment($msg,$url,$access_method);
         }
 
         // see if we got a status code of something other than 200
         if($request['info']['http_code'] != 200){
             $msg = 'HTTP status code of '.$request['info']['http_code'].' was returned';
-            return $this->_buildComment($msg,$url);
+            return $this->_buildComment($msg,$url,$access_method);
         }
 
         // if we are here we got a response so let's return it
         $this->response_time = round($request['info']['total_time'] * 1000);
-        return $request['response'].$this->_buildComment($msg,$url);
+        return $request['response'].$this->_buildComment($msg,$url,$access_method);
     }
 
     /**
@@ -497,7 +541,7 @@ class Base{
         return $content;
     }
 
-    private function _buildComment($msg,$url){
+    private function _buildComment($msg,$url,$access_method){
     	$footer = '<ul id="BVSEOSDK" style="display:none;">';
     	$footer .= "\n".'	<li id="vn">bvseo-1.0.1.3-beta</li>';
     	$footer .= "\n".'	<li id="sl">bvseo-p</li>';
@@ -509,7 +553,7 @@ class Base{
     	$footer .= "\n".'	<li id="et">bvseo-'.$this->response_time.'ms</li>';
     	$footer .= "\n".'	<li id="ct">bvseo-'.strtoupper($this->config['bv_product']).'</li>';
     	$footer .= "\n".'	<li id="st">bvseo-'.strtoupper($this->config['subject_type']).'</li>';
-    	$footer .= "\n".'	<li id="am">bvseo-getContent</li>';
+    	$footer .= "\n"."	<li id='am'>bvseo-$access_method</li>";
     	if (strlen($msg) > 0) {
     		$footer .= "\n".'	<li id="ms">bvseo-msg: '.$msg.'</li>';
     	}
@@ -574,9 +618,19 @@ class Reviews extends Base{
         $this->config['subject_type'] = 'product';
     }
 
-    public function renderSeo()
+    public function getAggregateRating()
+    {
+        return $this->_renderAggregateRating();
+    }
+
+    public function getReviews()
+    {
+        return $this->_renderReviews();
+    }
+
+    public function getContent()
     {   
-       $pay_load = $this->_renderSeo();
+       $pay_load = $this->_renderSeo('getContent');
 
        // if they want to power display integration as well
        // then we need to include the JS integration code
@@ -612,9 +666,9 @@ class Questions extends Base{
         $this->config['bv_product'] = 'questions';
     }
 
-    public function renderSeo()
+    public function getContent()
     {   
-       $pay_load = $this->_renderSeo();
+       $pay_load = $this->_renderSeo('getContent');
 
        // if they want to power display integration as well
        // then we need to include the JS integration code
