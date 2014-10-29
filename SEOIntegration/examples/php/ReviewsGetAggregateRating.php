@@ -1,14 +1,12 @@
 <?php
-	//Please provide cloud_key, deployment_zone_id and product_id
-
-	require('bvseosdk.php');
+//Please provide cloud_key, deployment_zone_id and product_id
+require('bvseosdk.php');
     $bv = new BV(array(
      'deployment_zone_id' => '',
      'product_id' => '',
      'cloud_key' => '',
      'current_page_url' => '',
     ));
- 
 ?>
 
 <html>
