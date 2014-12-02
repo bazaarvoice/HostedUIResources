@@ -131,28 +131,6 @@
                 
             </SocialMediaChannels>
 
-
-             <!-- Only needed in rare cases where taking reviews on services under a local provider using the same submission form -->
-            <Services>
-                <Service removed="false">
-                    <ExternalId>svc123</ExternalId>
-                    <Name>Service 123</Name>
-
-                    <PageUrl>http://www</PageUrl>
-                    <ImageUrl>http://www.test.png</ImageUrl>
-                </Service>
-                <Service removed="false">
-                    <ExternalId>emp123</ExternalId>
-                    <Name>Employee 123</Name>
-                    <PageUrl>http://www</PageUrl>
-                    <ImageUrl>http://www/test.png</ImageUrl>
-                    <Attributes>
-                        <Attribute id="test">
-                            <UrlValue>http://www</UrlValue>
-                        </Attribute>
-                    </Attributes>
-                </Service>
-            </Services>
         </LocalProvider>
     </LocalProviders>
 </BusinessOrganization>
