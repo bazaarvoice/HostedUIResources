@@ -182,8 +182,7 @@ class Base{
         // replace tokens for pagination URLs with page_url
         $seo_content = $this->_replaceTokens($seo_content);
 
-        $pay_load = $page_number;
-        $pay_load .= $seo_content;
+        $pay_load = $seo_content;
 
         return $pay_load;
     }
