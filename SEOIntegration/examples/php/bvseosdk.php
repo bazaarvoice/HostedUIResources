@@ -182,8 +182,7 @@ class Base{
         // replace tokens for pagination URLs with page_url
         $seo_content = $this->_replaceTokens($seo_content);
 
-        $pay_load = $page_number;
-        $pay_load .= $seo_content;
+        $pay_load = $seo_content;
 
         return $pay_load;
     }
@@ -543,7 +542,7 @@ class Base{
 
     private function _buildComment($msg,$url,$access_method){
     	$footer = '<ul id="BVSEOSDK" style="display:none;">';
-    	$footer .= "\n".'	<li id="vn">bvseo-1.0.1.3-beta</li>';
+    	$footer .= "\n".'	<li id="vn">bvseo-1.0.1.7-beta</li>';
     	$footer .= "\n".'	<li id="sl">bvseo-p</li>';
     	if ($this->config['internal_file_path']) {
     		$footer .= "\n".'	<li id="mt">bvseo-FILE</li>';
