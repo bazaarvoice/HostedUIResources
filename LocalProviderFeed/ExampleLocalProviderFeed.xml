@@ -9,13 +9,8 @@
     <!-- Brands associated with local providers -->
     <Brands>
         <Brand>
-            <Name>ABC Test Brand</Name>
-            <ExternalId>1928739</ExternalId>
-            <Attributes>
-                <Attribute id="brand_test">
-                    <UrlValue>http://www</UrlValue>
-                </Attribute>
-            </Attributes>
+            <Name>Red Brand</Name>
+            <ExternalId>red</ExternalId>
         </Brand>
     </Brands>
 
@@ -27,16 +22,16 @@
         </Category>
         
         <Category>
-            <ExternalId>SD</ExternalId>
+            <ExternalId>SF_bay</ExternalId>
             <ParentExternalId>USA</ParentExternalId>
-            <Name>SD</Name>
+            <Name>San Francisco Bay Area</Name>
         </Category>
     </Categories>
 
 
     <LocalProviders>
         <LocalProvider removed="false">
-            <ExternalId>abc123</ExternalId>
+            <ExternalId>abc</ExternalId>
             <Name>ABC 123 Service Provider</Name>
             
              <!-- Usually the brand's local page for the local provider -->
@@ -45,31 +40,32 @@
             <!-- Usually local provider's website -->
             <LocalProviderPageUrl>http://ww.brandXYZ.com/providers/abc123</LocalProviderPageUrl>
             
-            <CategoryExternalId>Categorynew122</CategoryExternalId>
+            <CategoryExternalId>SF_bay</CategoryExternalId>
+            <BrandExternalId>red</BrandExternalId>
             
             <!-- Optional if local provider's logo is avaialble -->
             <LogoUrl>http://www.brandXYZ.com/providers/abc123/logo.jpg</LogoUrl>
 
 
+            <!-- True if engagement is allowed for this local provider.  Note reviews can be captured still even if set to false -->
             <BVLocalActive>true</BVLocalActive>
 
+            <!-- True if reviews should be captured on the local provider -->
             <Reviewable>true</Reviewable>
 
             <Attributes>
-                <!-- Families the product is a member of -->
+                <!-- Families the local provider is a member of -->
                 <Attribute id="BV_FE_FAMILY">
-                    <Value>Round</Value>
+                    <Value>ABC_service_provider_group</Value>
                 </Attribute>
-                <Attribute id="BV_FE_FAMILY">
-                    <Value>Green</Value>
-                </Attribute>
-                <!-- Show all content from other products in the Round Family -->
+               
+                <!-- Show all content from other LP's in the ABC service provider group Family -->
                 <Attribute id="BV_FE_EXPAND">
-                    <Value>BV_FE_FAMILY:Round</Value>
+                    <Value>BV_FE_FAMILY:ABC_service_provider_group</Value>
                 </Attribute>
                 <!-- any custom attribute -->
-                <Attribute id="ProductManagementGroupId">
-                    <Value>Group56789</Value>
+                <Attribute id="District">
+                    <Value>12</Value>
                 </Attribute>
             </Attributes>
 
