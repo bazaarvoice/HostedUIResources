@@ -1,0 +1,40 @@
+
+<!--sample product page code-->
+<html>
+<head>
+<!--title, meta, canonical tags, and other introductory information-->
+</head>
+
+<body>
+
+	<!--insert this code near your product details. schema class 
+		must be established early on the page-->
+	<div itemscope itemtype="http://schema.org/Product">
+		<!--the product name must be identified with itemprop=name attribute-->
+		<h1 itemprop="name">ProductName</h1>
+
+		<script type="text/javascript"> 
+			$BV.configure('global', { productId : 'ProductID123' });
+		</script>
+
+		<!--summary container code, to be placed near product 
+			price, usually at top of page-->
+		<div id="BVRRSummaryContainer"></div>
+
+		<!--detailed reviews and ratings for the product-->
+		<div id="BVRRContainer"></div>
+		<script type="text/javascript">
+			$BV.ui( 'rr', 'show_reviews', {
+				doShowContent : function () { 
+					// If the container is hidden (such as behind 
+					// a tab), put code here to make it visible 
+					// (open the tab).
+				}
+			});
+		</script>
+
+	<!--this is the closing div for the schema class-->
+	</div>
+
+</body>
+</html>
