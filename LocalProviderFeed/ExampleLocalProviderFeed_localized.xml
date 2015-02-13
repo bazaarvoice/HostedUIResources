@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="windows-1252" standalone="yes"?>
+<BusinessOrganization xmlns="http://www.bazaarvoice.com/xs/BusinessOrganizationFeed/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.bazaarvoice.com/xs/BusinessOrganizationFeed/1.0 https://bvlocal.s3.amazonaws.com/shared/feeds/bvlocal_0.1.xsd"
+    extractDate="2014-06-03T08:02:00-08:00" feedName="feed-one" incremental="true">
+    <FeedSchemaVersion>1.0</FeedSchemaVersion>
+ 
+    
+   <!-- Brands associated with local providers -->
+  <Brands>
+    <Brand>
+    	<ExternalId>red</ExternalId>
+ 	    
+ 	    <!-- Default brand name -->
+        <Name>Color Red</Name>
+            
+            <!-- Localized brand names -->
+            <Names> 
+                <Name locale="en_GB">Colour Red</Name>
+                <Name locale="fr_FR">Couleur Rouge</Name>
+                <Name locale="de_DE">Farbe Rot</Name>
+            </Names>
+    </Brand>
+  </Brands>
+ 
+  <!-- Categories associated with local providers -->
+  <Categories>
+    <Category>
+      <ExternalId>UK</ExternalId>
+   	    <!-- Default category name -->
+            <Name>United Kingdom</Name>
+            <!-- Localized category names -->
+            <Names> 
+                <Name locale="en_GB">United Kingdom</Name>
+                <Name locale="fr_FR">Kingdwom Unie</Name>
+                <Name locale="de_DE">United Kingdwom</Name>
+            </Names>
+  	</Category>   
+  	
+  	<Category>
+      <ExternalId>SCT</ExternalId>
+      <ParentExternalId>UK</ParentExternalId>
+   	    <!-- Default category name -->
+            <Name>Scotland</Name>
+            <!-- Localized category names -->
+            <Names> 
+                <Name locale="en_GB">Scotland</Name>
+                <Name locale="fr_FR">Écosse</Name>
+                <Name locale="de_DE">Schottland</Name>
+            </Names>
+    </Category>
+  </Categories>
+ 
+ 
+  <LocalProviders>
+    <LocalProvider removed="false">
+      <ExternalId>ed123</ExternalId>
+      
+      <CategoryExternalId>SCT</CategoryExternalId>
+      <BrandExternalId>red</BrandExternalId>
+      
+	<!-- Default Local Provider name -->      
+        <Name>Edinburgh Paint</Name>
+      
+      <!-- Localized Local Provider name -->
+      <Names> 
+        <Name locale="en_GB">Edinburgh Paint</Name>
+        <Name locale="fr_FR">Edinburgh Peinture</Name>
+        <Name locale="de_DE">Edinburgh Farbe</Name>
+     </Names>
+
+	 <!-- default BrandLocatorPageUrl -->      
+      <BrandLocatorPageUrl>http://www.brandXYZ.com/providers/ed123</BrandLocatorPageUrl>
+	
+	<!-- Localized BrandLocatorPageUrls -->  
+	<BrandLocatorPageUrls>
+		<BrandLocatorPageUrl locale="en_GB">http://www.brandXYZ.com/providers/ed123_en_GB</BrandLocatorPageUrl>
+		<BrandLocatorPageUrl locale="fr_FR">http://www.brandXYZ.com/providers/ed123_fr_FR</BrandLocatorPageUrl>
+		<BrandLocatorPageUrl locale="de_DE">http://www.brandXYZ.com/providers/ed123_de_DE</BrandLocatorPageUrl>
+	</BrandLocatorPageUrls>
+
+
+ <!-- Usually local provider's website -->
+ 
+	<!-- default LocalProviderPageUrl -->  
+      <LocalProviderPageUrl>http://www.edinburghpaint.com/home</LocalProviderPageUrl>
+	
+	<!-- Localized LocalProviderPageUrls -->  
+	<LocalProviderPageUrls>
+		<LocalProviderPageUrl locale="en_GB">http://www.edinburghpaint.com/home_en_GB</LocalProviderPageUrl>
+		<LocalProviderPageUrl locale="fr_FR">http://www.edinburghpaint.com/home_fr_FR</LocalProviderPageUrl>
+		<LocalProviderPageUrl locale="de_DE">http://www.edinburghpaint.com/home_de_DE</LocalProviderPageUrl>
+	</LocalProviderPageUrls>
+
+      
+
+ <!-- Optional if local provider's logo is avaialble -->
+	<!-- default LogoUrl -->  
+      <LogoUrl>http://www.brandXYZ.com/providers/ed123/logo.jpg</LogoUrl>
+
+	<!-- Localized LogoUrls -->  
+	<LogoUrls>
+		<LogoUrl locale="en_GB">http://www.brandXYZ.com/providers/ed123/logo.jpg_en_GB</LogoUrl>
+		<LogoUrl locale="fr_FR">http://www.brandXYZ.com/providers/ed123/logo.jpg_fr_FR</LogoUrl>
+		<LogoUrl locale="de_DE">http://www.brandXYZ.com/providers/ed123/logo.jpg_de_DE</LogoUrl>
+	</LogoUrls>
+
+    <!-- True if engagement is allowed for this local provider.  Note reviews can be captured still even if set to false -->
+      <BVLocalActive>true</BVLocalActive>
+
+    <!-- True if reviews should be captured on the local provider --> 
+      <Reviewable>true</Reviewable>
+ 
+ 
+	   <Attributes>
+			<!-- Families the local provider is a member of -->
+			<Attribute id="BV_FE_FAMILY">
+				<Value>UK_rollup</Value>
+			</Attribute>
+		   
+			<!-- Show all content from other LP's in the Scotland service provider group Family -->
+			<Attribute id="BV_FE_EXPAND">
+				<Value>BV_FE_FAMILY:SCT_service_provider_group</Value>
+			</Attribute>
+			<!-- any custom attribute -->
+			<Attribute id="District">
+				<Value>12</Value>
+			</Attribute>
+		</Attributes>
+
+
+    <!-- Only needed for 3rd party monitoring or social sharing features -->
+      <ContactInfo>
+	      <StreetAddress>4-5 North Leith Sands</StreetAddress>
+	      <StreetAddress2>6th floor</StreetAddress2>
+	      <City>Edinburgh</City>
+	      <StateProvince></StateProvince>
+	      <PostalCode>EH6 4ER</PostalCode>
+	      <Country>UK</Country>
+	      <BusinessPhone>44 131 553 6663<BusinessPhone>
+	      <AlternatePhone>+44 131 553 6664</AlternatePhone>
+      </ContactInfo>
+
+
+
+	   <!-- Only needed for 3rd party monitoring or social sharing features -->
+		<ExternalReviewMonitoring>
+			<Implementation name="Chatmeter">
+			
+				<!-- Use if business name is different on 3rd party sites like Google+ than specified in name -->
+				<OverrideBusinessName>Edinburgh Paint store</OverrideBusinessName>
+				<PrimaryCategory>Furniture Store</PrimaryCategory>
+				
+					<!-- Only needed for 3rd party monitoring -->
+					<CategoryKeywords>
+						<CategoryKeyword>home furnishings</CategoryKeyword>
+						...
+					</CategoryKeywords>
+			</Implementation>
+		</ExternalReviewMonitoring>
+
+
+           <!-- Optional for social sharing or 3rd party monitoring features -->
+            <SocialMediaChannels>
+       
+                <!-- Facebook and Twitter are optional for 3rd party monitoring -->
+                <SocialMediaChannel>
+                    <Type>Facebook</Type>
+                    <Url>http://www.facebook.com/edinburghpaint</Url>
+                </SocialMediaChannel>
+                <SocialMediaChannel>
+                    <Type>Twitter</Type>
+                    <Url>https://twitter.com/edinburghpaint</Url>
+                </SocialMediaChannel>
+                
+            </SocialMediaChannels>
+		
+
+ 
+    </LocalProvider>
+    ...
+  </LocalProviders>
+</BusinessOrganization>
