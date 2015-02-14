@@ -4,7 +4,8 @@
     This example shows the XML syntax (using the "StandardClientFeed" schema)
     for providing native review content to Bazaarvoice.
 
-    Some notes:
+    DATA REQUIREMENTS - READ THIS FIRST TO ENSURE YOUR FILE VALIDATES SUCCESSFULLY.
+    
     - Use unique values for the "id" attribute of each Review element.
     - Express ExtractDate and SubmissionTime in XML dateTime format.
     - Match the value of the ExternalId element to the product IDs that you are calling 
@@ -20,7 +21,7 @@
 
     - ModerationStatus
     - UserProfileReference - if included, the children elements ExternalId, DisplayName, Anonymous, 
-      and HyperlinkingEnabled are required. 
+      and HyperlinkingEnabled are required. If omitted, the reviews will be imported as "Anonymous."
     - Title
     - ReviewText
     - Rating
