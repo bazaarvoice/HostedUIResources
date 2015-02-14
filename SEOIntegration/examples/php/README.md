@@ -15,17 +15,17 @@ Follow these steps to use the PHP SDK:
 2. Instantiate the bv object.
     ```php
     $bv = new BV(array(
-         'deployment_zone_id' => 'Main_Site-en_US'
+         'deployment_zone_id' => 'Main_Site-en_US',
          'product_id' => 'product1', // must match ExternalID in the BV product feed
          'cloud_key' => 'agileville-78B2EF7DE83644CAB5F8C72F2D8C8491', // Get from the config hub. On the left panel, click "Technical Setup" > "SEO Configuration." The value will be in the "Cloud Key" field.
          'staging' => TRUE
     ));
     ```
 
-3. Call `$bv->reviews->renderSeo()` to grab the product's review SEO content.  This call will return the SEO HTML as a string. This string needs to be rendered on the product page inside the `<div id="BVRRContainer"></div>`. For example: 
+3. Call `$bv->reviews->getContent()` to grab the product's review SEO content.  This call will return the SEO HTML as a string. This string needs to be rendered on the product page inside the `<div id="BVRRContainer"></div>`. For example: 
     ```php
     <div id="BVRRContainer">
-        <?php echo $bv->reviews->renderSeo();?>
+        <?php echo $bv->reviews->getContent();?>
     </div>
     ```
 4. To test this you will need to modify your HTTP user agent string to match that of a search engine. Or for testing convenience, you can add the query parameter `?bvreveal=bot` to trigger the SDK to return SEO content. `?bvreveal=debug` will also display additional debug comments in the HTML markup.
