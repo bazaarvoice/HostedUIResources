@@ -49,7 +49,7 @@ public class SmartSEOS3Client {
 
             int connectionTimeout = Integer.parseInt(config.get(Configuration.CONNECT_TIMEOUT));
             int socketTimeout = Integer.parseInt(config.get(Configuration.SOCKET_TIMEOUT));
-            smartSEOPayload = Request.Get(targetUrl).connectTimeout(connectionTimeout).socketTimeout(socketTimeout).execute().returnContent().asString();
+            smartSEOPayload = new String(Request.Get(targetUrl).connectTimeout(connectionTimeout).socketTimeout(socketTimeout).execute().returnContent().asBytes());
         } catch (ClientProtocolException e) {
             _log.error("Unable to download SmartSEO content via HTTP.", e);
             throw new BVSEOException("Unable to download SmartSEO content from S3.");
