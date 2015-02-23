@@ -174,10 +174,13 @@ class Base{
 
         // make call to get SEO payload from cloud unless seo_sdk_enabled is false
         // make call if bvreveal param in query string is set to 'debug'
-        if ($this->_isSdkEnabled())
+        if ($this->_isSdkEnabled()) {
+            
             $seo_content = $this->_fetchSeoContent($seo_url, $access_method);
-        else    // show footer even if seo_sdk_enabled flag is false
+        } else {
+            // show footer even if seo_sdk_enabled flag is false
             $seo_content = $this->_buildComment('', $seo_url, $access_method);
+        }
 
         // replace tokens for pagination URLs with page_url
         $seo_content = $this->_replaceTokens($seo_content);
@@ -343,7 +346,7 @@ class Base{
             if (isset($bvcurrentpagedata['bvpage']) )
             {
                $page_number = (int) $bvcurrentpagedata['bvpage'];
-               $bvparam=$bvcurrentpagedata['bvpage'];
+               $bvparam = $bvcurrentpagedata['bvpage'];
             // remove the bvpage parameter from the base URL so we don't keep appending it
                $seo_param = str_replace('/', '\/', $_GET['bvrrp']); // need to escape slashses for regex
                $this->config['base_page_url'] = preg_replace('/[?&]bvrrp='.$seo_param.'/', '', $this->config['base_page_url']);
@@ -355,7 +358,7 @@ class Base{
             {
                 if(isset($bvcurrentpagedata['bvrrp']))
                 {
-                  $bvparam = $bvcurrentpagedata['bvrrp'];
+                    $bvparam = $bvcurrentpagedata['bvrrp'];
                 }
                 else if(isset($bvcurrentpagedata['bvqap']))
                 {
@@ -368,12 +371,16 @@ class Base{
             }
         }
         
-        
-        preg_match('/\/(\d+?)\/[^\/]+$/', $bvparam, $page_number);
-        $page_number = max(1, (int) $page_number[1]);
-
-        // remove the bvrrp parameter from the base URL so we don't keep appending it
-        $seo_param = str_replace('/', '\/', $bvparam); // need to escape slashes for regex
+        $seo_param = '';
+        if (true === isset($bvparam)) {
+            
+            if (0 != preg_match('/\/(\d+?)\/[^\/]+$/', $bvparam, $aMatches)) {
+                
+                $page_number = max(1, (int) $aMatches[1]);
+            }
+            // remove the bvrrp parameter from the base URL so we don't keep appending it
+            $seo_param = str_replace('/', '\/', $bvparam); // need to escape slashes for regex
+        }
         $this->config['base_page_url'] = preg_replace('/[?&]bvrrp='.$seo_param.'/', '', $this->config['base_page_url']);
 
         return $page_number;
@@ -495,22 +502,24 @@ class Base{
         // Close the cURL resource, and free system resources
         curl_close($ch);
 
-        $msg="";
-
+        $msg = "";
+        
+        $this->response_time = round($request['info']['total_time'] * 1000);
         // see if we got any errors with the connection
-        if($request['error_number'] != 0){
+        if ($request['error_number'] != 0) {
+            
             $msg = 'Error - '.$request['error_message'];
             $this->_buildComment($msg,$url,$access_method);
         }
 
         // see if we got a status code of something other than 200
-        if($request['info']['http_code'] != 200){
+        if ($request['info']['http_code'] != 200) {
+            
             $msg = 'HTTP status code of '.$request['info']['http_code'].' was returned';
             return $this->_buildComment($msg,$url,$access_method);
         }
 
         // if we are here we got a response so let's return it
-        $this->response_time = round($request['info']['total_time'] * 1000);
         return $request['response'].$this->_buildComment($msg,$url,$access_method);
     }
 
