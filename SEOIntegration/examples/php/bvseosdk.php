@@ -136,6 +136,8 @@ class BV {
 // class which inherits from Base.
 class Base{
 
+    private $response_time = 0;
+
     public function __construct($params = array())
     {
         if ( ! $params)
@@ -312,7 +314,8 @@ class Base{
         $query = $currentUrlArray['path']; //get the path out of the parsed url array
                                 
         parse_str($query, $bvcurrentpagedata);  //parse the sub url such that you get the important part...page number
-                                
+            
+        $bvparam = "";
         // bvpage is not currently implemented
         if (isset($_GET['bvpage']) ){
             $page_number = (int) $_GET['bvpage'];
@@ -369,8 +372,8 @@ class Base{
         }
         
         
-        preg_match('/\/(\d+?)\/[^\/]+$/', $bvparam, $page_number);
-        $page_number = max(1, (int) $page_number[1]);
+        preg_match('/\/(\d+?)\/[^\/]+$/', $bvparam, $page_number_match);
+        $page_number = max(1, (int) isset($page_number_match[1])?$page_number_match[1]:$page_number);
 
         // remove the bvrrp parameter from the base URL so we don't keep appending it
         $seo_param = str_replace('/', '\/', $bvparam); // need to escape slashes for regex
