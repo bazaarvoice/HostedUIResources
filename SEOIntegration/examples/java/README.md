@@ -1,6 +1,5 @@
-Java BV SEO SDK
-================
+# Bazaarvoice SEO SDK for Java
 
-The Java version of the SDK has been moved to a new location:
+The Java SDK and examples have moved to their own repository:
 
 https://github.com/bazaarvoice/seo_sdk_java
