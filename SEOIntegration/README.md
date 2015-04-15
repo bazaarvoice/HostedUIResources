@@ -99,4 +99,4 @@ inside the div.
 [2]: https://github.com/bazaarvoice/seo_sdk_java
 [3]: https://github.com/bazaarvoice/seo_sdk_dotnet
 [4]: https://github.com/bazaarvoice/seo_sdk_php
-[5]: ./python
+[5]: ./examples/python
