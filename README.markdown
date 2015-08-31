@@ -8,7 +8,7 @@ contact your Bazaarvoice Implementation or Support Engineer.
 
 ## [Cloud SEO SDKs](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration)
 
-Contains [.NET](https://github.com/bazaarvoice/seo_sdk_dotnet), [Java](https://github.com/bazaarvoice/seo_sdk_java), [PHP](https://github.com/bazaarvoice/seo_sdk_php), and [Python](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration/examples/python) Cloud SEO SDKs. Also includes [generic Cloud SEO](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration#generic-cloud-seo) implementation instructions.
+Contains [.NET](https://github.com/bazaarvoice/seo_sdk_dotnet), [Java](https://github.com/bazaarvoice/seo_sdk_java), and  [PHP](https://github.com/bazaarvoice/seo_sdk_php) Cloud SEO SDKs. Also includes [generic Cloud SEO](https://github.com/bazaarvoice/HostedUIResources/tree/master/SEOIntegration#generic-cloud-seo) implementation instructions.
 
 ## [Local Provider Feed](https://github.com/bazaarvoice/HostedUIResources/tree/master/LocalProviderFeed)
 
