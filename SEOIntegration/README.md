@@ -36,7 +36,6 @@ the following languages:
 * [Java][2]
 * [.NET][3]
 * [PHP][4]
-* [Python][5]
 
 If you are using a server-side language that is not listed above, you still can
 use Cloud SEO by following the generic implementation steps listed at the bottom
