@@ -88,6 +88,7 @@
                 <StreetAddress>22 4th Street</StreetAddress>
                 <StreetAddress2>6th floor</StreetAddress2>
                 <City>San Francisco</City>
+                <!-- StateProvince values should only be two characters in length, i.e. CA or FL-->
                 <StateProvince>CA</StateProvince>
                 <PostalCode>94104</PostalCode>
                 <Country>US</Country>
