@@ -13,7 +13,7 @@
 
 <BusinessOrganization xmlns="http://www.bazaarvoice.com/xs/BusinessOrganizationFeed/1.0"
                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                      xsi:schemaLocation="http://www.bazaarvoice.com/xs/BusinessOrganizationFeed/1.0 bvlocal_0.1.xsd"
+                      xsi:schemaLocation="https://s3.amazonaws.com/bvlocal/shared/feeds/bvlocal_0.1.xsd"
                       extractDate="2013-02-04T11:23:00-07:00" feedName="test" incremental="true">
     <FeedSchemaVersion>1.0</FeedSchemaVersion>
 
