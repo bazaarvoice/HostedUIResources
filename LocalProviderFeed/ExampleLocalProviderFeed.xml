@@ -119,7 +119,7 @@
                         <!-- Only needed for 3rd party monitoring -->
                         <CategoryKeywords>
                             <CategoryKeyword>flat tire</CategoryKeyword>
-                            ...
+                            
                         </CategoryKeywords>
                 </Implementation>
             </ExternalReviewMonitoring>
