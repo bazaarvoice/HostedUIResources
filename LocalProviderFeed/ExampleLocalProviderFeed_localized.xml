@@ -45,7 +45,7 @@
           <Name locale="fr_FR">Kingdwom Unie</Name>
           <Name locale="de_DE">United Kingdwom</Name>
       </Names>
-      <CategoryType>District</CategoryType> <!-- Used for "District Manager" reporting -->
+      <CategoryType>District</CategoryType> <!-- Used for field reporting -->
     </Category>   
     
     <Category>
@@ -59,7 +59,7 @@
           <Name locale="fr_FR">Écosse</Name>
           <Name locale="de_DE">Schottland</Name>
       </Names>
-      <CategoryType>Region</CategoryType> <!-- Used for "District Manager" reporting -->
+      <CategoryType>Region</CategoryType> <!-- Used for field reporting -->
     </Category>
   </Categories>
  
