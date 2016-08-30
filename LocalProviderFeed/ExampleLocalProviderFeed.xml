@@ -43,14 +43,14 @@
             <ExternalId>south</ExternalId>
             <ParentExternalId>USA</ParentExternalId>
             <Name>South</Name>
-            <CategoryType>District</CategoryType> <!-- Used for "District Manager" reporting. -->
+            <CategoryType>District</CategoryType> <!-- Used for field reporting. -->
         </Category>
         
         <Category>
             <ExternalId>texas-region</ExternalId>
             <ParentExternalId>south</ParentExternalId>
             <Name>Texas Region</Name>
-            <CategoryType>Region</CategoryType> <!-- Used for "District Manager" reporting. -->
+            <CategoryType>Region</CategoryType> <!-- Used for field reporting. -->
         </Category>
 
     </Categories>
