@@ -25,7 +25,7 @@
 <Feed xmlns="http://www.bazaarvoice.com/xs/PRR/PostPurchaseFeed/5.6">
     <Interaction>
         <TransactionDate>2011-08-07T13:29:40.894</TransactionDate>
-        <EmailAddress>user1@domain.com</EmailAddress>
+        <EmailAddress>user1@example.com</EmailAddress>
         <Locale>en_US</Locale>
         <UserName>nickname1</UserName>
         <UserID>718737491</UserID>
@@ -33,14 +33,14 @@
             <Product>
                 <ExternalId>prod01</ExternalId>
                 <Name>Product 1</Name>
-                <ImageUrl>http://test.com/images/products/01.jpg</ImageUrl>
+                <ImageUrl>http://example.com/images/products/01.jpg</ImageUrl>
                 <Price>20.61</Price>
             </Product>
         </Products>
     </Interaction>
     <Interaction>
         <TransactionDate>2011-08-07T13:30:12.138</TransactionDate>
-        <EmailAddress>user2@domain.co.uk</EmailAddress>
+        <EmailAddress>user2@example.com</EmailAddress>
         <Locale>en_GB</Locale>
         <UserName>nickname2</UserName>
         <UserID>983174781</UserID>
@@ -48,13 +48,13 @@
             <Product>
                 <ExternalId>prod05</ExternalId>
                 <Name>Product 5</Name>
-                <ImageUrl>http://test.com/images/products/05.jpg</ImageUrl>
+                <ImageUrl>http://example.com/images/products/05.jpg</ImageUrl>
                 <Price>14.99</Price>
             </Product>
             <Product>
                 <ExternalId>prod12</ExternalId>
                 <Name>Product 12</Name>
-                <ImageUrl>http://test.com/images/products/12.jpg</ImageUrl>
+                <ImageUrl>http://example.com/images/products/12.jpg</ImageUrl>
                 <Price>34.99</Price>
             </Product>
         </Products>
