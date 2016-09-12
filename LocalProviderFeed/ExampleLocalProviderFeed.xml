@@ -47,16 +47,16 @@
             <Name>ABC 123 Service Provider</Name>
             
              <!-- Usually the brand's local page for the local provider -->
-            <BrandLocatorPageUrl>http://www.brandXYZ.com/providers/abc123</BrandLocatorPageUrl>
+            <BrandLocatorPageUrl>http://www.example.com/providers/abc123</BrandLocatorPageUrl>
            
             <!-- Usually local provider's website -->
-            <LocalProviderPageUrl>http://ww.brandXYZ.com/providers/abc123</LocalProviderPageUrl>
+            <LocalProviderPageUrl>http://ww.example.com/providers/abc123</LocalProviderPageUrl>
             
             <CategoryExternalId>SF_bay</CategoryExternalId>
             <BrandExternalId>red</BrandExternalId>
             
             <!-- Optional if local provider's logo is avaialble -->
-            <LogoUrl>http://www.brandXYZ.com/providers/abc123/logo.jpg</LogoUrl>
+            <LogoUrl>http://www.example.com/providers/abc123/logo.jpg</LogoUrl>
 
 
             <!-- True if engagement is allowed for this local provider.  Note reviews can be captured still even if set to false -->

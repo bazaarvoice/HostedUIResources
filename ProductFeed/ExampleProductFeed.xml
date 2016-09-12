@@ -50,16 +50,16 @@
             <!-- Localized category page URLs -->
             <CategoryPageUrls>
                 <CategoryPageUrl locale="en_US">http://www.example.com/en_us/category.htm?cat=1010</CategoryPageUrl>
-                <CategoryPageUrl locale="en_CA">http://www.example.ca/en_ca/category.htm?cat=1010</CategoryPageUrl>
-                <CategoryPageUrl locale="fr_CA">http://www.example.ca/fr_ca/category.htm?prod=1010</CategoryPageUrl>
+                <CategoryPageUrl locale="en_CA">http://www.example.com/en_ca/category.htm?cat=1010</CategoryPageUrl>
+                <CategoryPageUrl locale="fr_CA">http://www.example.com/fr_ca/category.htm?prod=1010</CategoryPageUrl>
             </CategoryPageUrls>
             <!-- Default category image URL -->
             <ImageUrl>http://images.example.com/catimages/1010.gif</ImageUrl>
             <!-- Localized category image URLs -->
             <ImageUrls>
                 <ImageUrl locale="en_US">http://images.example.com/en_us/catimages/1010.gif</ImageUrl>
-                <ImageUrl locale="en_CA">http://images.example.ca/en_ca/catimages/1010.gif</ImageUrl>
-                <ImageUrl locale="fr_CA">http://images.example.ca/fr_ca/catimages/1010.gif</ImageUrl>
+                <ImageUrl locale="en_CA">http://images.example.com/en_ca/catimages/1010.gif</ImageUrl>
+                <ImageUrl locale="fr_CA">http://images.example.com/fr_ca/catimages/1010.gif</ImageUrl>
             </ImageUrls>
         </Category>
         <Category>
@@ -182,16 +182,16 @@
             <!-- Localized product page URLs -->
             <ProductPageUrls>
                 <ProductPageUrl locale="en_US">http://www.example.com/en_us/product.htm?prod=2000003</ProductPageUrl>
-                <ProductPageUrl locale="en_CA">http://www.example.ca/en_ca/product.htm?prod=2000003</ProductPageUrl>
-                <ProductPageUrl locale="fr_CA">http://www.example.ca/fr_ca/product.htm?prod=2000003</ProductPageUrl>
+                <ProductPageUrl locale="en_CA">http://www.example.com/en_ca/product.htm?prod=2000003</ProductPageUrl>
+                <ProductPageUrl locale="fr_CA">http://www.example.com/fr_ca/product.htm?prod=2000003</ProductPageUrl>
             </ProductPageUrls>
             <!-- Default product image URL -->
             <ImageUrl>http://images.example.com/prodimages/2000003.gif</ImageUrl>
             <!-- Localized product image URLs -->
             <ImageUrls>
                 <ImageUrl locale="en_US">http://images.example.com/en_us/prodimages/2000003.gif</ImageUrl>
-                <ImageUrl locale="en_CA">http://images.example.ca/en_ca/prodimages/2000003.gif</ImageUrl>
-                <ImageUrl locale="fr_CA">http://images.example.ca/fr_ca/prodimages/2000003.gif</ImageUrl>
+                <ImageUrl locale="en_CA">http://images.example.com/en_ca/prodimages/2000003.gif</ImageUrl>
+                <ImageUrl locale="fr_CA">http://images.example.com/fr_ca/prodimages/2000003.gif</ImageUrl>
             </ImageUrls>
             <ModelNumbers>
                 <ModelNumber>123523832</ModelNumber>

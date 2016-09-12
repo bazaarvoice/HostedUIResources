@@ -82,39 +82,39 @@
      </Names>
 
 	 <!-- default BrandLocatorPageUrl -->      
-      <BrandLocatorPageUrl>http://www.brandXYZ.com/providers/ed123</BrandLocatorPageUrl>
+      <BrandLocatorPageUrl>http://www.example.com/providers/ed123</BrandLocatorPageUrl>
 	
 	<!-- Localized BrandLocatorPageUrls -->  
 	<BrandLocatorPageUrls>
-		<BrandLocatorPageUrl locale="en_GB">http://www.brandXYZ.com/providers/ed123_en_GB</BrandLocatorPageUrl>
-		<BrandLocatorPageUrl locale="fr_FR">http://www.brandXYZ.com/providers/ed123_fr_FR</BrandLocatorPageUrl>
-		<BrandLocatorPageUrl locale="de_DE">http://www.brandXYZ.com/providers/ed123_de_DE</BrandLocatorPageUrl>
+		<BrandLocatorPageUrl locale="en_GB">http://www.example.com/providers/ed123_en_GB</BrandLocatorPageUrl>
+		<BrandLocatorPageUrl locale="fr_FR">http://www.example.com/providers/ed123_fr_FR</BrandLocatorPageUrl>
+		<BrandLocatorPageUrl locale="de_DE">http://www.example.com/providers/ed123_de_DE</BrandLocatorPageUrl>
 	</BrandLocatorPageUrls>
 
 
  <!-- Usually local provider's website -->
  
 	<!-- default LocalProviderPageUrl -->  
-      <LocalProviderPageUrl>http://www.edinburghpaint.com/home</LocalProviderPageUrl>
+      <LocalProviderPageUrl>http://www.example.com/home</LocalProviderPageUrl>
 	
 	<!-- Localized LocalProviderPageUrls -->  
 	<LocalProviderPageUrls>
-		<LocalProviderPageUrl locale="en_GB">http://www.edinburghpaint.com/home_en_GB</LocalProviderPageUrl>
-		<LocalProviderPageUrl locale="fr_FR">http://www.edinburghpaint.com/home_fr_FR</LocalProviderPageUrl>
-		<LocalProviderPageUrl locale="de_DE">http://www.edinburghpaint.com/home_de_DE</LocalProviderPageUrl>
+		<LocalProviderPageUrl locale="en_GB">http://www.example.com/home_en_GB</LocalProviderPageUrl>
+		<LocalProviderPageUrl locale="fr_FR">http://www.example.com/home_fr_FR</LocalProviderPageUrl>
+		<LocalProviderPageUrl locale="de_DE">http://www.example.com/home_de_DE</LocalProviderPageUrl>
 	</LocalProviderPageUrls>
 
       
 
  <!-- Optional if local provider's logo is avaialble -->
 	<!-- default LogoUrl -->  
-      <LogoUrl>http://www.brandXYZ.com/providers/ed123/logo.jpg</LogoUrl>
+      <LogoUrl>http://www.example.com/providers/ed123/logo.jpg</LogoUrl>
 
 	<!-- Localized LogoUrls -->  
 	<LogoUrls>
-		<LogoUrl locale="en_GB">http://www.brandXYZ.com/providers/ed123/logo.jpg_en_GB</LogoUrl>
-		<LogoUrl locale="fr_FR">http://www.brandXYZ.com/providers/ed123/logo.jpg_fr_FR</LogoUrl>
-		<LogoUrl locale="de_DE">http://www.brandXYZ.com/providers/ed123/logo.jpg_de_DE</LogoUrl>
+		<LogoUrl locale="en_GB">http://www.example.com/providers/ed123/logo.jpg_en_GB</LogoUrl>
+		<LogoUrl locale="fr_FR">http://www.example.com/providers/ed123/logo.jpg_fr_FR</LogoUrl>
+		<LogoUrl locale="de_DE">http://www.example.com/providers/ed123/logo.jpg_de_DE</LogoUrl>
 	</LogoUrls>
 
     <!-- True if engagement is allowed for this local provider.  Note reviews can be captured still even if set to false -->
