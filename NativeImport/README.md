@@ -5,6 +5,6 @@
 * Legacy Content bars a client from having the [Trustmark](http://www.bazaarvoice.com/trustmark/) 
 * Must be scoped in SOW (for import/moderation)
 * Content must be re-moderated to syndicate
-* Client must sign Legacy Content Import Agreement
+* Clients must sign Legacy Content Import Agreement
 * Clients must disclose if any portion of the legacy content is incentivized. If content is not disclosed, it will not be eligible for syndication.
-* BV Authenticity Policy: [http://www.bazaarvoice.com/legal/authenticity-policy/](http://www.bazaarvoice.com/legal/authenticity-policy/)
+* BV Authenticity Policy: [http://www.bazaarvoice.com/legal/authenticity-policy/]
