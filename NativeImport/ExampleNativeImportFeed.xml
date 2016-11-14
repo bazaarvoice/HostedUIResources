@@ -54,6 +54,7 @@
                 <Rating>5</Rating>
                 <IpAddress>64.94.228.137</IpAddress>
                 <Recommended>true</Recommended>
+                <UserEmailAddress>supermike@example.com</UserEmailAddress>
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
                 <SubmissionTime>2012-01-23T12:59:25.000-06:00</SubmissionTime>
                 <Featured>false</Featured>
@@ -72,6 +73,7 @@
                 <Rating>4</Rating>
                 <IpAddress>64.94.228.136</IpAddress>
                 <Recommended>true</Recommended>
+                <UserEmailAddress>jimbob101@example.com</UserEmailAddress>
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
                 <SubmissionTime>2012-01-23T04:26:14.000-06:00</SubmissionTime>
                 <Featured>false</Featured>
