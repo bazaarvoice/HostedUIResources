@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
     This example shows the XML syntax (using the "LocalProvider" schema)
     for providing local provider, category, and brand information to Bazaarvoice.
@@ -10,11 +9,10 @@
     uninterrupted use, merchantability, or fitness for a particular purpose.
 -->
 
-
 <BusinessOrganization xmlns="http://www.bazaarvoice.com/xs/BusinessOrganizationFeed/1.0"
                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                       xsi:schemaLocation="http://www.bazaarvoice.com/xs/BusinessOrganizationFeed/1.0 https://s3.amazonaws.com/bvlocal/shared/feeds/bvlocal_0.1.xsd"
-                      extractDate="2013-02-04T11:23:00-07:00" feedName="test" incremental="true">
+                      extractDate="2013-02-04T11:23:00-07:00" feedName="test" incremental="false">
     <FeedSchemaVersion>1.0</FeedSchemaVersion>
 
 
@@ -58,7 +56,6 @@
             <!-- Optional if local provider's logo is avaialble -->
             <LogoUrl>http://www.example.com/providers/abc123/logo.jpg</LogoUrl>
 
-
             <!-- True if engagement is allowed for this local provider.  Note reviews can be captured still even if set to false -->
             <BVLocalActive>true</BVLocalActive>
 
@@ -79,25 +76,20 @@
                 <Attribute id="District">
                     <Value>12</Value>
                 </Attribute>
-            </Attributes>
-
-            
+            </Attributes>           
 
             <!-- Only needed for 3rd party monitoring or social sharing features -->
             <ContactInfo>
                 <StreetAddress>22 4th Street</StreetAddress>
-                <StreetAddress2>6th floor</StreetAddress2>
+                <StreetAddress2>6th floor</StreetAddress2> <!-- Optional field: remove if empty -->
                 <City>San Francisco</City>
-                <!-- StateProvince values should only be two characters in length, i.e. CA or FL-->
-                <StateProvince>CA</StateProvince>
+                <StateProvince>CA</StateProvince> <!-- StateProvince values should only be two characters in length, i.e. CA or FL -->
                 <PostalCode>94104</PostalCode>
                 <Country>US</Country>
                 <BusinessPhone>(415) 555 1234</BusinessPhone>
-                <AlternatePhone>415-555-2345</AlternatePhone>
+                <AlternatePhone>415-555-2345</AlternatePhone> <!-- Optional field: remove if empty -->
             </ContactInfo>
-
-            
-            
+                        
             <!-- Only needed for 3rd party monitoring or social sharing features -->
             <ExternalReviewMonitoring>
                 <Implementation name="Chatmeter">
@@ -109,26 +101,10 @@
                         <!-- Only needed for 3rd party monitoring -->
                         <CategoryKeywords>
                             <CategoryKeyword>flat tire</CategoryKeyword>
-                            ...
+                            <!-- Add additional keywords as necessary -->
                         </CategoryKeywords>
                 </Implementation>
             </ExternalReviewMonitoring>
-
-
-            <!-- Optional for social sharing or 3rd party monitoring features -->
-            <SocialMediaChannels>
-       
-                <!-- Facebook and Twitter are optional for 3rd party monitoring -->
-                <SocialMediaChannel>
-                    <Type>Facebook</Type>
-                    <Url>http://www.facebook.com/abc123</Url>
-                </SocialMediaChannel>
-                <SocialMediaChannel>
-                    <Type>Twitter</Type>
-                    <Url>https://twitter.com/Abc123</Url>
-                </SocialMediaChannel>
-                
-            </SocialMediaChannels>
 
         </LocalProvider>
     </LocalProviders>
