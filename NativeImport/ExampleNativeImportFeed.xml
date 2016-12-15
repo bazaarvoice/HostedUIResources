@@ -42,7 +42,7 @@
         <ExternalId>1010</ExternalId>
         <Reviews>
 
-            <!-- basic review -->
+            <!-- basic example review - features most common elements included in import feeds -->
 
             <Review id="12" removed="false">
                 <ModerationStatus>APPROVED</ModerationStatus>
@@ -55,7 +55,7 @@
                 <Title>What an amazing product!</Title>
                 <ReviewText>This product is great and I'll definitely recommend it to my friends!</ReviewText>
                 <Rating>4</Rating>
-                <IpAddress>64.94.228.136</IpAddress>
+                <IpAddress>64.94.228.136</IpAddress> <!-- required for syndication -->
                 <Recommended>true</Recommended>
                 <UserEmailAddress>jimbob101@example.com</UserEmailAddress>
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
@@ -64,7 +64,7 @@
                 <DisplayLocale>en_US</DisplayLocale>
             </Review>
 
-            <!-- sample review featuring attributes -->
+            <!-- sample review featuring common additional attributes that can be included in feed -->
 
             <Review id="11" removed="false">
                 <ModerationStatus>APPROVED</ModerationStatus>
@@ -92,37 +92,67 @@
                 <NumNegativeFeedbacks>1</NumNegativeFeedbacks>  <!-- Number of negative feedbacks on a given review -->
                 <NumInappropriateFeedbacks>1</NumInappropriateFeedbacks> <!-- Number of times customers reported that this review has inappropriate or irrelevant content -->
 
-                <!-- add a custom question; create submission form question in configuration hub prior to import -->
+                <!-- add a custom question with free-text response; create submission form question in configuration hub prior to import - listed elements are required -->
 
                 <AdditionalFields>
-                      <AdditionalField id="CustomQuestion">
-                        <DisplayLabel>Custom Question:</DisplayLabel>
-                        <Value>This is my custom answer</Value>
-                      </AdditionalField>
+                        <AdditionalField id="CustomQuestion">
+                            <DisplayLabel>Custom Question:</DisplayLabel> <!-- question label -->
+                            <Value>This is my custom answer</Value> <!-- open, free text answer provided by reviewer -->
+                        </AdditionalField>
                 </AdditionalFields>
 
 
-                <!-- add client responses to reviews -->
+                <!-- add client responses to reviews - listed elements are required-->
 
                 <ClientResponses>
-                  <ClientResponse>
-                    <Department>Responding Department's Name</Department>
-                    <Response>Our number one priority is to deliver exceptional value to our customers every day. We will contact you directly to see how we can improve the outcome for you.</Response>
-                    <ResponseMarkup>
-                      <PlainText>Our number one priority is to deliver exceptional value to our customers every day. We will contact you directly to see how we can improve the outcome for you.</PlainText>
-                    </ResponseMarkup>
-                    <ResponseSource>Workbench</ResponseSource>
-                    <Date>2016-11-12T13:21:43.000-06:00</Date>
-                  </ClientResponse>
+                    <ClientResponse>
+                        <Department>Responding Department's Name</Department> <!-- not required -->
+                        <Name>Respondant's Name</Name> <!-- not required -->
+                        <Response>Our number one priority is to deliver exceptional value to our fantastic customers every day. We will contact you straight away to see how we can improve the outcome for you.</Response> 
+                        <ResponseSource>Workbench</ResponseSource> <!-- not requrired - can be included if response came from a specific platform -->
+                        <Date>2016-11-12T13:21:43.000-06:00</Date>
+                    </ClientResponse>
                 </ClientResponses>
 
-                <!-- add photos or videos included in the review -->
+                <!-- add tags and tag dimensions to the review; all listed elements are required -->
+
+                <Tags>
+                    <TagDimension id="Pro">
+                        <ExternalId>Pro</ExternalId>
+                        <Label>Pros</Label> <!-- the client-facing label that the tags live within -->
+                        <Tags>
+                            <Tag>
+                                <Label>Entertaining Friends</Label> <!-- different tags that are considered 'pros' -->
+                            </Tag>
+                            <Tag>
+                                <Label>Daily practicing</Label>
+                            </Tag>
+                            <Tag>
+                                <Label>Nice sound</Label>
+                            </Tag>
+                        </Tags>
+                    </TagDimension>
+                    <TagDimension id="Con">
+                        <ExternalId>Con</ExternalId>
+                        <Label>Cons</Label>
+                        <Tags>
+                            <Tag>
+                                <Label>Very loud</Label> <!-- different tags that are considered 'cons' -->
+                            </Tag>
+                            <Tag>
+                                <Label>Requires practice</Label>
+                            </Tag>
+                        </Tags>
+                    </TagDimension>
+                </Tags>
+
+                <!-- add photos or videos included in the review - all elements required unless marked otherwise -->
 
                 <Photos>
                     <Photo id="104358">
-                        <Caption>Thumbs and some Normal</Caption>
+                        <Caption>Thumbs and some Normal</Caption> <!-- optional -->
                         <Sizes>
-                            <Size id="thumbnail" url="https://upload.wikimedia.org/wikipedia/commons/b/b9/Nail(thumb).jpg"/>
+                            <Size id="thumbnail" url="https://upload.wikimedia.org/wikipedia/commons/b/b9/Nail(thumb).jpg"/> 
                             <Size id="normal" url="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Emoji_Grinning_Face.svg/2000px-Emoji_Grinning_Face.svg.png"/>
                         </Sizes>
                     </Photo>
@@ -130,21 +160,21 @@
                     
                 <Videos>
                     <Video>
-                        <Caption>Burgers and Fries</Caption>
+                        <Caption>Burgers and Fries</Caption> <!-- optional -->
                         <VideoHost>www.youtube.com</VideoHost>
                         <VideoId>burgersandfries</VideoId>
-                        <RawUrl>https://www.youtube.com/watch?v=DcJFdCmN98s</RawUrl>
+                        <RawUrlInput>https://www.youtube.com/watch?v=DcJFdCmN98s</RawUrlInput>
                     </Video>
                 </Videos>
 
 
-                <!-- add context data values to reviews -->
+                <!-- add context data values to reviews - context data values are custom fields with pre-defined answers that a user can choose from - all fields are required -->
 
                 <ContextDataValues>
-                    <ContextDataValue id="35to44">
-                        <ContextDataDimension id="Age">
+                    <ContextDataValue id="35to44"> <!-- ContextDataValue is the response to the ContextDataDimension -->
+                        <ContextDataDimension id="Age"> <!-- ContextDataDimension is the label/question being responded to -->
                             <ExternalId>Age</ExternalId>
-                            <Label>Age</Label>
+                            <Label>Age</Label> <!-- client-facing label -->
                         </ContextDataDimension>
                         <ExternalId>35to44</ExternalId>
                         <Label>35 to 44</Label>
@@ -171,34 +201,32 @@
 
                 <RatingValues>
                     <RatingValue>
-                        <Rating>5</Rating>
-                        <RatingDimension displayType="NORMAL" id="Quality" selectedValueInDisplayEnabled="false">
-                            <ExternalId>Quality</ExternalId>
-                            <Label>Quality</Label>
-                            <Label1>Quality</Label1>
-                            <RatingRange>5</RatingRange>
+                        <Rating>5</Rating> <!-- rating given to value listed below -->
+                        <RatingDimension displayType="NORMAL" id="Quality" selectedValueInDisplayEnabled="false"> 
+                        <!-- displayType indicates the type of tool used to provide the rating value -->
+                        <!-- selectedValueInDisplayEnabled indicated whether the value should be shown in display -->
+                            <ExternalId>Quality</ExternalId> <!-- value being rated -->
+                            <Label>Quality</Label> <!-- client-facing label of value being rated -->
+                            <RatingRange>5</RatingRange> <!-- rating-range available -->
                         </RatingDimension>
                     </RatingValue>
                     <RatingValue>
                         <Rating>5</Rating>
-                        <RatingDimension displayType="NORMAL" id="Fragrance" selectedValueInDisplayEnabled="false">
+                        <RatingDimension displayType="SLIDER" id="Fragrance" selectedValueInDisplayEnabled="false">
                             <ExternalId>Fragrance</ExternalId>
                             <Label>Fragrance</Label>
-                            <Label1>Fragrance</Label1>
                             <RatingRange>5</RatingRange>
                         </RatingDimension>
                     </RatingValue>
                     <RatingValue>
                         <Rating>5</Rating>
-                        <RatingDimension displayType="NORMAL" id="Effectiveness" selectedValueInDisplayEnabled="false">
+                        <RatingDimension displayType="RADIO" id="Effectiveness" selectedValueInDisplayEnabled="false">
                             <ExternalId>Effectiveness</ExternalId>
                             <Label>Effectiveness</Label>
-                            <Label1>Effectiveness</Label1>
                             <RatingRange>5</RatingRange>
                         </RatingDimension>
                     </RatingValue>
                 </RatingValues>
-
             </Review>
         </Reviews>
     </Product>
