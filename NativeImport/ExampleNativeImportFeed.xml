@@ -41,25 +41,9 @@
     <Product id="1010">
         <ExternalId>1010</ExternalId>
         <Reviews>
-            <Review id="11" removed="false">
-                <ModerationStatus>APPROVED</ModerationStatus>
-                <UserProfileReference id="miketester112">
-                    <ExternalId>miketester112</ExternalId>
-                    <DisplayName>supermike</DisplayName>
-                    <Anonymous>false</Anonymous>
-                    <HyperlinkingEnabled>false</HyperlinkingEnabled>
-                </UserProfileReference>
-                <Title>Best product ever!</Title>
-                <ReviewText>This product truly changed my life; I don't know what I'd do without it.</ReviewText>
-                <Rating>5</Rating>
-                <IpAddress>64.94.228.137</IpAddress>
-                <Recommended>true</Recommended>
-                <UserEmailAddress>supermike@example.com</UserEmailAddress>
-                <ReviewerLocation>Austin, TX</ReviewerLocation>
-                <SubmissionTime>2012-01-23T12:59:25.000-06:00</SubmissionTime>
-                <Featured>false</Featured>
-                <DisplayLocale>en_US</DisplayLocale>
-            </Review>
+
+            <!-- basic review -->
+
             <Review id="12" removed="false">
                 <ModerationStatus>APPROVED</ModerationStatus>
                 <UserProfileReference id="jimbob101">
@@ -78,6 +62,143 @@
                 <SubmissionTime>2012-01-23T04:26:14.000-06:00</SubmissionTime>
                 <Featured>false</Featured>
                 <DisplayLocale>en_US</DisplayLocale>
+            </Review>
+
+            <!-- sample review featuring attributes -->
+
+            <Review id="11" removed="false">
+                <ModerationStatus>APPROVED</ModerationStatus>
+                <UserProfileReference id="miketester112">
+                    <ExternalId>miketester112</ExternalId>
+                    <DisplayName>supermike</DisplayName>
+                    <Anonymous>false</Anonymous>
+                    <HyperlinkingEnabled>false</HyperlinkingEnabled>
+                </UserProfileReference>
+                <Title>Best product ever!</Title>
+                <ReviewText>This product truly changed my life; I don't know what I'd do without it.</ReviewText>
+                <Rating>5</Rating>
+                <IpAddress>64.94.228.137</IpAddress>
+                <Recommended>true</Recommended>
+                <UserEmailAddress>supermike@example.com</UserEmailAddress>
+                <ReviewerLocation>Austin, TX</ReviewerLocation>
+                <SubmissionTime>2012-01-23T12:59:25.000-06:00</SubmissionTime>
+                <Featured>false</Featured>
+                <DisplayLocale>en_US</DisplayLocale>
+
+                <!-- review feedbacks: -->
+
+                <NumFeedbacks>3</NumFeedbacks> <!-- Number of any feedbacks on a given review (positive + negative) -->
+                <NumPositiveFeedbacks>2</NumPositiveFeedbacks> <!-- Number of positive feedbacks on a given review -->
+                <NumNegativeFeedbacks>1</NumNegativeFeedbacks>  <!-- Number of negative feedbacks on a given review -->
+                <NumInappropriateFeedbacks>1</NumInappropriateFeedbacks> <!-- Number of times customers reported that this review has inappropriate or irrelevant content -->
+
+                <!-- add a custom question; create submission form question in configuration hub prior to import -->
+
+                <AdditionalFields>
+                      <AdditionalField id="CustomQuestion">
+                        <DisplayLabel>Custom Question:</DisplayLabel>
+                        <Value>This is my custom answer</Value>
+                      </AdditionalField>
+                </AdditionalFields>
+
+
+                <!-- add client responses to reviews -->
+
+                <ClientResponses>
+                  <ClientResponse>
+                    <Department>Responding Department's Name</Department>
+                    <Response>Our number one priority is to deliver exceptional value to our customers every day. We will contact you directly to see how we can improve the outcome for you.</Response>
+                    <ResponseMarkup>
+                      <PlainText>Our number one priority is to deliver exceptional value to our customers every day. We will contact you directly to see how we can improve the outcome for you.</PlainText>
+                    </ResponseMarkup>
+                    <ResponseSource>Workbench</ResponseSource>
+                    <Date>2016-11-12T13:21:43.000-06:00</Date>
+                  </ClientResponse>
+                </ClientResponses>
+
+                <!-- add photos or videos included in the review -->
+
+                <Photos>
+                    <Photo id="104358">
+                        <Caption>Thumbs and some Normal</Caption>
+                        <Sizes>
+                            <Size id="thumbnail" url="https://upload.wikimedia.org/wikipedia/commons/b/b9/Nail(thumb).jpg"/>
+                            <Size id="normal" url="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Emoji_Grinning_Face.svg/2000px-Emoji_Grinning_Face.svg.png"/>
+                        </Sizes>
+                    </Photo>
+                </Photos>
+                    
+                <Videos>
+                    <Video>
+                        <Caption>Burgers and Fries</Caption>
+                        <VideoHost>www.youtube.com</VideoHost>
+                        <VideoId>burgersandfries</VideoId>
+                        <RawUrl>https://www.youtube.com/watch?v=DcJFdCmN98s</RawUrl>
+                    </Video>
+                </Videos>
+
+
+                <!-- add context data values to reviews -->
+
+                <ContextDataValues>
+                    <ContextDataValue id="35to44">
+                        <ContextDataDimension id="Age">
+                            <ExternalId>Age</ExternalId>
+                            <Label>Age</Label>
+                        </ContextDataDimension>
+                        <ExternalId>35to44</ExternalId>
+                        <Label>35 to 44</Label>
+                    </ContextDataValue>
+                    <ContextDataValue id="Female">
+                        <ContextDataDimension id="Gender">
+                            <ExternalId>Gender</ExternalId>
+                            <Label>Gender</Label>
+                        </ContextDataDimension>
+                        <ExternalId>Female</ExternalId>
+                        <Label>Female</Label>
+                    </ContextDataValue>
+                    <ContextDataValue id="InStore">
+                        <ContextDataDimension id="ROBO">
+                            <ExternalId>ROBO</ExternalId>
+                            <Label>Where Purchased:</Label>
+                        </ContextDataDimension>
+                        <ExternalId>InStore</ExternalId>
+                        <Label>In-Store</Label>
+                    </ContextDataValue>
+                </ContextDataValues>
+
+                <!-- add rating values -->
+
+                <RatingValues>
+                    <RatingValue>
+                        <Rating>5</Rating>
+                        <RatingDimension displayType="NORMAL" id="Quality" selectedValueInDisplayEnabled="false">
+                            <ExternalId>Quality</ExternalId>
+                            <Label>Quality</Label>
+                            <Label1>Quality</Label1>
+                            <RatingRange>5</RatingRange>
+                        </RatingDimension>
+                    </RatingValue>
+                    <RatingValue>
+                        <Rating>5</Rating>
+                        <RatingDimension displayType="NORMAL" id="Fragrance" selectedValueInDisplayEnabled="false">
+                            <ExternalId>Fragrance</ExternalId>
+                            <Label>Fragrance</Label>
+                            <Label1>Fragrance</Label1>
+                            <RatingRange>5</RatingRange>
+                        </RatingDimension>
+                    </RatingValue>
+                    <RatingValue>
+                        <Rating>5</Rating>
+                        <RatingDimension displayType="NORMAL" id="Effectiveness" selectedValueInDisplayEnabled="false">
+                            <ExternalId>Effectiveness</ExternalId>
+                            <Label>Effectiveness</Label>
+                            <Label1>Effectiveness</Label1>
+                            <RatingRange>5</RatingRange>
+                        </RatingDimension>
+                    </RatingValue>
+                </RatingValues>
+
             </Review>
         </Reviews>
     </Product>
