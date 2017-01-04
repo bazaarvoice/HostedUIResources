@@ -42,7 +42,9 @@
         <ExternalId>1010</ExternalId>
         <Reviews>
 
-            <!-- basic example review - features most common elements included in import feeds -->
+<!-- 
+    This is an example of a basic review - it features the most common elements included in import feeds. 
+-->
 
             <Review id="12" removed="false">
                 <ModerationStatus>APPROVED</ModerationStatus>
@@ -55,7 +57,7 @@
                 <Title>What an amazing product!</Title>
                 <ReviewText>This product is great and I'll definitely recommend it to my friends!</ReviewText>
                 <Rating>4</Rating>
-                <IpAddress>64.94.228.136</IpAddress> <!-- required for syndication -->
+                <IpAddress>64.94.228.136</IpAddress> <!-- IpAddress is required for syndication. -->
                 <Recommended>true</Recommended>
                 <UserEmailAddress>jimbob101@example.com</UserEmailAddress>
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
@@ -64,7 +66,9 @@
                 <DisplayLocale>en_US</DisplayLocale>
             </Review>
 
-            <!-- sample review featuring common additional attributes that can be included in feed -->
+<!-- 
+    This is a sample review featuring additional attributes that can be included in this file. 
+-->
 
             <Review id="11" removed="false">
                 <ModerationStatus>APPROVED</ModerationStatus>
@@ -85,44 +89,55 @@
                 <Featured>false</Featured>
                 <DisplayLocale>en_US</DisplayLocale>
 
-                <!-- review feedbacks: -->
+<!-- 
+    See below for the different types of review feedback: 
+-->
 
-                <NumFeedbacks>3</NumFeedbacks> <!-- Number of any feedbacks on a given review (positive + negative) -->
-                <NumPositiveFeedbacks>2</NumPositiveFeedbacks> <!-- Number of positive feedbacks on a given review -->
-                <NumNegativeFeedbacks>1</NumNegativeFeedbacks>  <!-- Number of negative feedbacks on a given review -->
-                <NumInappropriateFeedbacks>1</NumInappropriateFeedbacks> <!-- Number of times customers reported that this review has inappropriate or irrelevant content -->
+                <NumFeedbacks>3</NumFeedbacks> <!-- The number of any feedbacks on a given review (positive + negative). -->
+                <NumPositiveFeedbacks>2</NumPositiveFeedbacks> <!-- The number of positive feedbacks on a given review. -->
+                <NumNegativeFeedbacks>1</NumNegativeFeedbacks>  <!-- The number of negative feedbacks on a given review. -->
+                <NumInappropriateFeedbacks>1</NumInappropriateFeedbacks> <!-- The number of times customers reported that this review has inappropriate or irrelevant content. -->
 
-                <!-- add a custom question with free-text response; create submission form question in configuration hub prior to import - listed elements are required -->
+<!-- 
+    This field allows you to add a custom question with a free-text response. 
+        - Prior to importing this file, create submission form question in configuration hub prior to import. 
+        - Listed elements are required 
+-->
 
                 <AdditionalFields>
-                        <AdditionalField id="CustomQuestion">
-                            <DisplayLabel>Custom Question:</DisplayLabel> <!-- question label -->
-                            <Value>This is my custom answer</Value> <!-- open, free text answer provided by reviewer -->
-                        </AdditionalField>
+                    <AdditionalField id="CustomQuestion">
+                        <DisplayLabel>Custom Question:</DisplayLabel> <!-- This field is the label of the question. -->
+                        <Value>This is my custom answer</Value> <!-- This is where the reviewer's free-text answer is included. -->
+                    </AdditionalField>
                 </AdditionalFields>
 
-
-                <!-- add client responses to reviews - listed elements are required-->
+<!-- 
+    This field allows you to add client responses to reviews. 
+        - All elements listed are required unless otherwise noted. 
+-->
 
                 <ClientResponses>
                     <ClientResponse>
-                        <Department>Responding Department's Name</Department> <!-- not required -->
-                        <Name>Respondant's Name</Name> <!-- not required -->
+                        <Department>Responding Department's Name</Department> <!-- This field is not required -->
+                        <Name>Respondant's Name</Name> <!-- This field is not required -->
                         <Response>Our number one priority is to deliver exceptional value to our fantastic customers every day. We will contact you straight away to see how we can improve the outcome for you.</Response> 
-                        <ResponseSource>Workbench</ResponseSource> <!-- not requrired - can be included if response came from a specific platform -->
+                        <ResponseSource>Workbench</ResponseSource> <!-- This field is not requrired, but can be included if the response came from a specific platform -->
                         <Date>2016-11-12T13:21:43.000-06:00</Date>
                     </ClientResponse>
                 </ClientResponses>
 
-                <!-- add tags and tag dimensions to the review; all listed elements are required -->
+<!-- 
+    The Tags field allows you to add tags and tag dimensions to the review. 
+        - All listed elements are required. 
+-->
 
                 <Tags>
                     <TagDimension id="Pro">
                         <ExternalId>Pro</ExternalId>
-                        <Label>Pros</Label> <!-- the client-facing label that the tags live within -->
+                        <Label>Pros</Label> <!-- This field is the client-facing label that the tags live within. -->
                         <Tags>
                             <Tag>
-                                <Label>Entertaining Friends</Label> <!-- different tags that are considered 'pros' -->
+                                <Label>Entertaining Friends</Label> <!-- These are the different tags selected that are considered 'pros' -->
                             </Tag>
                             <Tag>
                                 <Label>Daily practicing</Label>
@@ -137,7 +152,7 @@
                         <Label>Cons</Label>
                         <Tags>
                             <Tag>
-                                <Label>Very loud</Label> <!-- different tags that are considered 'cons' -->
+                                <Label>Very loud</Label> <!-- These are the different tags selected that are considered 'cons' -->
                             </Tag>
                             <Tag>
                                 <Label>Requires practice</Label>
@@ -146,11 +161,14 @@
                     </TagDimension>
                 </Tags>
 
-                <!-- add photos or videos included in the review - all elements required unless marked otherwise -->
+<!-- 
+    These fields allow you to add add photos or videos included in a review. 
+        - All elements listed are required unless otherwise marked 
+-->
 
                 <Photos>
                     <Photo id="104358">
-                        <Caption>Thumbs and some Normal</Caption> <!-- optional -->
+                        <Caption>Thumbs and some Normal</Caption> <!-- The caption is optional. -->
                         <Sizes>
                             <Size id="thumbnail" url="https://upload.wikimedia.org/wikipedia/commons/b/b9/Nail(thumb).jpg"/> 
                             <Size id="normal" url="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Emoji_Grinning_Face.svg/2000px-Emoji_Grinning_Face.svg.png"/>
@@ -160,7 +178,7 @@
                     
                 <Videos>
                     <Video>
-                        <Caption>Burgers and Fries</Caption> <!-- optional -->
+                        <Caption>Burgers and Fries</Caption> <!-- The caption field is optional -->
                         <VideoHost>www.youtube.com</VideoHost>
                         <VideoId>burgersandfries</VideoId>
                         <RawUrlInput>https://www.youtube.com/watch?v=DcJFdCmN98s</RawUrlInput>
@@ -168,13 +186,17 @@
                 </Videos>
 
 
-                <!-- add context data values to reviews - context data values are custom fields with pre-defined answers that a user can choose from - all fields are required -->
+<!-- 
+    These fields add context data values to reviews. 
+        - Context data values are custom fields with pre-defined answers that a user can choose from. 
+        - All listed fields are required. 
+-->
 
                 <ContextDataValues>
-                    <ContextDataValue id="35to44"> <!-- ContextDataValue is the response to the ContextDataDimension -->
-                        <ContextDataDimension id="Age"> <!-- ContextDataDimension is the label/question being responded to -->
+                    <ContextDataValue id="35to44"> <!-- ContextDataValue is the response to the ContextDataDimension. -->
+                        <ContextDataDimension id="Age"> <!-- ContextDataDimension is the label/question being responded to. -->
                             <ExternalId>Age</ExternalId>
-                            <Label>Age</Label> <!-- client-facing label -->
+                            <Label>Age</Label> <!-- This is the client-facing label. -->
                         </ContextDataDimension>
                         <ExternalId>35to44</ExternalId>
                         <Label>35 to 44</Label>
@@ -197,17 +219,19 @@
                     </ContextDataValue>
                 </ContextDataValues>
 
-                <!-- add rating values -->
+<!-- 
+    This field adds rating values to reviews.
+-->
 
                 <RatingValues>
                     <RatingValue>
-                        <Rating>5</Rating> <!-- rating given to value listed below -->
+                        <Rating>5</Rating> <!-- This field is the rating given to value listed below. -->
                         <RatingDimension displayType="NORMAL" id="Quality" selectedValueInDisplayEnabled="false"> 
-                        <!-- displayType indicates the type of tool used to provide the rating value -->
-                        <!-- selectedValueInDisplayEnabled indicated whether the value should be shown in display -->
-                            <ExternalId>Quality</ExternalId> <!-- value being rated -->
-                            <Label>Quality</Label> <!-- client-facing label of value being rated -->
-                            <RatingRange>5</RatingRange> <!-- rating-range available -->
+                        <!-- The displayType indicates the type of tool used to provide the rating value (see below for additional examples. -->
+                        <!-- The selectedValueInDisplayEnabled indicates whether the value should be shown in display or hidden. -->
+                            <ExternalId>Quality</ExternalId> <!-- This field represents the value being rated. -->
+                            <Label>Quality</Label> <!-- This field is the client-facing label of value being rated. -->
+                            <RatingRange>5</RatingRange> <!-- This field represents the total rating-range available. -->
                         </RatingDimension>
                     </RatingValue>
                     <RatingValue>
