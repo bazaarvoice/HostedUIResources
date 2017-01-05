@@ -42,15 +42,14 @@
         <ExternalId>1010</ExternalId>
         <Reviews>
 
-        <!-- 
-            The following is an example of a basic review - it features the most common elements included in import feeds. 
+            <!-- 
+                The following is an example of a basic review - it features the most common elements included in import feeds. 
 
-            The following elements are required for syndication:
-                - <IpAddress>
-                - <DisplayName>
-                - <SubmissionTime>
-        -->
-
+                The following elements are required for syndication:
+                    - <IpAddress>
+                    - <DisplayName>
+                    - <SubmissionTime>
+            -->
             <Review id="12" removed="false">
                 <ModerationStatus>APPROVED</ModerationStatus>
                 <UserProfileReference id="jimbob101">
@@ -74,7 +73,6 @@
             <!-- 
                 This following is a sample review featuring additional attributes that can be included in this file. 
             -->
-
             <Review id="11" removed="false">
                 <ModerationStatus>APPROVED</ModerationStatus>
                 <UserProfileReference id="miketester112">
@@ -100,21 +98,19 @@
                         - <NumFeedbacks> is the number of any feedbacks on a given review (positive + negative).
                         - <NumPositiveFeedbacks> is the number of positive feedbacks on a given review.
                         - <NumNegativeFeedbacks> is the number of negative feedbacks on a given review.
-                        - <NumInappropriateFeedbacks> is the number of times customers reported that this review has inappropriate or irrelevant content.
+                        - <NumInappropriateFeedbacks> is the number of times consumers reported that this review has inappropriate content.
                 -->
-
                 <NumFeedbacks>3</NumFeedbacks>
                 <NumPositiveFeedbacks>2</NumPositiveFeedbacks>
                 <NumNegativeFeedbacks>1</NumNegativeFeedbacks>
                 <NumInappropriateFeedbacks>1</NumInappropriateFeedbacks>
 
                 <!-- 
-                    The following field allows you to add a custom question with a free-text response. Prior to importing this file, create submission form question in configuration hub prior to import. All listed elements are required
+                    The following field allows you to add a custom question with a free-text response. All listed elements are required.
 
-                        - <DisplayLabel> represents the client-facing label of the question
+                        - <DisplayLabel> represents the consumer-facing label of the question
                         - <Value> is where the reviewer's free-text answer is included.
                 -->
-
                 <AdditionalFields>
                     <AdditionalField id="CustomQuestion">
                         <DisplayLabel>Custom Question:</DisplayLabel> 
@@ -125,13 +121,13 @@
                 <!-- 
                     The following field allows you to add company responses to reviews. All elements listed are required unless otherwise noted.
 
-                        - <Department> is not required, but recommended if the responding parties' department is available.
-                        - <Name> is not required, but recommended if the responding parties' name is available.
+                        - <ClientResponse> is the field where a representative of your company has responded up to a consumer comment left on a product.
+                        - <Department> is not required, but recommended if the responding party's department is available.
+                        - <Name> is not required, but recommended if the responding party's name is available.
                         - <Response> is  where you include your company's response to a review. This field is required.
-                        - <ResponseSource> is not required
+                        - <ResponseSource> is not required, but recommended if you have data on where the response from your company's representative was generated. In this example, the response came from 'Workbench', which is where Bazaarvoices' clients generally generate responses to consumer reviews. 
                         - <Date> is required in datetime format. 
                 -->
-
                 <ClientResponses>
                     <ClientResponse>
                         <Department>Responding Department's Name</Department>
@@ -145,10 +141,9 @@
                 <!-- 
                     The Tags field allows you to add tags and tag dimensions to the review. All listed elements are required. 
 
-                        - <Label> is the client-facing label that the tags live within.
-                        - <Tag>: <Label> are the different tag names that fall underneath the master label (in the example below, these labels live within the "Pro" or "Con" master label).
+                        - <TagDimension><Label> is the client-facing label that the tags live within.
+                        - <Tag><Label> are the different tag names that fall underneath <TagDimension><Label> (in the example below, these labels live within the "Pro" or "Con" master label).
                 -->
-
                 <Tags>
                     <TagDimension id="Pro">
                         <ExternalId>Pro</ExternalId>
@@ -180,17 +175,16 @@
                 </Tags>
 
                 <!-- 
-                    The following fields allow you to add add photos or videos included in a review. All elements listed are required unless otherwise marked.
+                    The following fields allow you to add add photos or videos included in a review. All elements listed are required unless otherwise noted.
 
-                        - <Photo id="1234xyz"> and <VideoId> are both required. You can include any alpha-numeric ID you'd like here, ensuring that each ID is unique.
+                        - <Photo id="___"> and <VideoId> are both required. You can include any alpha-numeric ID you'd like here, ensuring that each ID is unique.
                         - <Caption> is an optional field.
                 -->
-
                 <Photos>
                     <Photo id="104358">
                         <Caption>Thumbs and some Normal</Caption> 
                         <Sizes>
-                            <Size id="thumbnail" url="https://upload.wikimedia.org/wikipedia/commons/b/b9/Nail(thumb).jpg"/> 
+                            <Size id="thumbnail" url="https://upload.wikimedia.org/wikipedia/commons/5/50/Emoji_Grinning_Face.svg"/> 
                             <Size id="normal" url="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Emoji_Grinning_Face.svg/2000px-Emoji_Grinning_Face.svg.png"/>
                         </Sizes>
                     </Photo>
@@ -207,13 +201,12 @@
 
 
                 <!-- 
-                    The ContextDataValues fields add context data values to reviews. Context data values are custom fields with pre-defined answers that a user can choose from. All listed fields are required. 
+                    Context data values are custom fields with pre-defined answers that a user can choose from. All listed fields are required. 
 
                         - <ContextDataValue> is the response to the ContextDataDimension.
                         - <ContextDataDimension> is the label/question being responded to.
                         - <Label> is the client-facing label.
                 -->
-
                 <ContextDataValues>
                     <ContextDataValue id="35to44">
                         <ContextDataDimension id="Age">
@@ -252,7 +245,6 @@
                         - <Label> is the client-facing label of value being rated.
                         - <RatingRange> represents the total rating-range available.
                 -->
-
                 <RatingValues>
                     <RatingValue>
                         <Rating>5</Rating>
