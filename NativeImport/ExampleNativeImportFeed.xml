@@ -42,9 +42,14 @@
         <ExternalId>1010</ExternalId>
         <Reviews>
 
-<!-- 
-    This is an example of a basic review - it features the most common elements included in import feeds. 
--->
+        <!-- 
+            The following is an example of a basic review - it features the most common elements included in import feeds. 
+
+            The following elements are required for syndication:
+                - <IpAddress>
+                - <DisplayName>
+                - <SubmissionTime>
+        -->
 
             <Review id="12" removed="false">
                 <ModerationStatus>APPROVED</ModerationStatus>
@@ -57,7 +62,7 @@
                 <Title>What an amazing product!</Title>
                 <ReviewText>This product is great and I'll definitely recommend it to my friends!</ReviewText>
                 <Rating>4</Rating>
-                <IpAddress>64.94.228.136</IpAddress> <!-- IpAddress is required for syndication. -->
+                <IpAddress>64.94.228.136</IpAddress> 
                 <Recommended>true</Recommended>
                 <UserEmailAddress>jimbob101@example.com</UserEmailAddress>
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
@@ -66,9 +71,9 @@
                 <DisplayLocale>en_US</DisplayLocale>
             </Review>
 
-<!-- 
-    This is a sample review featuring additional attributes that can be included in this file. 
--->
+            <!-- 
+                This following is a sample review featuring additional attributes that can be included in this file. 
+            -->
 
             <Review id="11" removed="false">
                 <ModerationStatus>APPROVED</ModerationStatus>
@@ -89,55 +94,68 @@
                 <Featured>false</Featured>
                 <DisplayLocale>en_US</DisplayLocale>
 
-<!-- 
-    See below for the different types of review feedback: 
--->
+                <!-- 
+                    See below for the different types of review feedback.
 
-                <NumFeedbacks>3</NumFeedbacks> <!-- The number of any feedbacks on a given review (positive + negative). -->
-                <NumPositiveFeedbacks>2</NumPositiveFeedbacks> <!-- The number of positive feedbacks on a given review. -->
-                <NumNegativeFeedbacks>1</NumNegativeFeedbacks>  <!-- The number of negative feedbacks on a given review. -->
-                <NumInappropriateFeedbacks>1</NumInappropriateFeedbacks> <!-- The number of times customers reported that this review has inappropriate or irrelevant content. -->
+                        - <NumFeedbacks> is the number of any feedbacks on a given review (positive + negative).
+                        - <NumPositiveFeedbacks> is the number of positive feedbacks on a given review.
+                        - <NumNegativeFeedbacks> is the number of negative feedbacks on a given review.
+                        - <NumInappropriateFeedbacks> is the number of times customers reported that this review has inappropriate or irrelevant content.
+                -->
 
-<!-- 
-    This field allows you to add a custom question with a free-text response. 
-        - Prior to importing this file, create submission form question in configuration hub prior to import. 
-        - Listed elements are required 
--->
+                <NumFeedbacks>3</NumFeedbacks>
+                <NumPositiveFeedbacks>2</NumPositiveFeedbacks>
+                <NumNegativeFeedbacks>1</NumNegativeFeedbacks>
+                <NumInappropriateFeedbacks>1</NumInappropriateFeedbacks>
+
+                <!-- 
+                    The following field allows you to add a custom question with a free-text response. Prior to importing this file, create submission form question in configuration hub prior to import. All listed elements are required
+
+                        - <DisplayLabel> represents the client-facing label of the question
+                        - <Value> is where the reviewer's free-text answer is included.
+                -->
 
                 <AdditionalFields>
                     <AdditionalField id="CustomQuestion">
-                        <DisplayLabel>Custom Question:</DisplayLabel> <!-- This field is the label of the question. -->
-                        <Value>This is my custom answer</Value> <!-- This is where the reviewer's free-text answer is included. -->
+                        <DisplayLabel>Custom Question:</DisplayLabel> 
+                        <Value>This is my custom answer</Value>
                     </AdditionalField>
                 </AdditionalFields>
 
-<!-- 
-    This field allows you to add client responses to reviews. 
-        - All elements listed are required unless otherwise noted. 
--->
+                <!-- 
+                    The following field allows you to add company responses to reviews. All elements listed are required unless otherwise noted.
+
+                        - <Department> is not required, but recommended if the responding parties' department is available.
+                        - <Name> is not required, but recommended if the responding parties' name is available.
+                        - <Response> is  where you include your company's response to a review. This field is required.
+                        - <ResponseSource> is not required
+                        - <Date> is required in datetime format. 
+                -->
 
                 <ClientResponses>
                     <ClientResponse>
-                        <Department>Responding Department's Name</Department> <!-- This field is not required -->
-                        <Name>Respondant's Name</Name> <!-- This field is not required -->
+                        <Department>Responding Department's Name</Department>
+                        <Name>Respondant's Name</Name>
                         <Response>Our number one priority is to deliver exceptional value to our fantastic customers every day. We will contact you straight away to see how we can improve the outcome for you.</Response> 
-                        <ResponseSource>Workbench</ResponseSource> <!-- This field is not requrired, but can be included if the response came from a specific platform -->
+                        <ResponseSource>Workbench</ResponseSource>
                         <Date>2016-11-12T13:21:43.000-06:00</Date>
                     </ClientResponse>
                 </ClientResponses>
 
-<!-- 
-    The Tags field allows you to add tags and tag dimensions to the review. 
-        - All listed elements are required. 
--->
+                <!-- 
+                    The Tags field allows you to add tags and tag dimensions to the review. All listed elements are required. 
+
+                        - <Label> is the client-facing label that the tags live within.
+                        - <Tag>: <Label> are the different tag names that fall underneath the master label (in the example below, these labels live within the "Pro" or "Con" master label).
+                -->
 
                 <Tags>
                     <TagDimension id="Pro">
                         <ExternalId>Pro</ExternalId>
-                        <Label>Pros</Label> <!-- This field is the client-facing label that the tags live within. -->
+                        <Label>Pros</Label>
                         <Tags>
                             <Tag>
-                                <Label>Entertaining Friends</Label> <!-- These are the different tags selected that are considered 'pros' -->
+                                <Label>Entertaining Friends</Label> 
                             </Tag>
                             <Tag>
                                 <Label>Daily practicing</Label>
@@ -152,7 +170,7 @@
                         <Label>Cons</Label>
                         <Tags>
                             <Tag>
-                                <Label>Very loud</Label> <!-- These are the different tags selected that are considered 'cons' -->
+                                <Label>Very loud</Label>
                             </Tag>
                             <Tag>
                                 <Label>Requires practice</Label>
@@ -161,14 +179,16 @@
                     </TagDimension>
                 </Tags>
 
-<!-- 
-    These fields allow you to add add photos or videos included in a review. 
-        - All elements listed are required unless otherwise marked 
--->
+                <!-- 
+                    The following fields allow you to add add photos or videos included in a review. All elements listed are required unless otherwise marked.
+
+                        - <Photo id="1234xyz"> and <VideoId> are both required. You can include any alpha-numeric ID you'd like here, ensuring that each ID is unique.
+                        - <Caption> is an optional field.
+                -->
 
                 <Photos>
                     <Photo id="104358">
-                        <Caption>Thumbs and some Normal</Caption> <!-- The caption is optional. -->
+                        <Caption>Thumbs and some Normal</Caption> 
                         <Sizes>
                             <Size id="thumbnail" url="https://upload.wikimedia.org/wikipedia/commons/b/b9/Nail(thumb).jpg"/> 
                             <Size id="normal" url="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Emoji_Grinning_Face.svg/2000px-Emoji_Grinning_Face.svg.png"/>
@@ -178,7 +198,7 @@
                     
                 <Videos>
                     <Video>
-                        <Caption>Burgers and Fries</Caption> <!-- The caption field is optional -->
+                        <Caption>Burgers and Fries</Caption>
                         <VideoHost>www.youtube.com</VideoHost>
                         <VideoId>burgersandfries</VideoId>
                         <RawUrlInput>https://www.youtube.com/watch?v=DcJFdCmN98s</RawUrlInput>
@@ -186,17 +206,19 @@
                 </Videos>
 
 
-<!-- 
-    These fields add context data values to reviews. 
-        - Context data values are custom fields with pre-defined answers that a user can choose from. 
-        - All listed fields are required. 
--->
+                <!-- 
+                    The ContextDataValues fields add context data values to reviews. Context data values are custom fields with pre-defined answers that a user can choose from. All listed fields are required. 
+
+                        - <ContextDataValue> is the response to the ContextDataDimension.
+                        - <ContextDataDimension> is the label/question being responded to.
+                        - <Label> is the client-facing label.
+                -->
 
                 <ContextDataValues>
-                    <ContextDataValue id="35to44"> <!-- ContextDataValue is the response to the ContextDataDimension. -->
-                        <ContextDataDimension id="Age"> <!-- ContextDataDimension is the label/question being responded to. -->
+                    <ContextDataValue id="35to44">
+                        <ContextDataDimension id="Age">
                             <ExternalId>Age</ExternalId>
-                            <Label>Age</Label> <!-- This is the client-facing label. -->
+                            <Label>Age</Label>
                         </ContextDataDimension>
                         <ExternalId>35to44</ExternalId>
                         <Label>35 to 44</Label>
@@ -219,19 +241,25 @@
                     </ContextDataValue>
                 </ContextDataValues>
 
-<!-- 
-    This field adds rating values to reviews.
--->
+                <!-- 
+                    The following fields add rating values to reviews.
+
+                        - The <Rating> field is the rating given to value listed below.
+                        - The <RatingDimension> field contains the following:
+                            - The displayType indicates the type of tool used to provide the rating value (see below for additional examples.)
+                            - The selectedValueInDisplayEnabled indicates whether the value should be shown in display or hidden.
+                        - <ExternalId> represents the value being rated.
+                        - <Label> is the client-facing label of value being rated.
+                        - <RatingRange> represents the total rating-range available.
+                -->
 
                 <RatingValues>
                     <RatingValue>
-                        <Rating>5</Rating> <!-- This field is the rating given to value listed below. -->
+                        <Rating>5</Rating>
                         <RatingDimension displayType="NORMAL" id="Quality" selectedValueInDisplayEnabled="false"> 
-                        <!-- The displayType indicates the type of tool used to provide the rating value (see below for additional examples. -->
-                        <!-- The selectedValueInDisplayEnabled indicates whether the value should be shown in display or hidden. -->
-                            <ExternalId>Quality</ExternalId> <!-- This field represents the value being rated. -->
-                            <Label>Quality</Label> <!-- This field is the client-facing label of value being rated. -->
-                            <RatingRange>5</RatingRange> <!-- This field represents the total rating-range available. -->
+                            <ExternalId>Quality</ExternalId>
+                            <Label>Quality</Label>
+                            <RatingRange>5</RatingRange>
                         </RatingDimension>
                     </RatingValue>
                     <RatingValue>
