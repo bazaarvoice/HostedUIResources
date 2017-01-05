@@ -100,7 +100,7 @@
                         - <NumPositiveFeedbacks> is the number of positive feedbacks on a given review.
                         - <NumNegativeFeedbacks> is the number of negative feedbacks on a given review.
                         - <NumInappropriateFeedbacks> is the number of times consumers reported that this review has 
-                        inappropriate content.
+                          inappropriate content.
                 -->
                 <NumFeedbacks>3</NumFeedbacks>
                 <NumPositiveFeedbacks>2</NumPositiveFeedbacks>
@@ -126,15 +126,15 @@
                     unless otherwise noted.
 
                         - <ClientResponse> is the field where a representative of your company has responded up to a 
-                        consumer comment left on a product.
+                          consumer comment left on a product.
                         - <Department> is not required, but recommended if the responding party's department is 
-                        available.
+                          available.
                         - <Name> is not required, but recommended if the responding party's name is available.
                         - <Response> is  where you include your company's response to a review. This field is required.
                         - <ResponseSource> is not required, but recommended if you have data on where the response from 
-                        your company's representative was generated. In this example, the response came from 
-                        'Workbench', which is where Bazaarvoices' clients generally generate responses to consumer 
-                        reviews. 
+                          your company's representative was generated. In this example, the response came from 
+                          'Workbench', which is where Bazaarvoices' clients generally generate responses to consumer 
+                          reviews. 
                         - <Date> is required in datetime format. 
                 -->
                 <ClientResponses>
@@ -155,7 +155,7 @@
 
                         - <TagDimension><Label> is the client-facing label that the tags live within.
                         - <Tag><Label> are the different tag names that fall underneath <TagDimension><Label> 
-                        (in the example below, these labels live within the "Pro" or "Con" master label).
+                          (in the example below, these labels live within the "Pro" or "Con" master label).
                 -->
                 <Tags>
                     <TagDimension id="Pro">
@@ -192,7 +192,7 @@
                     are required unless otherwise noted.
 
                         - <Photo id="___"> and <VideoId> are both required. You can include any alpha-numeric ID you'd 
-                        like here, ensuring that each ID is unique.
+                          like here, ensuring that each ID is unique.
                         - <Caption> is an optional field.
                 -->
                 <Photos>
@@ -256,9 +256,9 @@
                         - The <Rating> field is the rating given to value listed below.
                         - The <RatingDimension> field contains the following:
                             - The displayType indicates the type of tool used to provide the rating value (see below for
-                             additional examples.)
+                              additional examples.)
                             - The selectedValueInDisplayEnabled indicates whether the value should be shown in display 
-                            or hidden.
+                              or hidden.
                         - <ExternalId> represents the value being rated.
                         - <Label> is the client-facing label of value being rated.
                         - <RatingRange> represents the total rating-range available.
