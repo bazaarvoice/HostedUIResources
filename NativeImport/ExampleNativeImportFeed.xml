@@ -62,7 +62,7 @@
                 <Title>What an amazing product!</Title>
                 <ReviewText>This product is great and I'll definitely recommend it to my friends!</ReviewText>
                 <Rating>4</Rating>
-                <IpAddress>64.94.228.136</IpAddress> 
+                <IpAddress>198.51.100.0</IpAddress>
                 <Recommended>true</Recommended>
                 <UserEmailAddress>jimbob101@example.com</UserEmailAddress>
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
@@ -85,7 +85,7 @@
                 <Title>Best product ever!</Title>
                 <ReviewText>This product truly changed my life; I don't know what I'd do without it.</ReviewText>
                 <Rating>5</Rating>
-                <IpAddress>64.94.228.137</IpAddress>
+                <IpAddress>198.51.100.1</IpAddress>
                 <Recommended>true</Recommended>
                 <UserEmailAddress>supermike@example.com</UserEmailAddress>
                 <ReviewerLocation>Austin, TX</ReviewerLocation>
