@@ -5,7 +5,7 @@
       and HyperlinkingEnabled are required. If omitted, the reviews will be imported as "Anonymous."
 
 -->
-<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/StandardClientFeed/5.6" name="clientname" extractDate="2008-11-21T22:44:33.179+01:00">
+<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/StandardClientFeed/14.7" name="clientname" extractDate="2008-11-21T22:44:33.179+01:00">
 <Product id="testid">
   <ExternalId>testid</ExternalId>
   <Questions>
