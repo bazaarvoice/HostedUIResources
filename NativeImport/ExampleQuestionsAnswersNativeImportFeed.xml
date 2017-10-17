@@ -1,111 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-
-    - UserProfileReference - if included, the children elements ExternalId, DisplayName, Anonymous, 
-      and HyperlinkingEnabled are required. If omitted, the reviews will be imported as "Anonymous."
-
--->
-<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/StandardClientFeed/14.7" name="clientname" extractDate="2008-11-21T22:44:33.179+01:00">
-<Product id="testid">
-  <ExternalId>testid</ExternalId>
-  <Questions>
-    <Question id="44135">
-     <SubmissionTime>2008-11-21T22:44:33.179+01:00</SubmissionTime>
-     <UserNickname>Dave</UserNickname>
-     <UserLocation>London</UserLocation>
-     <QuestionSummary>Can we import A&amp;A questions?</QuestionSummary>
-     <QuestionDetails>The reason I ask is that I'm really curious</QuestionDetails>
-     <DisplayLocale>en_GB</DisplayLocale>
-     <Answers>
-        <Answer id="1">
-          <SubmissionTime>2008-11-22T22:44:33.179+01:00</SubmissionTime>
-          <UserProfileReference id="Tim">
-              <ExternalId>Tim</ExternalId>
-              <Anonymous>false</Anonymous>
-              <HyperlinkingEnabled>false</HyperlinkingEnabled>
-          </UserProfileReference>
-          <UserNickname>Tim</UserNickname>
-          <UserLocation>Edinburgh</UserLocation>
-          <AnswerText>I think so</AnswerText>
-          <DisplayLocale>en_GB</DisplayLocale>
-        </Answer>
-        <Answer id="2">
-          <SubmissionTime>2008-11-23T22:44:33.179+01:00</SubmissionTime>
-          <UserProfileReference id="James">
-              <ExternalId>James</ExternalId>
-              <Anonymous>false</Anonymous>
-              <HyperlinkingEnabled>false</HyperlinkingEnabled>
-          </UserProfileReference>
-          <UserNickname>James</UserNickname>
-          <UserLocation>Birmingham</UserLocation>
-          <AnswerText>A guy I know has done it</AnswerText>
-          <DisplayLocale>en_GB</DisplayLocale>
-        </Answer>
-        <Answer id="3">
-          <SubmissionTime>2008-11-23T22:44:33.19+01:00</SubmissionTime>
-          <UserProfileReference id="James">
-              <ExternalId>James</ExternalId>
-              <Anonymous>false</Anonymous>
-              <HyperlinkingEnabled>false</HyperlinkingEnabled>
-          </UserProfileReference>
-          <UserNickname>James</UserNickname>
-          <UserLocation>Barcelona</UserLocation>
-          <AnswerText>Of course you can, here's how :D</AnswerText>
-          <DisplayLocale>es_ES</DisplayLocale>
-        </Answer>
-     </Answers>
-    </Question>
-  </Questions>
-</Product> 
-<Product id="testid2">
-  <ExternalId>testid2</ExternalId>
-  <Questions>
-    <Question id="44136">
-     <SubmissionTime>2008-11-21T22:44:33.179+01:00</SubmissionTime>
-     <UserNickname>Dave</UserNickname>
-     <UserLocation>London</UserLocation>
-     <QuestionSummary>Can we import A&amp;A answers?</QuestionSummary>
-     <QuestionDetails>The reason I ask is that I'm really curious</QuestionDetails>
-     <DisplayLocale>en_GB</DisplayLocale>
-     <Answers>
-        <Answer id="4">
-          <SubmissionTime>2008-11-22T22:44:33.179+01:00</SubmissionTime>
-          <UserProfileReference id="Tim">
-              <ExternalId>Tim</ExternalId>
-              <Anonymous>false</Anonymous>
-              <HyperlinkingEnabled>false</HyperlinkingEnabled>
-          </UserProfileReference>
-          <UserNickname>Tim</UserNickname>
-          <UserLocation>Edinburgh</UserLocation>
-          <AnswerText>I think so</AnswerText>
-          <DisplayLocale>en_GB</DisplayLocale>
-        </Answer>
-        <Answer id="5">
-          <SubmissionTime>2008-11-23T22:44:33.179+01:00</SubmissionTime>
-          <UserProfileReference id="Becker">
-              <ExternalId>Becker</ExternalId>
-              <Anonymous>false</Anonymous>
-              <HyperlinkingEnabled>false</HyperlinkingEnabled>
-          </UserProfileReference>
-          <UserNickname>Becker</UserNickname>
-          <UserLocation>Madrid</UserLocation>
-          <AnswerText>A guy I know has done it</AnswerText>
-          <DisplayLocale>es_ES</DisplayLocale>
-        </Answer>
-        <Answer id="6">
-          <SubmissionTime>2008-11-23T22:44:33.19+01:00</SubmissionTime>
-          <UserProfileReference id="Tsango">
-              <ExternalId>Tsango</ExternalId>
-              <Anonymous>false</Anonymous>
-              <HyperlinkingEnabled>false</HyperlinkingEnabled>
-          </UserProfileReference>
-          <UserNickname>Tsango</UserNickname>
-          <UserLocation>Berlin</UserLocation>
-          <AnswerText>Of course you can, here's how :D</AnswerText>
-          <DisplayLocale>de_DE</DisplayLocale>
-        </Answer>
-     </Answers>
-    </Question>
-  </Questions>
-</Product> 
+<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/StandardClientFeed/14.7" name="ExampleClient" extractDate="2016-11-21T22:44:33.179+01:00">
+   <Product id="1010">
+      <ExternalId>1010</ExternalId>
+      <Questions>
+         <!-- 
+            The following is an example of basic questions and answers.
+            These elements are required for syndication:
+               - <IpAddress>
+               - <DisplayName>
+               - <SubmissionTime>
+         -->
+         <Question id="44135">
+            <SubmissionTime>2008-11-21T22:44:33.179+01:00</SubmissionTime>
+            <UserProfileReference id="jimbob101">
+               <ExternalId>jimbob101</ExternalId>
+               <DisplayName>JimBob</DisplayName>
+               <Anonymous>false</Anonymous>
+               <HyperlinkingEnabled>false</HyperlinkingEnabled>
+            </UserProfileReference>
+            <UserLocation>Austin, TX</UserLocation>
+            <QuestionSummary>Can we import Q&amp;A questions?</QuestionSummary>
+            <QuestionDetails>The reason I ask is that I'm really curious</QuestionDetails>
+            <IpAddress>198.51.100.0</IpAddress>
+            <DisplayLocale>en_US</DisplayLocale>
+            <Answers>
+               <Answer id="1">
+                  <SubmissionTime>2008-11-22T22:44:33.179+01:00</SubmissionTime>
+                  <UserProfileReference id="Tim">
+                     <ExternalId>Tim</ExternalId>
+                     <DisplayName>Tim</DisplayName>
+                     <Anonymous>false</Anonymous>
+                     <HyperlinkingEnabled>false</HyperlinkingEnabled>
+                  </UserProfileReference>
+                  <UserLocation>Houston, TX</UserLocation>
+                  <AnswerText>I think so</AnswerText>
+                  <IpAddress>198.51.100.2</IpAddress>
+                  <DisplayLocale>en_US</DisplayLocale>
+               </Answer>
+               <Answer id="5">
+                  <SubmissionTime>2008-11-23T22:44:33.179+01:00</SubmissionTime>
+                  <UserProfileReference id="becker">
+                     <ExternalId>becker</ExternalId>
+                     <DisplayName>Becker</DisplayName>
+                     <Anonymous>false</Anonymous>
+                     <HyperlinkingEnabled>false</HyperlinkingEnabled>
+                  </UserProfileReference>
+                  <UserLocation>New York, NY, USA</UserLocation>
+                  <AnswerText>A guy I know has done it</AnswerText>
+                  <IpAddress>198.51.100.3</IpAddress>
+                  <DisplayLocale>en_US</DisplayLocale>
+               </Answer>
+            </Answers>
+         </Question>
+      </Questions>
+   </Product>
 </Feed>
