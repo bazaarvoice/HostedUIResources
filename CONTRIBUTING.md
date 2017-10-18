@@ -1,47 +1,59 @@
 # Contributing
 
+## Issues
+
+First, create a new issue describing the problem and potential solution(s): https://github.com/bazaarvoice/HostedUIResources/issues.
+
+If you plan to submit a pull request, be sure to keep track of the issue number and use it later in a commit message and pull request summary.
+
 ## Fork and Branch
 
-We follow a fork+branch git workflow. First, fork this repo via GitHub, then create a branch, like this:
+To submit changes, follow a fork and branch git workflow.
+
+First, fork this repo via GitHub, then create a feature branch:
 
 ```bash
-# get the repo (assumes you're using an ssh key with GitHub)
-git clone git@github.com:<username>/HostedUIResources.git
-cd HostedUIResources
-# add upstream to allow for catch-up (see below)
+# clone the fork (assumes you're using an ssh key with GitHub)
+git clone git@github.com:<your GitHub username>/HostedUIResources.git
+cd ./HostedUIResources
+# add upstream to allow for syncing later
 git remote add upstream git@github.com:bazaarvoice/HostedUIResources.git
-# create a feature branch (Bazaarvoice employees should name their branch after a ticket number)
-git checkout -b BV-0000
-# create your branch on GitHub (you need --set-upstream for the very first push, only; it's sticky after that)
-git push --set-upstream origin BV-0000
+# create a feature branch using a short, descriptive name in lisp-case format
+git checkout -b add-new-feature
+# push the new branch to GitHub (--set-upstream is required for the very first push, only; it's sticky after that)
+git push --set-upstream origin add-new-feature
 ```
 
-After making your changes, locally, commit with a descriptive commit message.
+After making changes, locally, commit with a descriptive commit message, using a close issue keyword like "fixed #nn" or "closed #nn" to define which issue was resolved. See [Closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/) for more details.
 
 ```bash
-# stage your changes
+# stage the changes
 git add path/to/file
 # commit staged changes
-git commit -m "description of changes"
+git commit --message "fixed #1 - description of changes"
 # push to GitHub
 git push
 ```
 
-After committing and pushing, open a pull request on GitHub. Bazaarvoice employees should always include a ticket number in the PR title.
+After committing and pushing, open a pull request on GitHub, again using a close issue keyword in the pull request's summary.
 
-After your PR has been merged, you might want to clean up your branch, like this:
+After the PR has been merged, sync the forked repo and clean up the feature branch:
+
 ```bash
 # move back to master
 git checkout master
-# pull the latest merge from GitHub
-git pull
-# delete your branch locally
-git branch -d BV-0000
-# delete your branch on GitHub
-git push origin :BV-0000
+# sync with upstream
+git fetch upstream
+git merge upstream/master
+# push changes to the forked repo
+git push origin master
+# delete feature branch locally
+git branch --delete add-new-feature
+# delete feature branch on GitHub
+git push origin :add-new-feature
 ```
 
 
 ## Handling Pull Requests
 
-Repo admins should always **squash and merge** PRs after code review.
+Maintainers should always **squash and merge** pull requests after code review.
