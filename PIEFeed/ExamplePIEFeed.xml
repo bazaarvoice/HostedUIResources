@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
+    ********************************************************************************************************************
+    *
+    *                                                DEPRECATION NOTICE
+    *
+    * Bazaarvoice's sample feeds hosted on GitHub have been deprecated and will be removed on January 02, 2018.
+    *
+    * Please refer to Bazaarvoice's Conversations Knowledge Base to find the sample PIE feed in XML format:
+    * http://knowledge.bazaarvoice.com/wp-content/conversations/en_US/Collect/pie.html#step-1-create-a-feed-file
+    *
+    ********************************************************************************************************************
 
     This example shows the XML syntax (using the "PostPurchaseFeed" schema)
     for providing purchase transaction events to Bazaarvoice.
