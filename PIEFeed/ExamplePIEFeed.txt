@@ -1,3 +1,14 @@
+************************************************************************************************************************
+*
+*                                                DEPRECATION NOTICE
+*
+* Bazaarvoice's sample feeds hosted on GitHub have been deprecated and will be removed on January 02, 2018.
+*
+* Please refer to Bazaarvoice's Conversations Knowledge Base to find the sample PIE feed in TXT format:
+* http://knowledge.bazaarvoice.com/wp-content/conversations/en_US/Collect/pie.html#txt-feeds
+*
+************************************************************************************************************************
+
 2011-08-07 13:28:37.631	user1@example.com	1032957	111222	http://www.example.com/images/products/thumb/111222.jpg	Beyond The Solar System Cards, set of 36	
 2011-08-07 13:29:40.894	user2@example.com	0193761	895110	http://www.example.com/images/products/thumb/895110.jpg	Hydrion Regular pH Strips, Wide Range, pH 1-12	854959	http://www.example.com/images/products/thumb/854959.jpg	Cobalt Chloride, Hexahydrate, Reagent Grade, 100 g	895511	http://www.example.com/images/products/thumb/895511.jpg	Acid/Base Indicator Strips, Packg 100 Each	
 2011-08-07 13:30:12.138	user3@example.com	0296728	145564	http://www.example.com/images/products/thumb/145564.jpg	Zebra Fish (Danios), Living, Male, Pack of 12	145566	http://www.example.com/images/products/thumb/145566.jpg	Zebra Fish (Danios), Living, Female, Pack of 12	

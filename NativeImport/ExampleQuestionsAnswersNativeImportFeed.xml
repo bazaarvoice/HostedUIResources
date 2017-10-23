@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ********************************************************************************************************************
+    *
+    *                                                DEPRECATION NOTICE
+    *
+    * Bazaarvoice's sample feeds hosted on GitHub have been deprecated and will be removed on January 02, 2018.
+    *
+    * Please refer to Bazaarvoice's Conversations Knowledge Base to find the sample native content import feed:
+    * http://knowledge.bazaarvoice.com/wp-content/conversations/en_US/Collect/native_content_import.html#full-feed-examples
+    *
+    ********************************************************************************************************************
+-->
 <Feed xmlns="http://www.bazaarvoice.com/xs/PRR/StandardClientFeed/14.7" name="ExampleClient" extractDate="2016-11-21T22:44:33.179+01:00">
    <Product id="1010">
       <ExternalId>1010</ExternalId>
