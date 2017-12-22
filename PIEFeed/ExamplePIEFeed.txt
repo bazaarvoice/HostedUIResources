@@ -2,7 +2,7 @@
 *
 *                                                DEPRECATION NOTICE
 *
-* Bazaarvoice's sample feeds hosted on GitHub have been deprecated and will be removed on January 02, 2018.
+* Bazaarvoice's sample feeds hosted on GitHub have been deprecated.
 *
 * Please refer to Bazaarvoice's Conversations Knowledge Base to find the sample PIE feed in TXT format:
 * http://knowledge.bazaarvoice.com/wp-content/conversations/en_US/Collect/pie.html#txt-feeds
